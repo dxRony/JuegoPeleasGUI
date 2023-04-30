@@ -1,8 +1,9 @@
 package com.mycompany.juegopeleasgui.be.personajes;
 
+import com.mycompany.juegopeleasgui.be.Casilla;
 import java.util.Random;
 
-public class Personaje {
+public class Personaje extends Casilla{
 
     protected String nombre;
     protected int puntosDeVida;
