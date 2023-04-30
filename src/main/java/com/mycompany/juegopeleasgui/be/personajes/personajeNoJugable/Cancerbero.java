@@ -4,4 +4,12 @@ import com.mycompany.juegopeleasgui.be.personajes.NoJugable;
 
 public class Cancerbero extends NoJugable {
 
+    public Cancerbero() {
+        nombre = "c";
+        vuela = false;
+        puntosDeVida = 400;
+        puntosAtaque = 45;
+        movimiento = 1;
+        distanciaAtaque = 1;
+    }
 }

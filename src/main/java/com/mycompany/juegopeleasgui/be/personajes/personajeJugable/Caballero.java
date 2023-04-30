@@ -4,4 +4,13 @@ import com.mycompany.juegopeleasgui.be.personajes.Jugable;
 
 public class Caballero extends Jugable {
 
+    public Caballero() {
+        nombre = "C";
+        vuela = false;
+        puntosDeVida = 300;
+        puntosAtaque = 45;
+        movimiento = 1;
+        distanciaAtaque = 1;
+
+    }
 }

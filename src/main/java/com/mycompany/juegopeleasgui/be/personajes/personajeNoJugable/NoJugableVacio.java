@@ -4,4 +4,8 @@ import com.mycompany.juegopeleasgui.be.personajes.NoJugable;
 
 public class NoJugableVacio extends NoJugable {
 
+    public NoJugableVacio() {
+        nombre = "e";
+        puntosDeVida = 0;
+    }
 }

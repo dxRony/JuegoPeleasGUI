@@ -4,4 +4,12 @@ import com.mycompany.juegopeleasgui.be.articulos.Articulo;
 
 public class SemillaDeLaVida extends Articulo {
 
+    public SemillaDeLaVida() {
+        nombre = "Semilla de la Vida";
+        coste = 50;
+        vida = 1;
+        dano = 0;
+        movilidad = 0;
+        movimiento = 0;
+    }
 }
