@@ -8,6 +8,7 @@ import com.mycompany.juegopeleasgui.be.articulos.mejoras.Vida;
 import com.mycompany.juegopeleasgui.be.articulos.objetos.CapaDeMovilidad;
 import com.mycompany.juegopeleasgui.be.articulos.objetos.ElixirVerde;
 import com.mycompany.juegopeleasgui.be.articulos.objetos.SemillaDeLaVida;
+import com.mycompany.juegopeleasgui.be.inventarios.ListaGenerica;
 import com.mycompany.juegopeleasgui.be.personajes.Jugable;
 import com.mycompany.juegopeleasgui.be.personajes.personajeJugable.Arquero;
 import com.mycompany.juegopeleasgui.be.personajes.personajeJugable.Caballero;
@@ -22,16 +23,16 @@ public class Usuario extends Jugador {
     private Jugable[] listaJugables;
     private Articulo[] listaArticulos;
     private Jugable personajePrincipalUsuario;
-//    private Jugables[] inventarioJugables;
-//    private Articulos[] inventarioArticulos;
+    private ListaGenerica<Jugable> inventarioUsuario;
+    private ListaGenerica<Articulo> inventarioArticulos;
 
     public Usuario() {
         oro = 500;
         listaArticulos = new Articulo[7];
         listaJugables = new Jugable[6];
         personajePrincipalUsuario = new Jugable();
-        listaJugables[0] = new Arquero();
-        listaJugables[1] = new Caballero();
+        listaJugables[0] = new Caballero();
+        listaJugables[1] = new Arquero();
         listaJugables[2] = new Dragon();
         listaJugables[3] = new Gigante();
         listaJugables[4] = new Mago();
@@ -43,72 +44,35 @@ public class Usuario extends Jugador {
         listaArticulos[4] = new SemillaDeLaVida();
         listaArticulos[5] = new Vida();
         listaArticulos[6] = new ArticuloVacio();
-//        inventarioJugables = new Jugables[5];
-//        inventarioArticulos = new Articulos[10];
-//        iniciarInventarioUsuario();
-//        iniciarInventarioArticulos();
+        inventarioUsuario = new ListaGenerica<Jugable>();
+        inventarioArticulos = new ListaGenerica<Articulo>();
     }
 
-//    public void iniciarInventarioUsuario() {
-//        for (int i = 0; i < 5; i++) {
-//            inventarioJugables[i] = listaJugables[5];
-//        }
-//    }
-//
-//    public void iniciarInventarioArticulos() {
-//        for (int i = 0; i < inventarioArticulos.length; i++) {
-//            inventarioArticulos[i] = listaArticulos[6];
-//        }
-//    }
-//
-//    public void pintarInventarioUsuario() {
-//        System.out.println("Inventario Personajes(usuario): ");
-//        for (int i = 0; i < 5; i++) {
-//            System.out.print("[" + i + "] " + inventarioJugables[i].getNombre());
-//            System.out.print("\n");
-//        }
-//        System.out.println("--------------------------------------");
-//    }
-//
-//    public void pintarInventarioArticulos() {
-//        System.out.println("Inventario Articulos(usuario):");
-//        for (int i = 0; i < inventarioArticulos.length; i++) {
-//            System.out.print("[" + i + "] " + inventarioArticulos[i].getNombre());
-//            System.out.print("\n");
-//        }
-//        System.out.println("--------------------------------------");
-//    }
-//
-//    public void comprarJugables(Jugables jugables, int oro) {
-//        if (this.oro >= jugables.getCoste()) {
-//            for (int i = 0; i < inventarioJugables.length; i++) {
-//                if (this.inventarioJugables[i] instanceof PersonajeVacio) {
-//                    this.oro -= jugables.getCoste();
-//                    this.inventarioJugables[i] = jugables;
-//                    System.out.println("Compraste al: " + jugables.getNombre());
-//                    System.out.println("Tienes: " + this.oro + " de oro");
-//                    return;
-//                }
-//            }
-//        }
-//        System.out.println("No tienes el suficiente oro");
-//    }
-//
-//    public void comprarArticulos(Articulos articulos, int oro) {
-//        if (this.oro >= articulos.getCoste()) {
-//            for (int i = 0; i < inventarioArticulos.length; i++) {
-//                if (this.inventarioArticulos[i] instanceof ArticuloVacio) {
-//                    this.oro -= articulos.getCoste();
-//                    this.inventarioArticulos[i] = articulos;
-//                    System.out.println("Compraste: " + articulos.getNombre());
-//                    System.out.println("Tienes: " + this.oro + " de oro");
-//                    return;
-//                }
-//            }
-//        }
-//        System.out.println("No tienes el oro suficiente");
-//    }
-//
+    public void comprarJugables(Jugable personaje, int oro) {
+
+        if (this.oro >= personaje.getCoste()) {
+            this.oro -= personaje.getCoste();
+            inventarioUsuario.agregar(personaje);
+            System.out.println("Compraste al: " + personaje.getNombre());
+            System.out.println("Tienes: " + this.oro + " de oro");
+            return;
+        }
+        System.out.println("No tienes el oro suficiente");
+        inventarioUsuario.pintarLista();
+    }
+
+    public void comprarArticulos(Articulo articulo, int oro) {
+
+        if (this.oro >= articulo.getCoste()) {
+            this.oro -= articulo.getCoste();
+            inventarioArticulos.agregar(articulo);
+            System.out.println("Compraste: " + articulo.getNombre());
+            System.out.println("Tienes: " + this.oro + " de oro");
+            return;
+        }
+        System.out.println("No tienes el oro suficiente");
+    }
+
     public void almacenarPrincipalUsuario(Jugable personajePrincipalUsuario) {
         this.personajePrincipalUsuario = personajePrincipalUsuario;
     }
@@ -116,19 +80,10 @@ public class Usuario extends Jugador {
     public int getOro() {
         return oro;
     }
-    
-//    public Jugables[] getInventarioJugables() {
-//        return inventarioJugables;
-//    }
-//
-//    public Articulos[] getInventarioArticulos() {
-//        return inventarioArticulos;
-//    }
 
     public Jugable[] getListaJugables() {
         return listaJugables;
     }
-//
 
     public Articulo[] getListaArticulos() {
         return listaArticulos;
@@ -137,4 +92,13 @@ public class Usuario extends Jugador {
     public Jugable getPersonajePrincipalUsuario() {
         return personajePrincipalUsuario;
     }
+
+    public ListaGenerica<Jugable> getInventarioUsuario() {
+        return inventarioUsuario;
+    }
+
+    public ListaGenerica<Articulo> getInventarioArticulos() {
+        return inventarioArticulos;
+    }
+
 }

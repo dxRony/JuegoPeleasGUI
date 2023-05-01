@@ -63,13 +63,13 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="btnSalir" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
-                                      <Component id="btnRanking" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
-                                      <Component id="btnInventario" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
-                                      <Component id="btnGeneracionTablero" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
-                                      <Component id="btnTienda" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
-                                      <Component id="btnIniciarPartida" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="btnIniciarPartida" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnTienda" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnGeneracionTablero" alignment="0" pref="150" max="32767" attributes="0"/>
+                                      <Component id="btnInventario" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnRanking" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnSalir" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
@@ -204,6 +204,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Inventario"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInventarioActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnRanking">
           <Properties>
@@ -215,6 +218,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Ranking"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRankingActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnSalir">
           <Properties>

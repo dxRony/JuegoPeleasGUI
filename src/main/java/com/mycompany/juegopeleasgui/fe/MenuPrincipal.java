@@ -1,6 +1,9 @@
 package com.mycompany.juegopeleasgui.fe;
 
+import com.mycompany.juegopeleasgui.be.articulos.Articulo;
+import com.mycompany.juegopeleasgui.be.inventarios.ListaGenerica;
 import com.mycompany.juegopeleasgui.be.jugadores.Usuario;
+import com.mycompany.juegopeleasgui.be.personajes.Jugable;
 
 public class MenuPrincipal extends javax.swing.JFrame {
 
@@ -8,6 +11,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
      * Creates new form MenuPrincipal
      */
     private Usuario usuario;
+    private ListaGenerica<Jugable> inventarioUsuario;
+    private ListaGenerica<Articulo> inventarioArticulos;
 
     public MenuPrincipal() {
         initComponents();
@@ -17,6 +22,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnInventario.setEnabled(false);
         btnRanking.setEnabled(false);
         usuario = new Usuario();
+        inventarioUsuario = usuario.getInventarioUsuario();
+        inventarioArticulos = usuario.getInventarioArticulos();
     }
 
     /**
@@ -77,10 +84,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnInventario.setBackground(new java.awt.Color(255, 255, 255));
         btnInventario.setForeground(new java.awt.Color(0, 0, 0));
         btnInventario.setText("Inventario");
+        btnInventario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInventarioActionPerformed(evt);
+            }
+        });
 
         btnRanking.setBackground(new java.awt.Color(255, 255, 255));
         btnRanking.setForeground(new java.awt.Color(0, 0, 0));
         btnRanking.setText("Ranking");
+        btnRanking.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRankingActionPerformed(evt);
+            }
+        });
 
         btnSalir.setBackground(new java.awt.Color(255, 255, 255));
         btnSalir.setForeground(new java.awt.Color(0, 0, 0));
@@ -141,13 +158,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addGroup(pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlFrameLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnRanking, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnGeneracionTablero, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnTienda, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnIniciarPartida, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnIniciarPartida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnTienda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnGeneracionTablero, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                    .addComponent(btnInventario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnRanking, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFrameLayout.createSequentialGroup()
                                 .addGap(108, 108, 108)
@@ -218,8 +235,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         String nombre = fieldNombre.getText();
         usuario.setNombre(nombre);
-        lblNombreTexto.setText(usuario.getNombre() + "");     
-        lblCantidadOro.setText(usuario.getOro()+"");
+        lblNombreTexto.setText(usuario.getNombre() + "");
+        lblCantidadOro.setText(usuario.getOro() + "");
         btnIniciarPartida.setEnabled(true);
         btnTienda.setEnabled(true);
         btnGeneracionTablero.setEnabled(true);
@@ -236,13 +253,26 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnTiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTiendaActionPerformed
-        // TODO add your handling code here:
+        Tienda tienda = new Tienda(usuario);
+        tienda.setVisible(true);   
+        lblCantidadOro.setText(usuario.getOro() + "");
     }//GEN-LAST:event_btnTiendaActionPerformed
+
+    private void btnInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioActionPerformed
+        Inventario inventario = new Inventario(usuario);
+        inventario.setVisible(true);
+        lblCantidadOro.setText(usuario.getOro() + "");
+        // inventarioUsuario.mostrarLista();
+    }//GEN-LAST:event_btnInventarioActionPerformed
+
+    private void btnRankingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRankingActionPerformed
+        // TODO add your handling code here:
+        lblCantidadOro.setText(usuario.getOro() + "");
+    }//GEN-LAST:event_btnRankingActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;

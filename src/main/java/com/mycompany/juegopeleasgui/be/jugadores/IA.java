@@ -1,5 +1,6 @@
 package com.mycompany.juegopeleasgui.be.jugadores;
 
+import com.mycompany.juegopeleasgui.be.inventarios.ListaGenerica;
 import com.mycompany.juegopeleasgui.be.personajes.NoJugable;
 import com.mycompany.juegopeleasgui.be.personajes.personajeNoJugable.Bruja;
 import com.mycompany.juegopeleasgui.be.personajes.personajeNoJugable.Cancerbero;
@@ -9,10 +10,10 @@ import com.mycompany.juegopeleasgui.be.personajes.personajeNoJugable.Ogro;
 
 public class IA extends Jugador {
 
-    private NoJugable[] listaEnemigos;//personajes existentes
-    private NoJugable personajePrincipalIA;//personaje que realiza las acciones
+    private NoJugable[] listaEnemigos;
+    private NoJugable personajePrincipalIA;
     private int dificultad;
-//    private Enemigos[] inventarioEnemigos;//personajes que posee 
+    private ListaGenerica<NoJugable> inventarioIA;
 
     public IA() {
         listaEnemigos = new NoJugable[6];
@@ -23,43 +24,16 @@ public class IA extends Jugador {
         listaEnemigos[3] = new Gargola();
         listaEnemigos[4] = new Ogro();
         listaEnemigos[5] = new NoJugable();
-//        inventarioEnemigos = new Enemigos[5];
-//        iniciarInventarioIA();
+        inventarioIA = new ListaGenerica<NoJugable>();
     }
 
-//    public void iniciarInventarioIA() {
-//        for (int i = 0; i < 5; i++) {
-//            inventarioEnemigos[i] = listaEnemigos[5];
-//        }
-//    }
-//
-//    public void pintarInventarioIA() {
-//        System.out.println("Inventario Personajes (IA)");
-//        for (int i = 0; i < 5; i++) {
-//            System.out.print("[" + i + "] " + inventarioEnemigos[i].getNombre());
-//
-//            System.out.print("\n");
-//        }
-//        System.out.println("--------------------------------------");
-//    }
-//
-//    public void llenarInventarioEnemigos(Enemigos enemigos) {
-//        for (int i = 0; i < 5; i++) {
-//            if (this.inventarioEnemigos[i] instanceof EnemigoVacio) {
-//                this.inventarioEnemigos[i] = enemigos;
-//                return;
-//            }
-//        }
-//    }
-//
+    public void llenarInventarioEnemigos(NoJugable personaje) {
+        inventarioIA.agregar(personaje);
+    }
+
     public void almacenarPrincipalIA(NoJugable personajePrincipalIA) {
         this.personajePrincipalIA = personajePrincipalIA;
     }
-//
-//    public Enemigos[] getInventarioEnemigos() {
-//        return inventarioEnemigos;
-//    }
-//
 
     public NoJugable[] getListaEnemigos() {
         return listaEnemigos;
@@ -76,4 +50,9 @@ public class IA extends Jugador {
     public NoJugable getPersonajePrincipalIA() {
         return personajePrincipalIA;
     }
+
+    public ListaGenerica<NoJugable> getInventarioIA() {
+        return inventarioIA;
+    }
+
 }

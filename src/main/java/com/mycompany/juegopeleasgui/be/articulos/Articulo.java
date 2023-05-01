@@ -32,4 +32,8 @@ public class Articulo {
     public int getMovimiento() {
         return movimiento;
     }
+
+    public String toString() {
+        return nombre;
+    }
 }

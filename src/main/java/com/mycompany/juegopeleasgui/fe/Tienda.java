@@ -1,12 +1,24 @@
 package com.mycompany.juegopeleasgui.fe;
 
+import com.mycompany.juegopeleasgui.be.articulos.Articulo;
+import com.mycompany.juegopeleasgui.be.jugadores.Usuario;
+import com.mycompany.juegopeleasgui.be.personajes.Jugable;
+
 public class Tienda extends javax.swing.JFrame {
 
     /**
      * Creates new form Tienda
      */
-    public Tienda() {
+    private Usuario usuario;
+    private Jugable[] listaJugables;
+    private Articulo[] listaArticulos;
+
+    public Tienda(Usuario usuario) {
+        this.usuario = usuario;
         initComponents();
+        lblCantidadOro.setText(usuario.getOro() + "");
+        listaJugables = usuario.getListaJugables();
+        listaArticulos = usuario.getListaArticulos();
     }
 
     /**
@@ -19,18 +31,225 @@ public class Tienda extends javax.swing.JFrame {
     private void initComponents() {
 
         pnlTienda = new javax.swing.JPanel();
+        lblTienda = new javax.swing.JLabel();
+        lblOro = new javax.swing.JLabel();
+        lblCantidadOro = new javax.swing.JLabel();
+        lblPersonajes = new javax.swing.JLabel();
+        lblArticulos = new javax.swing.JLabel();
+        btnCaballero = new javax.swing.JButton();
+        btnArquero = new javax.swing.JButton();
+        btnDragon = new javax.swing.JButton();
+        btnGigante = new javax.swing.JButton();
+        btnMago = new javax.swing.JButton();
+        btnCapaMovilidad = new javax.swing.JButton();
+        btnDano = new javax.swing.JButton();
+        btnElixirVerde = new javax.swing.JButton();
+        btnMovilidad = new javax.swing.JButton();
+        btnSemillaVida = new javax.swing.JButton();
+        btnVida = new javax.swing.JButton();
+        separador = new javax.swing.JSeparator();
+        btnRegresarMenuPrincipal = new javax.swing.JButton();
+        btnSeleccionMapa = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        pnlTienda.setBackground(new java.awt.Color(255, 170, 80));
+
+        lblTienda.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTienda.setForeground(new java.awt.Color(0, 0, 0));
+        lblTienda.setText("Tienda");
+
+        lblOro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblOro.setForeground(new java.awt.Color(0, 0, 0));
+        lblOro.setText("Oro del Jugador:");
+
+        lblCantidadOro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblCantidadOro.setForeground(new java.awt.Color(0, 0, 0));
+        lblCantidadOro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        lblPersonajes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblPersonajes.setForeground(new java.awt.Color(0, 0, 0));
+        lblPersonajes.setText("Personajes");
+
+        lblArticulos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblArticulos.setForeground(new java.awt.Color(0, 0, 0));
+        lblArticulos.setText("Articulos");
+
+        btnCaballero.setText("Caballero  Coste = 200 ");
+        btnCaballero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCaballeroActionPerformed(evt);
+            }
+        });
+
+        btnArquero.setText("Arquero    Coste = 200 ");
+        btnArquero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnArqueroActionPerformed(evt);
+            }
+        });
+
+        btnDragon.setText("Dragon   Coste = 200 ");
+        btnDragon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDragonActionPerformed(evt);
+            }
+        });
+
+        btnGigante.setText("Gigante   Coste = 200 ");
+        btnGigante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGiganteActionPerformed(evt);
+            }
+        });
+
+        btnMago.setText("Mago   Coste = 200 ");
+        btnMago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMagoActionPerformed(evt);
+            }
+        });
+
+        btnCapaMovilidad.setText("Capa de Movilidad    Coste = 75");
+        btnCapaMovilidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCapaMovilidadActionPerformed(evt);
+            }
+        });
+
+        btnDano.setText("Dano    Coste = 125");
+        btnDano.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDanoActionPerformed(evt);
+            }
+        });
+
+        btnElixirVerde.setText("Elixir Verde   Coste = 25");
+        btnElixirVerde.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnElixirVerdeActionPerformed(evt);
+            }
+        });
+
+        btnMovilidad.setText("Movilidad    Coste = 500");
+        btnMovilidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMovilidadActionPerformed(evt);
+            }
+        });
+
+        btnSemillaVida.setText("Semilla de la Vida = 50");
+        btnSemillaVida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSemillaVidaActionPerformed(evt);
+            }
+        });
+
+        btnVida.setText("Vida = 80");
+        btnVida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVidaActionPerformed(evt);
+            }
+        });
+
+        btnRegresarMenuPrincipal.setText("Regresar al Menu Principal");
+        btnRegresarMenuPrincipal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarMenuPrincipalActionPerformed(evt);
+            }
+        });
+
+        btnSeleccionMapa.setText("SeleccionMapa");
 
         javax.swing.GroupLayout pnlTiendaLayout = new javax.swing.GroupLayout(pnlTienda);
         pnlTienda.setLayout(pnlTiendaLayout);
         pnlTiendaLayout.setHorizontalGroup(
             pnlTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(separador, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(pnlTiendaLayout.createSequentialGroup()
+                .addGroup(pnlTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlTiendaLayout.createSequentialGroup()
+                        .addGroup(pnlTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(pnlTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(pnlTiendaLayout.createSequentialGroup()
+                                    .addGap(145, 145, 145)
+                                    .addComponent(lblTienda, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(pnlTiendaLayout.createSequentialGroup()
+                                    .addGap(93, 93, 93)
+                                    .addComponent(lblOro)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(lblCantidadOro, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlTiendaLayout.createSequentialGroup()
+                                .addGap(46, 46, 46)
+                                .addComponent(lblPersonajes, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(24, 24, 24)
+                        .addComponent(lblArticulos))
+                    .addGroup(pnlTiendaLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(pnlTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlTiendaLayout.createSequentialGroup()
+                                .addComponent(btnRegresarMenuPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnSeleccionMapa, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlTiendaLayout.createSequentialGroup()
+                                .addGroup(pnlTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnCaballero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnArquero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnDragon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnGigante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnMago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(45, 45, 45)
+                                .addGroup(pnlTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnVida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnCapaMovilidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnDano, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnElixirVerde, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnMovilidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnSemillaVida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         pnlTiendaLayout.setVerticalGroup(
             pnlTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(pnlTiendaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTienda, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblCantidadOro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblOro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPersonajes)
+                    .addComponent(lblArticulos))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCaballero)
+                    .addComponent(btnCapaMovilidad))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnArquero)
+                    .addComponent(btnDano))
+                .addGap(18, 18, 18)
+                .addGroup(pnlTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDragon)
+                    .addComponent(btnElixirVerde))
+                .addGap(18, 18, 18)
+                .addGroup(pnlTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGigante)
+                    .addComponent(btnMovilidad))
+                .addGap(18, 18, 18)
+                .addGroup(pnlTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnMago)
+                    .addComponent(btnSemillaVida))
+                .addGap(18, 18, 18)
+                .addComponent(btnVida)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(separador, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegresarMenuPrincipal)
+                    .addComponent(btnSeleccionMapa))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -47,42 +266,83 @@ public class Tienda extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnRegresarMenuPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarMenuPrincipalActionPerformed
+        this.setVisible(false);
+
+    }//GEN-LAST:event_btnRegresarMenuPrincipalActionPerformed
+
+    private void btnCaballeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaballeroActionPerformed
+        usuario.comprarJugables(listaJugables[0], usuario.getOro());
+        lblCantidadOro.repaint();
+        lblCantidadOro.revalidate();
+        
+    }//GEN-LAST:event_btnCaballeroActionPerformed
+
+    private void btnArqueroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArqueroActionPerformed
+        usuario.comprarJugables(listaJugables[1], usuario.getOro());
+        
+    }//GEN-LAST:event_btnArqueroActionPerformed
+
+    private void btnDragonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDragonActionPerformed
+        usuario.comprarJugables(listaJugables[2], usuario.getOro());
+    }//GEN-LAST:event_btnDragonActionPerformed
+
+    private void btnGiganteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGiganteActionPerformed
+        usuario.comprarJugables(listaJugables[3], usuario.getOro());
+    }//GEN-LAST:event_btnGiganteActionPerformed
+
+    private void btnMagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMagoActionPerformed
+        usuario.comprarJugables(listaJugables[4], usuario.getOro());
+    }//GEN-LAST:event_btnMagoActionPerformed
+
+    private void btnCapaMovilidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapaMovilidadActionPerformed
+        usuario.comprarArticulos(listaArticulos[0], usuario.getOro());
+    }//GEN-LAST:event_btnCapaMovilidadActionPerformed
+
+    private void btnDanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDanoActionPerformed
+        usuario.comprarArticulos(listaArticulos[1], usuario.getOro());
+    }//GEN-LAST:event_btnDanoActionPerformed
+
+    private void btnElixirVerdeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElixirVerdeActionPerformed
+        usuario.comprarArticulos(listaArticulos[2], usuario.getOro());
+    }//GEN-LAST:event_btnElixirVerdeActionPerformed
+
+    private void btnMovilidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMovilidadActionPerformed
+        usuario.comprarArticulos(listaArticulos[3], usuario.getOro());
+    }//GEN-LAST:event_btnMovilidadActionPerformed
+
+    private void btnSemillaVidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSemillaVidaActionPerformed
+        usuario.comprarArticulos(listaArticulos[4], usuario.getOro());
+    }//GEN-LAST:event_btnSemillaVidaActionPerformed
+
+    private void btnVidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVidaActionPerformed
+        usuario.comprarArticulos(listaArticulos[5], usuario.getOro());
+    }//GEN-LAST:event_btnVidaActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Tienda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Tienda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Tienda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Tienda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Tienda().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnArquero;
+    private javax.swing.JButton btnCaballero;
+    private javax.swing.JButton btnCapaMovilidad;
+    private javax.swing.JButton btnDano;
+    private javax.swing.JButton btnDragon;
+    private javax.swing.JButton btnElixirVerde;
+    private javax.swing.JButton btnGigante;
+    private javax.swing.JButton btnMago;
+    private javax.swing.JButton btnMovilidad;
+    private javax.swing.JButton btnRegresarMenuPrincipal;
+    private javax.swing.JButton btnSeleccionMapa;
+    private javax.swing.JButton btnSemillaVida;
+    private javax.swing.JButton btnVida;
+    private javax.swing.JLabel lblArticulos;
+    private javax.swing.JLabel lblCantidadOro;
+    private javax.swing.JLabel lblOro;
+    private javax.swing.JLabel lblPersonajes;
+    private javax.swing.JLabel lblTienda;
     private javax.swing.JPanel pnlTienda;
+    private javax.swing.JSeparator separador;
     // End of variables declaration//GEN-END:variables
 }
