@@ -6,6 +6,12 @@ public class Terreno extends Casilla {
 
     protected String nombre;
 
+
+    public Terreno(int tamaño) {
+        super(tamaño);
+
+    }
+
     public String getNombre() {
         return nombre;
     }

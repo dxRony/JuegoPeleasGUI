@@ -7,7 +7,8 @@ public class Jugable extends Personaje {
     private int coste;
     private Articulo articulos = new Articulo();
 
-    public Jugable() {
+    public Jugable(int tamaño) {
+        super(tamaño);
         probabilidadAtaque = 75;
         coste = 200;
     }

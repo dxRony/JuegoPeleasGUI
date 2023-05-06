@@ -4,7 +4,8 @@ import com.mycompany.juegopeleasgui.be.personajes.Jugable;
 
 public class JugableVacio extends Jugable {
 
-    public JugableVacio() {
+    public JugableVacio(int tamaño) {
+        super(tamaño); 
         nombre = "e";
     }
 }

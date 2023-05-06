@@ -80,6 +80,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnGeneracionTablero.setBackground(new java.awt.Color(255, 255, 255));
         btnGeneracionTablero.setForeground(new java.awt.Color(0, 0, 0));
         btnGeneracionTablero.setText("Generación Tablero");
+        btnGeneracionTablero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGeneracionTableroActionPerformed(evt);
+            }
+        });
 
         btnInventario.setBackground(new java.awt.Color(255, 255, 255));
         btnInventario.setForeground(new java.awt.Color(0, 0, 0));
@@ -269,6 +274,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         lblCantidadOro.setText(usuario.getOro() + "");
     }//GEN-LAST:event_btnRankingActionPerformed
+
+    private void btnGeneracionTableroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGeneracionTableroActionPerformed
+        GenerarTablero generarTablero = new GenerarTablero(usuario);
+        generarTablero.setVisible(true);
+    }//GEN-LAST:event_btnGeneracionTableroActionPerformed
 
     /**
      * @param args the command line arguments

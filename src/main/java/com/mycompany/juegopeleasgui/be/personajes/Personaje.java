@@ -3,7 +3,7 @@ package com.mycompany.juegopeleasgui.be.personajes;
 import com.mycompany.juegopeleasgui.be.Casilla;
 import java.util.Random;
 
-public class Personaje extends Casilla{
+public class Personaje extends Casilla {
 
     protected String nombre;
     protected int puntosDeVida;
@@ -13,6 +13,11 @@ public class Personaje extends Casilla{
     protected int danoRecibido;
     protected boolean vuela;
     protected int distanciaAtaque;
+
+    public Personaje(int tamaño) {
+        super(tamaño);
+
+    }
 
     public int calcularDano() {
         int danoHecho = 0;

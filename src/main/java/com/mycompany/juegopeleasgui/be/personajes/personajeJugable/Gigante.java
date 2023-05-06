@@ -1,10 +1,16 @@
 package com.mycompany.juegopeleasgui.be.personajes.personajeJugable;
 
 import com.mycompany.juegopeleasgui.be.personajes.Jugable;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 public class Gigante extends Jugable {
 
-    public Gigante() {
+    private static final String imagenGigante = "src\\main\\java\\iconos\\gigante.png";
+    public Gigante(int tamaño) {
+        super(tamaño);
+        ImageIcon gigante = new ImageIcon(imagenGigante);
+        this.setIcon(new ImageIcon(gigante.getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH)));       
         nombre = "G";
         vuela = false;
         puntosDeVida = 350;

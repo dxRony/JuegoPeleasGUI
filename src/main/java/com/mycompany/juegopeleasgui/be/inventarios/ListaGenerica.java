@@ -1,8 +1,5 @@
 package com.mycompany.juegopeleasgui.be.inventarios;
 
-import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
-
 public class ListaGenerica<T> {
 
     private Nodo<T> primero;
