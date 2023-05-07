@@ -12,7 +12,6 @@ public class Arbol extends Terreno {
         super(tamaño);
         ImageIcon arbol = new ImageIcon(imagenArbol);
         this.setIcon(new ImageIcon(arbol.getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH)));
-        
         nombre = "T";
     }
 

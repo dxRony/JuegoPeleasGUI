@@ -113,7 +113,7 @@ public class GenerarTablero extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnCargarTableroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarTableroActionPerformed
-        AbrirTablero abrir = new AbrirTablero();
+        TableroDeJuego abrir = new TableroDeJuego();
         abrir.setVisible(true);
     }//GEN-LAST:event_btnCargarTableroActionPerformed
 

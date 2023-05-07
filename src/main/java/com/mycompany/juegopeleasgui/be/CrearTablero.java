@@ -7,16 +7,22 @@ import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 
-public class Archivo {
+public class CrearTablero {
 
     private String rutaTablero = "src\\main\\java\\archivo\\tableros.txt";
+    private Tablero nuevoTablero;
+    
+    public CrearTablero() {
+        nuevoTablero = null;
+    }
+    
+    
 
     public void leerArchivo() { //Para crear mapas
         File f;
         BufferedReader br = null;
         String cadena;
         f = new File(rutaTablero);
-        Tablero nuevoTablero = null;
         int conteo = 0;
         if (f.exists()) {
             try {
@@ -48,4 +54,10 @@ public class Archivo {
             JOptionPane.showMessageDialog(null, "Archivo inexistente");
         }
     }
+
+    public Tablero getNuevoTablero() {
+        return nuevoTablero;
+    }
+    
+    
 }

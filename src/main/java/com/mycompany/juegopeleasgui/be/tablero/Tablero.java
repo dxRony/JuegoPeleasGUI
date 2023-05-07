@@ -5,11 +5,13 @@ import com.mycompany.juegopeleasgui.be.terrenos.Agua;
 import com.mycompany.juegopeleasgui.be.terrenos.Arbol;
 import com.mycompany.juegopeleasgui.be.terrenos.Lava;
 import com.mycompany.juegopeleasgui.be.terrenos.Planicie;
-import com.mycompany.juegopeleasgui.fe.AbrirTablero;
+import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.io.IOException;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 public class Tablero {
 
@@ -26,29 +28,12 @@ public class Tablero {
         this.casillas = new Casilla[filas][columnas];
     }
 
-    public JButton[][] crearTablero() {
-        int tamaño = 100;
-        int posicionX = 10;
-        int posicionY = 10;
-        for (int i = 0; i < casillas.length; i++) {
-            for (int j = 0; j < casillas[i].length; j++) {
-                casillas[i][j] = new Casilla(tamaño);
-                casillas[i][j].setBounds(posicionX, posicionY, 100, 100);
-                AbrirTablero panelNueva = new AbrirTablero();
-                panelNueva.mostrarTablero(casillas);
-                posicionX += 160;
-            }
-            posicionX = 10;
-            posicionY += 70;
-        }
-        return casillas;
-    }
-
     public void crearTableroVacio() {
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
-                casillas[i][j] = new Casilla(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);
-                casillas[i][j].setPosicionX(j);
+               // casillas[i][j] = new Casilla(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);
+               casillas[i][j] = new Casilla(100);
+               casillas[i][j].setPosicionX(j);
                 casillas[i][j].setPosicionY(i);
             }
         }
@@ -69,13 +54,13 @@ public class Tablero {
                         System.out.print(caracteres[i]);
 
                         if (caracteres[i].equals("~")) {
-                            casillas[posicion][i] = new Agua(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);
+                            casillas[posicion][i] = new Agua(95);
                             agua++;
                         } else if (caracteres[i].equals("T")) {
-                            casillas[posicion][i] = new Arbol(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);
+                            casillas[posicion][i] = new Arbol(60);
                             arbol++;
                         } else if (caracteres[i].equals("#")) {
-                            casillas[posicion][i] = new Lava(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);
+                            casillas[posicion][i] = new Lava(100);
                             lava++;
                         } else if (caracteres[i].equals("-")) {
                             casillas[posicion][i] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);
@@ -107,7 +92,23 @@ public class Tablero {
         }
     }
 
+    public void anadirBotones(JPanel pnlJuego, JFrame pnlTableroDeJuego) {
+        pnlJuego.setLayout(new GridLayout(filas, columnas));
+        for (int i = 0; i < columnas; i++) {
+            for (int j = 0; j < filas; j++) {
+                pnlJuego.add(casillas[i][j]);
+            }
+        }
+        pnlTableroDeJuego.getContentPane().add(pnlJuego);
+        pnlTableroDeJuego.setVisible(true);
+    }
+
     public void getId(String id) {
         this.nombre = id;
     }
+
+    public Casilla[][] getCasillas() {
+        return casillas;
+    }
+
 }

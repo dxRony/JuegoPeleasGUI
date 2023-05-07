@@ -1,11 +1,12 @@
 package com.mycompany.juegopeleasgui.be.terrenos;
 
+import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
 public class Lava extends Terreno {
 
-    private static final String imagenLava = "src\\main\\java\\iconos\\lava.png";
+    private static final String imagenLava = "src\\main\\java\\iconos\\lava.jpg";
 
     public Lava(int tamaño) {
         super(tamaño);
