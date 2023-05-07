@@ -42,11 +42,11 @@ public class AbrirTablero extends javax.swing.JFrame {
         pnlPrevisualizador.setLayout(pnlPrevisualizadorLayout);
         pnlPrevisualizadorLayout.setHorizontalGroup(
             pnlPrevisualizadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 361, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         pnlPrevisualizadorLayout.setVerticalGroup(
             pnlPrevisualizadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 253, Short.MAX_VALUE)
+            .addGap(0, 368, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -54,22 +54,22 @@ public class AbrirTablero extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(162, 162, 162)
-                .addComponent(btnCargarTablero)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
-                .addComponent(pnlPrevisualizador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(pnlPrevisualizador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(22, 22, 22))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(227, Short.MAX_VALUE)
+                .addComponent(btnCargarTablero)
+                .addGap(208, 208, 208))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pnlPrevisualizador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCargarTablero)
-                .addContainerGap())
+                .addGap(12, 12, 12))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -87,13 +87,8 @@ public class AbrirTablero extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCargarTableroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarTableroActionPerformed
-        JFileChooser archivoSeleccionado = new JFileChooser();
-        FileNameExtensionFilter filtro = new FileNameExtensionFilter("*.TH", ".th");
-
-        //archivoSeleccionado.setFileFilter(filtro);
-        archivoSeleccionado.showOpenDialog(null);
         Archivo archivo = new Archivo();
-        archivo.leerArchivo(archivoSeleccionado.getSelectedFile().getAbsolutePath());
+        archivo.leerArchivo();
         Tablero tablero = new Tablero("", 8, 8);
         mostrarTablero((Casilla[][]) tablero.crearTablero());
     }//GEN-LAST:event_btnCargarTableroActionPerformed
@@ -105,12 +100,8 @@ public class AbrirTablero extends javax.swing.JFrame {
     private javax.swing.JPanel pnlPrevisualizador;
     // End of variables declaration//GEN-END:variables
     public void mostrarMapas(JComponent texto) {
-       // FramePrincipal principal = new FramePrincipal();
-        //panelPrevisualizador.setLocation((principal.getWidth() / 2) - 400, (principal.getHeight() / 2) - 250);
-
         pnlPrevisualizador.remove(texto);
         pnlPrevisualizador.setLayout(new FlowLayout());
-        //panelPrevisualizador.setSize(new Dimension(900, 500));
         pnlPrevisualizador.setBackground(Color.LIGHT_GRAY);
         pnlPrevisualizador.add(texto);
     }

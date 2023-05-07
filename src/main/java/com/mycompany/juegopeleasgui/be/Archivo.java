@@ -9,14 +9,15 @@ import javax.swing.JOptionPane;
 
 public class Archivo {
 
-    public void leerArchivo(String nombreArchivo) { //Para crear mapas
+    private String rutaTablero = "src\\main\\java\\archivo\\tableros.txt";
+
+    public void leerArchivo() { //Para crear mapas
         File f;
         BufferedReader br = null;
         String cadena;
-        String[] verificarExtension = nombreArchivo.split("\\.");
-        f = new File(verificarExtension[0] + ".th");
+        f = new File(rutaTablero);
         Tablero nuevoTablero = null;
-
+        int conteo = 0;
         if (f.exists()) {
             try {
                 br = new BufferedReader(new FileReader(f));
@@ -31,9 +32,15 @@ public class Archivo {
                         String[] dimensiones = dimension1[1].split("X");
 
                         nuevoTablero = new Tablero(id, Integer.parseInt(dimensiones[0]), Integer.parseInt(dimensiones[1]));
-                        nuevoTablero.crearCasillas(cadena.split(","));
+                        nuevoTablero.crearTableroVacio();
+                        conteo = 0;
+                    } else if (nuevoTablero != null) {
+                        nuevoTablero.agregarLinea(cadena, conteo);
+                        conteo++;
                     }
                 }
+                nuevoTablero.pintarMapa();
+                
             } catch (IOException e) {
                 System.out.println(e.getMessage());
             }

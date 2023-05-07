@@ -1,5 +1,5 @@
-tablero 1
-dimension <<5X5>>
+tablero <<1>>
+dimension 5X5
 ~,~,-,-,-
 #,T,-,-,-
 T,T,T,-,-
