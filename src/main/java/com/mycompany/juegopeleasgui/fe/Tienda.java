@@ -55,30 +55,42 @@ public class Tienda extends javax.swing.JFrame {
         separador = new javax.swing.JSeparator();
         btnRegresarMenuPrincipal = new javax.swing.JButton();
         btnSeleccionMapa = new javax.swing.JButton();
+        btnInventario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         pnlTienda.setBackground(new java.awt.Color(255, 170, 80));
+        pnlTienda.setLayout(null);
 
         lblTienda.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTienda.setForeground(new java.awt.Color(0, 0, 0));
         lblTienda.setText("Tienda");
+        pnlTienda.add(lblTienda);
+        lblTienda.setBounds(145, 6, 63, 29);
 
         lblOro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblOro.setForeground(new java.awt.Color(0, 0, 0));
         lblOro.setText("Oro del Jugador:");
+        pnlTienda.add(lblOro);
+        lblOro.setBounds(93, 47, 91, 16);
 
         lblCantidadOro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblCantidadOro.setForeground(new java.awt.Color(0, 0, 0));
         lblCantidadOro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pnlTienda.add(lblCantidadOro);
+        lblCantidadOro.setBounds(202, 47, 34, 16);
 
         lblPersonajes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblPersonajes.setForeground(new java.awt.Color(0, 0, 0));
         lblPersonajes.setText("Personajes");
+        pnlTienda.add(lblPersonajes);
+        lblPersonajes.setBounds(46, 81, 66, 16);
 
         lblArticulos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblArticulos.setForeground(new java.awt.Color(0, 0, 0));
         lblArticulos.setText("Articulos");
+        pnlTienda.add(lblArticulos);
+        lblArticulos.setBounds(260, 81, 49, 16);
 
         btnCaballero.setText("Caballero  Coste = 200 ");
         btnCaballero.addActionListener(new java.awt.event.ActionListener() {
@@ -86,6 +98,8 @@ public class Tienda extends javax.swing.JFrame {
                 btnCaballeroActionPerformed(evt);
             }
         });
+        pnlTienda.add(btnCaballero);
+        btnCaballero.setBounds(6, 103, 170, 23);
 
         btnArquero.setText("Arquero    Coste = 200 ");
         btnArquero.addActionListener(new java.awt.event.ActionListener() {
@@ -93,6 +107,8 @@ public class Tienda extends javax.swing.JFrame {
                 btnArqueroActionPerformed(evt);
             }
         });
+        pnlTienda.add(btnArquero);
+        btnArquero.setBounds(6, 138, 170, 23);
 
         btnDragon.setText("Dragon   Coste = 200 ");
         btnDragon.addActionListener(new java.awt.event.ActionListener() {
@@ -100,6 +116,8 @@ public class Tienda extends javax.swing.JFrame {
                 btnDragonActionPerformed(evt);
             }
         });
+        pnlTienda.add(btnDragon);
+        btnDragon.setBounds(6, 179, 170, 23);
 
         btnGigante.setText("Gigante   Coste = 200 ");
         btnGigante.addActionListener(new java.awt.event.ActionListener() {
@@ -107,6 +125,8 @@ public class Tienda extends javax.swing.JFrame {
                 btnGiganteActionPerformed(evt);
             }
         });
+        pnlTienda.add(btnGigante);
+        btnGigante.setBounds(6, 220, 170, 23);
 
         btnMago.setText("Mago   Coste = 200 ");
         btnMago.addActionListener(new java.awt.event.ActionListener() {
@@ -114,6 +134,8 @@ public class Tienda extends javax.swing.JFrame {
                 btnMagoActionPerformed(evt);
             }
         });
+        pnlTienda.add(btnMago);
+        btnMago.setBounds(6, 261, 170, 23);
 
         btnCapaMovilidad.setText("Capa de Movilidad    Coste = 75");
         btnCapaMovilidad.addActionListener(new java.awt.event.ActionListener() {
@@ -121,6 +143,8 @@ public class Tienda extends javax.swing.JFrame {
                 btnCapaMovilidadActionPerformed(evt);
             }
         });
+        pnlTienda.add(btnCapaMovilidad);
+        btnCapaMovilidad.setBounds(202, 103, 210, 23);
 
         btnDano.setText("Dano    Coste = 125");
         btnDano.addActionListener(new java.awt.event.ActionListener() {
@@ -128,6 +152,8 @@ public class Tienda extends javax.swing.JFrame {
                 btnDanoActionPerformed(evt);
             }
         });
+        pnlTienda.add(btnDano);
+        btnDano.setBounds(202, 138, 210, 23);
 
         btnElixirVerde.setText("Elixir Verde   Coste = 25");
         btnElixirVerde.addActionListener(new java.awt.event.ActionListener() {
@@ -135,6 +161,8 @@ public class Tienda extends javax.swing.JFrame {
                 btnElixirVerdeActionPerformed(evt);
             }
         });
+        pnlTienda.add(btnElixirVerde);
+        btnElixirVerde.setBounds(202, 179, 210, 23);
 
         btnMovilidad.setText("Movilidad    Coste = 500");
         btnMovilidad.addActionListener(new java.awt.event.ActionListener() {
@@ -142,6 +170,8 @@ public class Tienda extends javax.swing.JFrame {
                 btnMovilidadActionPerformed(evt);
             }
         });
+        pnlTienda.add(btnMovilidad);
+        btnMovilidad.setBounds(202, 220, 210, 23);
 
         btnSemillaVida.setText("Semilla de la Vida = 50");
         btnSemillaVida.addActionListener(new java.awt.event.ActionListener() {
@@ -149,6 +179,8 @@ public class Tienda extends javax.swing.JFrame {
                 btnSemillaVidaActionPerformed(evt);
             }
         });
+        pnlTienda.add(btnSemillaVida);
+        btnSemillaVida.setBounds(202, 261, 210, 23);
 
         btnVida.setText("Vida = 80");
         btnVida.addActionListener(new java.awt.event.ActionListener() {
@@ -156,6 +188,10 @@ public class Tienda extends javax.swing.JFrame {
                 btnVidaActionPerformed(evt);
             }
         });
+        pnlTienda.add(btnVida);
+        btnVida.setBounds(202, 302, 210, 23);
+        pnlTienda.add(separador);
+        separador.setBounds(0, 337, 426, 10);
 
         btnRegresarMenuPrincipal.setText("Regresar al Menu Principal");
         btnRegresarMenuPrincipal.addActionListener(new java.awt.event.ActionListener() {
@@ -163,6 +199,8 @@ public class Tienda extends javax.swing.JFrame {
                 btnRegresarMenuPrincipalActionPerformed(evt);
             }
         });
+        pnlTienda.add(btnRegresarMenuPrincipal);
+        btnRegresarMenuPrincipal.setBounds(80, 390, 230, 23);
 
         btnSeleccionMapa.setText("SeleccionMapa");
         btnSeleccionMapa.addActionListener(new java.awt.event.ActionListener() {
@@ -170,107 +208,27 @@ public class Tienda extends javax.swing.JFrame {
                 btnSeleccionMapaActionPerformed(evt);
             }
         });
+        pnlTienda.add(btnSeleccionMapa);
+        btnSeleccionMapa.setBounds(180, 350, 183, 23);
 
-        javax.swing.GroupLayout pnlTiendaLayout = new javax.swing.GroupLayout(pnlTienda);
-        pnlTienda.setLayout(pnlTiendaLayout);
-        pnlTiendaLayout.setHorizontalGroup(
-            pnlTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(separador, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(pnlTiendaLayout.createSequentialGroup()
-                .addGroup(pnlTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlTiendaLayout.createSequentialGroup()
-                        .addGroup(pnlTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(pnlTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(pnlTiendaLayout.createSequentialGroup()
-                                    .addGap(145, 145, 145)
-                                    .addComponent(lblTienda, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(pnlTiendaLayout.createSequentialGroup()
-                                    .addGap(93, 93, 93)
-                                    .addComponent(lblOro)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(lblCantidadOro, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlTiendaLayout.createSequentialGroup()
-                                .addGap(46, 46, 46)
-                                .addComponent(lblPersonajes, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(24, 24, 24)
-                        .addComponent(lblArticulos))
-                    .addGroup(pnlTiendaLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(pnlTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlTiendaLayout.createSequentialGroup()
-                                .addComponent(btnRegresarMenuPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnSeleccionMapa, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlTiendaLayout.createSequentialGroup()
-                                .addGroup(pnlTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnCaballero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnArquero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnDragon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnGigante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnMago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(45, 45, 45)
-                                .addGroup(pnlTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnVida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnCapaMovilidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnDano, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnElixirVerde, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnMovilidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnSemillaVida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-                .addContainerGap(27, Short.MAX_VALUE))
-        );
-        pnlTiendaLayout.setVerticalGroup(
-            pnlTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlTiendaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTienda, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblCantidadOro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblOro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(pnlTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPersonajes)
-                    .addComponent(lblArticulos))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCaballero)
-                    .addComponent(btnCapaMovilidad))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnArquero)
-                    .addComponent(btnDano))
-                .addGap(18, 18, 18)
-                .addGroup(pnlTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDragon)
-                    .addComponent(btnElixirVerde))
-                .addGap(18, 18, 18)
-                .addGroup(pnlTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGigante)
-                    .addComponent(btnMovilidad))
-                .addGap(18, 18, 18)
-                .addGroup(pnlTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnMago)
-                    .addComponent(btnSemillaVida))
-                .addGap(18, 18, 18)
-                .addComponent(btnVida)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(separador, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegresarMenuPrincipal)
-                    .addComponent(btnSeleccionMapa))
-                .addContainerGap(42, Short.MAX_VALUE))
-        );
+        btnInventario.setText("Mostrar Inventario");
+        btnInventario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInventarioActionPerformed(evt);
+            }
+        });
+        pnlTienda.add(btnInventario);
+        btnInventario.setBounds(10, 350, 140, 23);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlTienda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlTienda, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlTienda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlTienda, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE)
         );
 
         pack();
@@ -340,10 +298,15 @@ public class Tienda extends javax.swing.JFrame {
 
     private void btnSeleccionMapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionMapaActionPerformed
         TableroDeJuego abrir = new TableroDeJuego(usuario, ia);
-      //  abrir.setExtendedState(TableroDeJuego.MAXIMIZED_BOTH);
+        //  abrir.setExtendedState(TableroDeJuego.MAXIMIZED_BOTH);
         abrir.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnSeleccionMapaActionPerformed
+
+    private void btnInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioActionPerformed
+        Inventario inventario = new Inventario(usuario);
+        inventario.setVisible(true);
+    }//GEN-LAST:event_btnInventarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -357,6 +320,7 @@ public class Tienda extends javax.swing.JFrame {
     private javax.swing.JButton btnDragon;
     private javax.swing.JButton btnElixirVerde;
     private javax.swing.JButton btnGigante;
+    private javax.swing.JButton btnInventario;
     private javax.swing.JButton btnMago;
     private javax.swing.JButton btnMovilidad;
     private javax.swing.JButton btnRegresarMenuPrincipal;

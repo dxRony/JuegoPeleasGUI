@@ -1,5 +1,6 @@
 package com.mycompany.juegopeleasgui.fe;
 
+import com.mycompany.juegopeleasgui.Partida;
 import com.mycompany.juegopeleasgui.be.articulos.Articulo;
 import com.mycompany.juegopeleasgui.be.inventarios.ListaGenerica;
 import com.mycompany.juegopeleasgui.be.jugadores.IA;
@@ -16,15 +17,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private ListaGenerica<Jugable> inventarioUsuario;
     private ListaGenerica<Articulo> inventarioArticulos;
 
-    public MenuPrincipal() {
+    public MenuPrincipal(Usuario usuario, IA ia) {
         initComponents();
+        this.usuario = usuario;
+        this.ia = ia;
         btnIniciarPartida.setEnabled(false);
         btnTienda.setEnabled(false);
         btnGeneracionTablero.setEnabled(false);
         btnInventario.setEnabled(false);
         btnRanking.setEnabled(false);
-        usuario = new Usuario();
-        ia = new IA();
+
         inventarioUsuario = usuario.getInventarioUsuario();
         inventarioArticulos = usuario.getInventarioArticulos();
     }
@@ -266,8 +268,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnTiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTiendaActionPerformed
-        Tienda tienda = new Tienda(usuario,ia);
-        tienda.setVisible(true);   
+        Tienda tienda = new Tienda(usuario, ia);
+        tienda.setVisible(true);
         lblCantidadOro.setText(usuario.getOro() + "");
     }//GEN-LAST:event_btnTiendaActionPerformed
 
@@ -284,15 +286,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRankingActionPerformed
 
     private void btnGeneracionTableroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGeneracionTableroActionPerformed
-        GenerarTablero generarTablero = new GenerarTablero(usuario,ia);
+        GenerarTablero generarTablero = new GenerarTablero(usuario, ia);
         generarTablero.setVisible(true);
     }//GEN-LAST:event_btnGeneracionTableroActionPerformed
 
     private void btnIniciarPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarPartidaActionPerformed
-        Tienda tienda = new Tienda(usuario,ia);
-        tienda.setVisible(true);   
+        Tienda tienda = new Tienda(usuario, ia);
+        tienda.setVisible(true);
         lblCantidadOro.setText(usuario.getOro() + "");
-        
+
     }//GEN-LAST:event_btnIniciarPartidaActionPerformed
 
     /**

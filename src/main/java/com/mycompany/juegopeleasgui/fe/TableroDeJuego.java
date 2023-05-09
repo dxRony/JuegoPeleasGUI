@@ -1,5 +1,6 @@
 package com.mycompany.juegopeleasgui.fe;
 
+import com.mycompany.juegopeleasgui.Partida;
 import com.mycompany.juegopeleasgui.be.Archivo;
 import com.mycompany.juegopeleasgui.be.CrearTablero;
 import com.mycompany.juegopeleasgui.be.jugadores.IA;
@@ -20,7 +21,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
 
     public TableroDeJuego(Usuario usuario, IA ia) {
         this.usuario = usuario;
-        this.ia = ia; 
+        this.ia = ia;
         initComponents();
         crearTablero = new CrearTablero(usuario, ia);
         archivo = new Archivo();
@@ -30,7 +31,29 @@ public class TableroDeJuego extends javax.swing.JFrame {
         txtPersonajePrincipal.setVisible(true);
         boxDificultad.setVisible(false);
         lblDificultad.setVisible(false);
-       
+        
+        lblDireccionAtaque.setVisible(false);
+        btnAtaqueArriba.setVisible(false);
+        btnAtaqueAbajo.setVisible(false);
+        btnAtaqueIzquierda.setVisible(false);
+        btnAtaqueDerecha.setVisible(false);
+        
+        lblDireccionMovimiento.setVisible(false);
+        btnMovimientoArriba.setVisible(false);
+        btnMovimientoAbajo.setVisible(false);
+        btnMovimientoIzquierda.setVisible(false);
+        btnMovimientoDerecha.setVisible(false);
+        
+        lblAcciones.setVisible(false);
+        btnAtacar.setVisible(false);
+        btnMover.setVisible(false);
+        btnUsarArticulo.setVisible(false);
+        btnIniciarPartida.setVisible(false);
+        
+    }
+
+    public Tablero getTableroNuevo() {
+        return tableroNuevo;
     }
 
     /**
@@ -63,6 +86,11 @@ public class TableroDeJuego extends javax.swing.JFrame {
         btnMovimientoIzquierda = new javax.swing.JButton();
         btnMovimientoArriba = new javax.swing.JButton();
         btnMovimientoDerecha = new javax.swing.JButton();
+        lblAcciones = new javax.swing.JLabel();
+        btnMover = new javax.swing.JButton();
+        btnAtacar = new javax.swing.JButton();
+        btnIniciarPartida = new javax.swing.JButton();
+        btnUsarArticulo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -99,7 +127,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
             }
         });
         pnlTableroDeJuego.add(btnCargarMapa);
-        btnCargarMapa.setBounds(220, 470, 190, 23);
+        btnCargarMapa.setBounds(20, 470, 190, 23);
 
         btnMostrarTableros.setText("Mostrar Tableros");
         btnMostrarTableros.addActionListener(new java.awt.event.ActionListener() {
@@ -108,7 +136,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
             }
         });
         pnlTableroDeJuego.add(btnMostrarTableros);
-        btnMostrarTableros.setBounds(20, 470, 190, 23);
+        btnMostrarTableros.setBounds(870, 80, 190, 23);
 
         boxDificultad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
         boxDificultad.addActionListener(new java.awt.event.ActionListener() {
@@ -117,12 +145,12 @@ public class TableroDeJuego extends javax.swing.JFrame {
             }
         });
         pnlTableroDeJuego.add(boxDificultad);
-        boxDificultad.setBounds(890, 80, 72, 22);
+        boxDificultad.setBounds(1120, 90, 72, 22);
 
         lblDificultad.setForeground(new java.awt.Color(0, 0, 0));
         lblDificultad.setText("Elige una dificultad");
         pnlTableroDeJuego.add(lblDificultad);
-        lblDificultad.setBounds(880, 60, 120, 16);
+        lblDificultad.setBounds(1110, 70, 120, 16);
 
         lblJugador.setForeground(new java.awt.Color(0, 0, 0));
         lblJugador.setText("Selecciona  a tu jugador principal");
@@ -154,7 +182,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
             }
         });
         pnlTableroDeJuego.add(btnRegresarPrincipal);
-        btnRegresarPrincipal.setBounds(20, 510, 190, 23);
+        btnRegresarPrincipal.setBounds(110, 610, 190, 23);
 
         btnAtaqueArriba.setText("N");
         btnAtaqueArriba.addActionListener(new java.awt.event.ActionListener() {
@@ -217,6 +245,42 @@ public class TableroDeJuego extends javax.swing.JFrame {
         btnMovimientoDerecha.setText("E");
         pnlTableroDeJuego.add(btnMovimientoDerecha);
         btnMovimientoDerecha.setBounds(1020, 190, 50, 30);
+
+        lblAcciones.setForeground(new java.awt.Color(0, 0, 0));
+        lblAcciones.setText("Acciones del usuario");
+        pnlTableroDeJuego.add(lblAcciones);
+        lblAcciones.setBounds(290, 470, 120, 16);
+
+        btnMover.setText("Mover personaje");
+        btnMover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMoverActionPerformed(evt);
+            }
+        });
+        pnlTableroDeJuego.add(btnMover);
+        btnMover.setBounds(230, 490, 130, 23);
+
+        btnAtacar.setText("Atacar a un enemigo");
+        btnAtacar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtacarActionPerformed(evt);
+            }
+        });
+        pnlTableroDeJuego.add(btnAtacar);
+        btnAtacar.setBounds(380, 490, 150, 23);
+
+        btnIniciarPartida.setText("Iniciar Partida");
+        btnIniciarPartida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIniciarPartidaActionPerformed(evt);
+            }
+        });
+        pnlTableroDeJuego.add(btnIniciarPartida);
+        btnIniciarPartida.setBounds(20, 500, 190, 23);
+
+        btnUsarArticulo.setText("Usuar un articulo");
+        pnlTableroDeJuego.add(btnUsarArticulo);
+        btnUsarArticulo.setBounds(230, 520, 130, 23);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -291,22 +355,42 @@ public class TableroDeJuego extends javax.swing.JFrame {
         lblDificultad.setVisible(false);
         lblJugador.setVisible(true);
         txtPersonajePrincipal.setVisible(true);
+        btnIniciarPartida.setVisible(true);
     }//GEN-LAST:event_btnCargarMapaActionPerformed
+
+    private void btnMoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoverActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMoverActionPerformed
+
+    private void btnAtacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtacarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAtacarActionPerformed
+
+    private void btnIniciarPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarPartidaActionPerformed
+        Partida partida = new Partida(usuario, ia, tableroNuevo);
+        partida.iniciarPartida();
+
+    }//GEN-LAST:event_btnIniciarPartidaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> boxDificultad;
+    private javax.swing.JButton btnAtacar;
     private javax.swing.JButton btnAtaqueAbajo;
     private javax.swing.JButton btnAtaqueArriba;
     private javax.swing.JButton btnAtaqueDerecha;
     private javax.swing.JButton btnAtaqueIzquierda;
     private javax.swing.JButton btnCargarMapa;
+    private javax.swing.JButton btnIniciarPartida;
     private javax.swing.JButton btnMostrarInventario;
     private javax.swing.JButton btnMostrarTableros;
+    private javax.swing.JButton btnMover;
     private javax.swing.JButton btnMovimientoAbajo;
     private javax.swing.JButton btnMovimientoArriba;
     private javax.swing.JButton btnMovimientoDerecha;
     private javax.swing.JButton btnMovimientoIzquierda;
     private javax.swing.JButton btnRegresarPrincipal;
+    private javax.swing.JButton btnUsarArticulo;
+    private javax.swing.JLabel lblAcciones;
     private javax.swing.JLabel lblDificultad;
     private javax.swing.JLabel lblDireccionAtaque;
     private javax.swing.JLabel lblDireccionMovimiento;
