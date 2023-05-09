@@ -1,5 +1,6 @@
 package com.mycompany.juegopeleasgui.fe;
 
+import com.mycompany.juegopeleasgui.be.jugadores.IA;
 import com.mycompany.juegopeleasgui.be.jugadores.Usuario;
 
 public class GenerarTablero extends javax.swing.JFrame {
@@ -8,9 +9,11 @@ public class GenerarTablero extends javax.swing.JFrame {
      * Creates new form GenerarTablero
      */
     private Usuario usuario;
+    private IA ia;
 
-    public GenerarTablero(Usuario usuario) {
+    public GenerarTablero(Usuario usuario, IA ia) {
         this.usuario = usuario;
+        this.ia = ia;
         initComponents();
     }
 
@@ -113,8 +116,9 @@ public class GenerarTablero extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnCargarTableroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarTableroActionPerformed
-        TableroDeJuego abrir = new TableroDeJuego();
+        TableroDeJuego abrir = new TableroDeJuego(usuario, ia);
         abrir.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnCargarTableroActionPerformed
 
     /**

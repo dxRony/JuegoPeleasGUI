@@ -1,8 +1,11 @@
 package com.mycompany.juegopeleasgui.fe;
 
 import com.mycompany.juegopeleasgui.be.articulos.Articulo;
+import com.mycompany.juegopeleasgui.be.jugadores.IA;
 import com.mycompany.juegopeleasgui.be.jugadores.Usuario;
 import com.mycompany.juegopeleasgui.be.personajes.Jugable;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 public class Tienda extends javax.swing.JFrame {
 
@@ -12,9 +15,11 @@ public class Tienda extends javax.swing.JFrame {
     private Usuario usuario;
     private Jugable[] listaJugables;
     private Articulo[] listaArticulos;
+    private IA ia;
 
-    public Tienda(Usuario usuario) {
+    public Tienda(Usuario usuario, IA ia) {
         this.usuario = usuario;
+        this.ia = ia;
         initComponents();
         lblCantidadOro.setText(usuario.getOro() + "");
         listaJugables = usuario.getListaJugables();
@@ -160,6 +165,11 @@ public class Tienda extends javax.swing.JFrame {
         });
 
         btnSeleccionMapa.setText("SeleccionMapa");
+        btnSeleccionMapa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSeleccionMapaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlTiendaLayout = new javax.swing.GroupLayout(pnlTienda);
         pnlTienda.setLayout(pnlTiendaLayout);
@@ -273,51 +283,67 @@ public class Tienda extends javax.swing.JFrame {
 
     private void btnCaballeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaballeroActionPerformed
         usuario.comprarJugables(listaJugables[0], usuario.getOro());
-        lblCantidadOro.repaint();
-        lblCantidadOro.revalidate();
-        
+        lblCantidadOro.setText(usuario.getOro() + "");
+
     }//GEN-LAST:event_btnCaballeroActionPerformed
 
     private void btnArqueroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArqueroActionPerformed
         usuario.comprarJugables(listaJugables[1], usuario.getOro());
-        
+        lblCantidadOro.setText(usuario.getOro() + "");
+
     }//GEN-LAST:event_btnArqueroActionPerformed
 
     private void btnDragonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDragonActionPerformed
         usuario.comprarJugables(listaJugables[2], usuario.getOro());
+        lblCantidadOro.setText(usuario.getOro() + "");
     }//GEN-LAST:event_btnDragonActionPerformed
 
     private void btnGiganteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGiganteActionPerformed
         usuario.comprarJugables(listaJugables[3], usuario.getOro());
+        lblCantidadOro.setText(usuario.getOro() + "");
     }//GEN-LAST:event_btnGiganteActionPerformed
 
     private void btnMagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMagoActionPerformed
         usuario.comprarJugables(listaJugables[4], usuario.getOro());
+        lblCantidadOro.setText(usuario.getOro() + "");
     }//GEN-LAST:event_btnMagoActionPerformed
 
     private void btnCapaMovilidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapaMovilidadActionPerformed
         usuario.comprarArticulos(listaArticulos[0], usuario.getOro());
+        lblCantidadOro.setText(usuario.getOro() + "");
     }//GEN-LAST:event_btnCapaMovilidadActionPerformed
 
     private void btnDanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDanoActionPerformed
         usuario.comprarArticulos(listaArticulos[1], usuario.getOro());
+        lblCantidadOro.setText(usuario.getOro() + "");
     }//GEN-LAST:event_btnDanoActionPerformed
 
     private void btnElixirVerdeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElixirVerdeActionPerformed
         usuario.comprarArticulos(listaArticulos[2], usuario.getOro());
+        lblCantidadOro.setText(usuario.getOro() + "");
     }//GEN-LAST:event_btnElixirVerdeActionPerformed
 
     private void btnMovilidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMovilidadActionPerformed
         usuario.comprarArticulos(listaArticulos[3], usuario.getOro());
+        lblCantidadOro.setText(usuario.getOro() + "");
     }//GEN-LAST:event_btnMovilidadActionPerformed
 
     private void btnSemillaVidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSemillaVidaActionPerformed
         usuario.comprarArticulos(listaArticulos[4], usuario.getOro());
+        lblCantidadOro.setText(usuario.getOro() + "");
     }//GEN-LAST:event_btnSemillaVidaActionPerformed
 
     private void btnVidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVidaActionPerformed
         usuario.comprarArticulos(listaArticulos[5], usuario.getOro());
+        lblCantidadOro.setText(usuario.getOro() + "");
     }//GEN-LAST:event_btnVidaActionPerformed
+
+    private void btnSeleccionMapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionMapaActionPerformed
+        TableroDeJuego abrir = new TableroDeJuego(usuario, ia);
+        abrir.setExtendedState(TableroDeJuego.MAXIMIZED_BOTH);
+        abrir.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnSeleccionMapaActionPerformed
 
     /**
      * @param args the command line arguments

@@ -17,13 +17,13 @@ public class IA extends Jugador {
 
     public IA() {
         listaEnemigos = new NoJugable[6];
-        personajePrincipalIA = new NoJugable(1);
-        listaEnemigos[0] = new Bruja(1);
-        listaEnemigos[1] = new Cancerbero(1);
-        listaEnemigos[2] = new FlorCarnivora(1);
-        listaEnemigos[3] = new Gargola(1);
-        listaEnemigos[4] = new Ogro(1);
-        listaEnemigos[5] = new NoJugable(1);
+        personajePrincipalIA = new NoJugable(95);
+        listaEnemigos[0] = new Bruja(95);
+        listaEnemigos[1] = new Cancerbero(95);
+        listaEnemigos[2] = new FlorCarnivora(50);
+        listaEnemigos[3] = new Gargola(60);
+        listaEnemigos[4] = new Ogro(60);
+        listaEnemigos[5] = new NoJugable(95);
         inventarioIA = new ListaGenerica<NoJugable>();
     }
 

@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 
 public class FlorCarnivora extends NoJugable {
 
-    private static final String imagenFlorCarnivora = "src\\main\\java\\iconos\\florCarnivora.png";
+    public static final String imagenFlorCarnivora = "src\\main\\java\\iconos\\florCarnivora.png";
 
     public FlorCarnivora(int tamaño) {
         super(tamaño);

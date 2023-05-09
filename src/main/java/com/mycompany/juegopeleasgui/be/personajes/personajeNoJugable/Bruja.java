@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 
 public class Bruja extends NoJugable {
 
-    private static final String imagenBruja = "src\\main\\java\\iconos\\bruja.png";
+    public static final String imagenBruja = "src\\main\\java\\iconos\\bruja.png";
 
     public Bruja(int tamaño) {
         super(tamaño);

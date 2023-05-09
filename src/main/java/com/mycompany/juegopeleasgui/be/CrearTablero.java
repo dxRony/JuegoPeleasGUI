@@ -1,5 +1,7 @@
 package com.mycompany.juegopeleasgui.be;
 
+import com.mycompany.juegopeleasgui.be.jugadores.IA;
+import com.mycompany.juegopeleasgui.be.jugadores.Usuario;
 import com.mycompany.juegopeleasgui.be.tablero.Tablero;
 import java.io.BufferedReader;
 import java.io.File;
@@ -11,12 +13,17 @@ public class CrearTablero {
 
     private String rutaTablero = "src\\main\\java\\archivo\\tableros.txt";
     private Tablero nuevoTablero;
-    
-    public CrearTablero() {
+    private Usuario usuario;
+    private IA ia;
+    private int dificultad;
+
+    public CrearTablero(Usuario usuario, IA ia) {
+        this.usuario = usuario;
+        this.ia = ia;
         nuevoTablero = null;
+        dificultad = ia.getDificultad();
+
     }
-    
-    
 
     public void leerArchivo() { //Para crear mapas
         File f;
@@ -24,6 +31,7 @@ public class CrearTablero {
         String cadena;
         f = new File(rutaTablero);
         int conteo = 0;
+        dificultad = ia.getDificultad();
         if (f.exists()) {
             try {
                 br = new BufferedReader(new FileReader(f));
@@ -37,16 +45,16 @@ public class CrearTablero {
                         String[] dimension1 = cadena.split(" ");
                         String[] dimensiones = dimension1[1].split("X");
 
-                        nuevoTablero = new Tablero(id, Integer.parseInt(dimensiones[0]), Integer.parseInt(dimensiones[1]));
+                        nuevoTablero = new Tablero(usuario, ia, id, Integer.parseInt(dimensiones[0]), Integer.parseInt(dimensiones[1]));
                         nuevoTablero.crearTableroVacio();
                         conteo = 0;
                     } else if (nuevoTablero != null) {
-                        nuevoTablero.agregarLinea(cadena, conteo);
+                        nuevoTablero.agregarLineas(cadena, conteo, dificultad);
                         conteo++;
                     }
                 }
                 nuevoTablero.pintarMapa();
-                
+
             } catch (IOException e) {
                 System.out.println(e.getMessage());
             }
@@ -58,6 +66,5 @@ public class CrearTablero {
     public Tablero getNuevoTablero() {
         return nuevoTablero;
     }
-    
-    
+
 }

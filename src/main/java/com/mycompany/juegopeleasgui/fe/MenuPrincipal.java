@@ -2,6 +2,7 @@ package com.mycompany.juegopeleasgui.fe;
 
 import com.mycompany.juegopeleasgui.be.articulos.Articulo;
 import com.mycompany.juegopeleasgui.be.inventarios.ListaGenerica;
+import com.mycompany.juegopeleasgui.be.jugadores.IA;
 import com.mycompany.juegopeleasgui.be.jugadores.Usuario;
 import com.mycompany.juegopeleasgui.be.personajes.Jugable;
 
@@ -11,6 +12,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
      * Creates new form MenuPrincipal
      */
     private Usuario usuario;
+    private IA ia;
     private ListaGenerica<Jugable> inventarioUsuario;
     private ListaGenerica<Articulo> inventarioArticulos;
 
@@ -22,6 +24,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnInventario.setEnabled(false);
         btnRanking.setEnabled(false);
         usuario = new Usuario();
+        ia = new IA();
         inventarioUsuario = usuario.getInventarioUsuario();
         inventarioArticulos = usuario.getInventarioArticulos();
     }
@@ -67,6 +70,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnIniciarPartida.setBackground(new java.awt.Color(255, 255, 255));
         btnIniciarPartida.setForeground(new java.awt.Color(0, 0, 0));
         btnIniciarPartida.setText("Iniciar Partida");
+        btnIniciarPartida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIniciarPartidaActionPerformed(evt);
+            }
+        });
 
         btnTienda.setBackground(new java.awt.Color(255, 255, 255));
         btnTienda.setForeground(new java.awt.Color(0, 0, 0));
@@ -258,7 +266,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnTiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTiendaActionPerformed
-        Tienda tienda = new Tienda(usuario);
+        Tienda tienda = new Tienda(usuario,ia);
         tienda.setVisible(true);   
         lblCantidadOro.setText(usuario.getOro() + "");
     }//GEN-LAST:event_btnTiendaActionPerformed
@@ -276,9 +284,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRankingActionPerformed
 
     private void btnGeneracionTableroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGeneracionTableroActionPerformed
-        GenerarTablero generarTablero = new GenerarTablero(usuario);
+        GenerarTablero generarTablero = new GenerarTablero(usuario,ia);
         generarTablero.setVisible(true);
     }//GEN-LAST:event_btnGeneracionTableroActionPerformed
+
+    private void btnIniciarPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarPartidaActionPerformed
+        Tienda tienda = new Tienda(usuario,ia);
+        tienda.setVisible(true);   
+        lblCantidadOro.setText(usuario.getOro() + "");
+        
+    }//GEN-LAST:event_btnIniciarPartidaActionPerformed
 
     /**
      * @param args the command line arguments

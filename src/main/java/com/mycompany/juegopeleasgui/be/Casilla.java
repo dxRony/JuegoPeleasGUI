@@ -8,7 +8,6 @@ import javax.swing.JButton;
 
 public class Casilla extends JButton {
 
-    private boolean casillaUsada = false;
     private Image imagen;
     public int tamaño;
     private int posicionX;
@@ -19,7 +18,6 @@ public class Casilla extends JButton {
         this.imagen = new ImageIcon(Agua.imagenAgua).getImage();
         this.setSize(tamaño, tamaño);
         this.setBackground(Color.white);
-        System.out.println("tamaño= " + tamaño);
     }
 
     public int getTamaño() {

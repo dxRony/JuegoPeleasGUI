@@ -16,6 +16,8 @@ import com.mycompany.juegopeleasgui.be.personajes.personajeJugable.Dragon;
 import com.mycompany.juegopeleasgui.be.personajes.personajeJugable.Gigante;
 import com.mycompany.juegopeleasgui.be.personajes.personajeJugable.JugableVacio;
 import com.mycompany.juegopeleasgui.be.personajes.personajeJugable.Mago;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
 public class Usuario extends Jugador {
 
@@ -30,12 +32,12 @@ public class Usuario extends Jugador {
         oro = 500;
         listaArticulos = new Articulo[7];
         listaJugables = new Jugable[6];
-        personajePrincipalUsuario = new Jugable(1);
-        listaJugables[0] = new Caballero(1);
-        listaJugables[1] = new Arquero(1);
-        listaJugables[2] = new Dragon(1);
-        listaJugables[3] = new Gigante(1);
-        listaJugables[4] = new Mago(1);
+        personajePrincipalUsuario = new Jugable(80);
+        listaJugables[0] = new Caballero(70);
+        listaJugables[1] = new Arquero(80);
+        listaJugables[2] = new Dragon(80);
+        listaJugables[3] = new Gigante(80);
+        listaJugables[4] = new Mago(80);
         listaJugables[5] = new JugableVacio(1);
         listaArticulos[0] = new CapaDeMovilidad();
         listaArticulos[1] = new Dano();
@@ -58,6 +60,7 @@ public class Usuario extends Jugador {
             return;
         }
         System.out.println("No tienes el oro suficiente");
+        JOptionPane.showMessageDialog(null, "No tienes el oro suficiente");
         inventarioUsuario.pintarLista();
     }
 
@@ -71,10 +74,13 @@ public class Usuario extends Jugador {
             return;
         }
         System.out.println("No tienes el oro suficiente");
+        JOptionPane.showMessageDialog(null, "No tienes el oro suficiente");
     }
 
-    public void almacenarPrincipalUsuario(Jugable personajePrincipalUsuario) {
-        this.personajePrincipalUsuario = personajePrincipalUsuario;
+    public void almacenarPrincipalUsuario(int personaje) {
+        
+        this.personajePrincipalUsuario = inventarioUsuario.seleccionar(personaje);
+        System.out.println("Tu personaje principal es: "+personajePrincipalUsuario.getNombre());
     }
 
     public int getOro() {

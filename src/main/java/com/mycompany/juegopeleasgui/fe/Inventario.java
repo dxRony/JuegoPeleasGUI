@@ -64,7 +64,7 @@ public class Inventario extends javax.swing.JFrame {
 
         lblArticulos.setText("Articulos");
 
-        btnRegresarMenu.setText("Regresar al Menu Principal");
+        btnRegresarMenu.setText("Cerrar esta ventana");
         btnRegresarMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarMenuActionPerformed(evt);
