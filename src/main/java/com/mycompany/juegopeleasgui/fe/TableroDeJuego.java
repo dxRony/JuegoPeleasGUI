@@ -53,11 +53,22 @@ public class TableroDeJuego extends javax.swing.JFrame {
         txtPersonajePrincipal = new javax.swing.JTextField();
         btnMostrarInventario = new javax.swing.JButton();
         btnRegresarPrincipal = new javax.swing.JButton();
+        btnAtaqueArriba = new javax.swing.JButton();
+        btnAtaqueDerecha = new javax.swing.JButton();
+        btnAtaqueIzquierda = new javax.swing.JButton();
+        btnAtaqueAbajo = new javax.swing.JButton();
+        lblDireccionAtaque = new javax.swing.JLabel();
+        lblDireccionMovimiento = new javax.swing.JLabel();
+        btnMovimientoAbajo = new javax.swing.JButton();
+        btnMovimientoIzquierda = new javax.swing.JButton();
+        btnMovimientoArriba = new javax.swing.JButton();
+        btnMovimientoDerecha = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         pnlTableroDeJuego.setBackground(new java.awt.Color(2, 178, 146));
         pnlTableroDeJuego.setPreferredSize(new java.awt.Dimension(1247, 1000));
+        pnlTableroDeJuego.setLayout(null);
 
         pnlTablero.setBackground(new java.awt.Color(255, 204, 204));
         pnlTablero.setBorder(new javax.swing.border.MatteBorder(null));
@@ -73,8 +84,13 @@ public class TableroDeJuego extends javax.swing.JFrame {
             .addGap(0, 408, Short.MAX_VALUE)
         );
 
+        pnlTableroDeJuego.add(pnlTablero);
+        pnlTablero.setBounds(10, 40, 774, 410);
+
         lblTableroDeJuego.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblTableroDeJuego.setText("TABLERO DE JUEGO");
+        pnlTableroDeJuego.add(lblTableroDeJuego);
+        lblTableroDeJuego.setBounds(364, 7, 172, 25);
 
         btnCargarMapa.setText("Cargar Tablero");
         btnCargarMapa.addActionListener(new java.awt.event.ActionListener() {
@@ -82,6 +98,8 @@ public class TableroDeJuego extends javax.swing.JFrame {
                 btnCargarMapaActionPerformed(evt);
             }
         });
+        pnlTableroDeJuego.add(btnCargarMapa);
+        btnCargarMapa.setBounds(220, 470, 190, 23);
 
         btnMostrarTableros.setText("Mostrar Tableros");
         btnMostrarTableros.addActionListener(new java.awt.event.ActionListener() {
@@ -89,6 +107,8 @@ public class TableroDeJuego extends javax.swing.JFrame {
                 btnMostrarTablerosActionPerformed(evt);
             }
         });
+        pnlTableroDeJuego.add(btnMostrarTableros);
+        btnMostrarTableros.setBounds(20, 470, 190, 23);
 
         boxDificultad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
         boxDificultad.addActionListener(new java.awt.event.ActionListener() {
@@ -96,12 +116,18 @@ public class TableroDeJuego extends javax.swing.JFrame {
                 boxDificultadActionPerformed(evt);
             }
         });
+        pnlTableroDeJuego.add(boxDificultad);
+        boxDificultad.setBounds(890, 80, 72, 22);
 
         lblDificultad.setForeground(new java.awt.Color(0, 0, 0));
         lblDificultad.setText("Elige una dificultad");
+        pnlTableroDeJuego.add(lblDificultad);
+        lblDificultad.setBounds(880, 60, 120, 16);
 
         lblJugador.setForeground(new java.awt.Color(0, 0, 0));
         lblJugador.setText("Selecciona  a tu jugador principal");
+        pnlTableroDeJuego.add(lblJugador);
+        lblJugador.setBounds(880, 10, 190, 16);
 
         txtPersonajePrincipal.setText("Escribe un numero de tu inventario");
         txtPersonajePrincipal.addActionListener(new java.awt.event.ActionListener() {
@@ -109,6 +135,8 @@ public class TableroDeJuego extends javax.swing.JFrame {
                 txtPersonajePrincipalActionPerformed(evt);
             }
         });
+        pnlTableroDeJuego.add(txtPersonajePrincipal);
+        txtPersonajePrincipal.setBounds(870, 30, 200, 22);
 
         btnMostrarInventario.setText("Mostrar Inventario");
         btnMostrarInventario.addActionListener(new java.awt.event.ActionListener() {
@@ -116,6 +144,8 @@ public class TableroDeJuego extends javax.swing.JFrame {
                 btnMostrarInventarioActionPerformed(evt);
             }
         });
+        pnlTableroDeJuego.add(btnMostrarInventario);
+        btnMostrarInventario.setBounds(1100, 30, 140, 23);
 
         btnRegresarPrincipal.setText("Regresar a Menu Principal");
         btnRegresarPrincipal.addActionListener(new java.awt.event.ActionListener() {
@@ -123,84 +153,111 @@ public class TableroDeJuego extends javax.swing.JFrame {
                 btnRegresarPrincipalActionPerformed(evt);
             }
         });
+        pnlTableroDeJuego.add(btnRegresarPrincipal);
+        btnRegresarPrincipal.setBounds(20, 510, 190, 23);
 
-        javax.swing.GroupLayout pnlTableroDeJuegoLayout = new javax.swing.GroupLayout(pnlTableroDeJuego);
-        pnlTableroDeJuego.setLayout(pnlTableroDeJuegoLayout);
-        pnlTableroDeJuegoLayout.setHorizontalGroup(
-            pnlTableroDeJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlTableroDeJuegoLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addGroup(pnlTableroDeJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlTableroDeJuegoLayout.createSequentialGroup()
-                        .addGap(352, 352, 352)
-                        .addComponent(lblTableroDeJuego))
-                    .addComponent(pnlTablero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
-                .addGroup(pnlTableroDeJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlTableroDeJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtPersonajePrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTableroDeJuegoLayout.createSequentialGroup()
-                            .addComponent(lblJugador)
-                            .addGap(13, 13, 13)))
-                    .addComponent(lblDificultad)
-                    .addGroup(pnlTableroDeJuegoLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(boxDificultad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlTableroDeJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnlTableroDeJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnMostrarTableros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCargarMapa, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlTableroDeJuegoLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(btnMostrarInventario)))
-                .addContainerGap())
-            .addGroup(pnlTableroDeJuegoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnRegresarPrincipal)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        pnlTableroDeJuegoLayout.setVerticalGroup(
-            pnlTableroDeJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlTableroDeJuegoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlTableroDeJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlTableroDeJuegoLayout.createSequentialGroup()
-                        .addComponent(lblJugador)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPersonajePrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblDificultad)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(boxDificultad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlTableroDeJuegoLayout.createSequentialGroup()
-                        .addComponent(btnMostrarInventario)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnMostrarTableros)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCargarMapa))
-                    .addGroup(pnlTableroDeJuegoLayout.createSequentialGroup()
-                        .addComponent(lblTableroDeJuego)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(pnlTablero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 518, Short.MAX_VALUE)
-                .addComponent(btnRegresarPrincipal)
-                .addContainerGap())
-        );
+        btnAtaqueArriba.setText("N");
+        btnAtaqueArriba.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtaqueArribaActionPerformed(evt);
+            }
+        });
+        pnlTableroDeJuego.add(btnAtaqueArriba);
+        btnAtaqueArriba.setBounds(960, 310, 50, 30);
+
+        btnAtaqueDerecha.setText("E");
+        btnAtaqueDerecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtaqueDerechaActionPerformed(evt);
+            }
+        });
+        pnlTableroDeJuego.add(btnAtaqueDerecha);
+        btnAtaqueDerecha.setBounds(1020, 330, 50, 30);
+
+        btnAtaqueIzquierda.setText("O");
+        btnAtaqueIzquierda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtaqueIzquierdaActionPerformed(evt);
+            }
+        });
+        pnlTableroDeJuego.add(btnAtaqueIzquierda);
+        btnAtaqueIzquierda.setBounds(900, 330, 50, 30);
+
+        btnAtaqueAbajo.setText("S");
+        btnAtaqueAbajo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtaqueAbajoActionPerformed(evt);
+            }
+        });
+        pnlTableroDeJuego.add(btnAtaqueAbajo);
+        btnAtaqueAbajo.setBounds(960, 350, 50, 30);
+
+        lblDireccionAtaque.setForeground(new java.awt.Color(0, 0, 0));
+        lblDireccionAtaque.setText("Selecciona una direccion de ataque");
+        pnlTableroDeJuego.add(lblDireccionAtaque);
+        lblDireccionAtaque.setBounds(880, 280, 210, 16);
+
+        lblDireccionMovimiento.setForeground(new java.awt.Color(0, 0, 0));
+        lblDireccionMovimiento.setText("Selecciona una direccion de movimiento");
+        pnlTableroDeJuego.add(lblDireccionMovimiento);
+        lblDireccionMovimiento.setBounds(880, 140, 230, 16);
+
+        btnMovimientoAbajo.setText("S");
+        pnlTableroDeJuego.add(btnMovimientoAbajo);
+        btnMovimientoAbajo.setBounds(960, 210, 50, 30);
+
+        btnMovimientoIzquierda.setText("O");
+        pnlTableroDeJuego.add(btnMovimientoIzquierda);
+        btnMovimientoIzquierda.setBounds(900, 190, 50, 30);
+
+        btnMovimientoArriba.setText("N");
+        pnlTableroDeJuego.add(btnMovimientoArriba);
+        btnMovimientoArriba.setBounds(960, 170, 50, 30);
+
+        btnMovimientoDerecha.setText("E");
+        pnlTableroDeJuego.add(btnMovimientoDerecha);
+        btnMovimientoDerecha.setBounds(1020, 190, 50, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlTableroDeJuego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(pnlTableroDeJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 1253, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlTableroDeJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 1059, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnlTableroDeJuego, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAtaqueAbajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtaqueAbajoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAtaqueAbajoActionPerformed
+
+    private void btnAtaqueIzquierdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtaqueIzquierdaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAtaqueIzquierdaActionPerformed
+
+    private void btnAtaqueDerechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtaqueDerechaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAtaqueDerechaActionPerformed
+
+    private void btnAtaqueArribaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtaqueArribaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAtaqueArribaActionPerformed
+
+    private void btnRegresarPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarPrincipalActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_btnRegresarPrincipalActionPerformed
+
+    private void btnMostrarInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarInventarioActionPerformed
+        Inventario inventario = new Inventario(usuario);
+        inventario.setVisible(true);
+    }//GEN-LAST:event_btnMostrarInventarioActionPerformed
 
     private void txtPersonajePrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPersonajePrincipalActionPerformed
         String principal = txtPersonajePrincipal.getText();
@@ -216,10 +273,6 @@ public class TableroDeJuego extends javax.swing.JFrame {
         ia.setDificultad(dificultad);
         btnCargarMapa.setVisible(true);
     }//GEN-LAST:event_boxDificultadActionPerformed
-
-    private void btnRegresarPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarPrincipalActionPerformed
-        this.setVisible(false);
-    }//GEN-LAST:event_btnRegresarPrincipalActionPerformed
 
     private void btnMostrarTablerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarTablerosActionPerformed
         String textoLeido;
@@ -240,18 +293,23 @@ public class TableroDeJuego extends javax.swing.JFrame {
         txtPersonajePrincipal.setVisible(true);
     }//GEN-LAST:event_btnCargarMapaActionPerformed
 
-    private void btnMostrarInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarInventarioActionPerformed
-        Inventario inventario = new Inventario(usuario);
-        inventario.setVisible(true);
-    }//GEN-LAST:event_btnMostrarInventarioActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> boxDificultad;
+    private javax.swing.JButton btnAtaqueAbajo;
+    private javax.swing.JButton btnAtaqueArriba;
+    private javax.swing.JButton btnAtaqueDerecha;
+    private javax.swing.JButton btnAtaqueIzquierda;
     private javax.swing.JButton btnCargarMapa;
     private javax.swing.JButton btnMostrarInventario;
     private javax.swing.JButton btnMostrarTableros;
+    private javax.swing.JButton btnMovimientoAbajo;
+    private javax.swing.JButton btnMovimientoArriba;
+    private javax.swing.JButton btnMovimientoDerecha;
+    private javax.swing.JButton btnMovimientoIzquierda;
     private javax.swing.JButton btnRegresarPrincipal;
     private javax.swing.JLabel lblDificultad;
+    private javax.swing.JLabel lblDireccionAtaque;
+    private javax.swing.JLabel lblDireccionMovimiento;
     private javax.swing.JLabel lblJugador;
     private javax.swing.JLabel lblTableroDeJuego;
     private javax.swing.JPanel pnlTablero;

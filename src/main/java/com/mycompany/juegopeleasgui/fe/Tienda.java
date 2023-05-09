@@ -340,7 +340,7 @@ public class Tienda extends javax.swing.JFrame {
 
     private void btnSeleccionMapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionMapaActionPerformed
         TableroDeJuego abrir = new TableroDeJuego(usuario, ia);
-        abrir.setExtendedState(TableroDeJuego.MAXIMIZED_BOTH);
+      //  abrir.setExtendedState(TableroDeJuego.MAXIMIZED_BOTH);
         abrir.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnSeleccionMapaActionPerformed
