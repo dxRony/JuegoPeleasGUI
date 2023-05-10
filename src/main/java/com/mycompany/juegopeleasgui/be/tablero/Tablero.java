@@ -147,8 +147,9 @@ public class Tablero {
                 pnlJuego.add(casillas[i][j]);
             }
         }
-        pnlTableroDeJuego.getContentPane().add(pnlJuego);
-        pnlTableroDeJuego.setVisible(true);
+        System.out.println("anadiendo botones");
+        // pnlTableroDeJuego.getContentPane().add(pnlJuego);
+        //pnlTableroDeJuego.setVisible(true);
     }
 
     public void generarPersonajes(int dificultad) {
@@ -157,9 +158,12 @@ public class Tablero {
         posicionYJugador = 7;
         posicionXJugador = 8;
         if (dificultad == 1) {
-            casillas[3][3] = listaEnemigos[4];
-            casillas[4][4] = listaEnemigos[3];
-            casillas[5][5] = listaEnemigos[2];
+            inventarioIA.agregar(listaEnemigos[4]);
+            inventarioIA.agregar(listaEnemigos[3]);
+            inventarioIA.agregar(listaEnemigos[2]);
+            casillas[3][3] = inventarioIA.seleccionar(0);
+            casillas[4][4] = inventarioIA.seleccionar(1);
+            casillas[5][5] = inventarioIA.seleccionar(2);
             posicionEnemigo1 = "";
             posicionYEnemigo1 = 3;
             posicionXEnemigo1 = 3;
@@ -170,10 +174,14 @@ public class Tablero {
             posicionYEnemigo3 = 5;
             posicionXEnemigo3 = 5;
         } else if (dificultad == 2) {
-            casillas[3][3] = listaEnemigos[4];
-            casillas[4][4] = listaEnemigos[3];
-            casillas[5][5] = listaEnemigos[2];
-            casillas[1][1] = listaEnemigos[1];
+            inventarioIA.agregar(listaEnemigos[4]);
+            inventarioIA.agregar(listaEnemigos[3]);
+            inventarioIA.agregar(listaEnemigos[2]);
+            inventarioIA.agregar(listaEnemigos[1]);
+            casillas[3][3] = inventarioIA.seleccionar(0);
+            casillas[4][4] = inventarioIA.seleccionar(1);
+            casillas[5][5] = inventarioIA.seleccionar(2);
+            casillas[1][1] = inventarioIA.seleccionar(3);
             posicionEnemigo1 = "";
             posicionYEnemigo1 = 3;
             posicionXEnemigo1 = 3;
@@ -187,11 +195,16 @@ public class Tablero {
             posicionYEnemigo4 = 1;
             posicionXEnemigo4 = 1;
         } else if (dificultad == 3) {
-            casillas[3][3] = listaEnemigos[4];
-            casillas[4][4] = listaEnemigos[3];
-            casillas[5][5] = listaEnemigos[2];
-            casillas[1][1] = listaEnemigos[1];
-            casillas[8][8] = listaEnemigos[0];
+            inventarioIA.agregar(listaEnemigos[4]);
+            inventarioIA.agregar(listaEnemigos[3]);
+            inventarioIA.agregar(listaEnemigos[2]);
+            inventarioIA.agregar(listaEnemigos[1]);
+            inventarioIA.agregar(listaEnemigos[0]);
+            casillas[3][3] = inventarioIA.seleccionar(0);
+            casillas[4][4] = inventarioIA.seleccionar(1);
+            casillas[5][5] = inventarioIA.seleccionar(2);
+            casillas[1][1] = inventarioIA.seleccionar(3);
+            casillas[8][8] = inventarioIA.seleccionar(4);
             posicionEnemigo1 = "";
             posicionYEnemigo1 = 3;
             posicionXEnemigo1 = 3;
@@ -371,8 +384,8 @@ public class Tablero {
         int eleccion = random.nextInt(0, 5) + 1;
         switch (eleccion) {
             case 1:
-                if (inventarioEnemigos[0].getPuntosDeVida() > 0) {
-                    personajePrincipalIA = inventarioEnemigos[0];
+                if (inventarioIA.seleccionar(0).getPuntosDeVida() > 0) {
+                    personajePrincipalIA = inventarioIA.seleccionar(0);
                     posicionYEnemigo = posicionYEnemigo1;
                     posicionXEnemigo = posicionXEnemigo1;
                     posicionEnemigo = posicionYEnemigo1 + "" + posicionXEnemigo1;
@@ -381,8 +394,8 @@ public class Tablero {
                 }
                 break;
             case 2:
-                if (inventarioEnemigos[1].getPuntosDeVida() > 0) {
-                    personajePrincipalIA = inventarioEnemigos[1];
+                if (inventarioIA.seleccionar(1).getPuntosDeVida() > 0) {
+                    personajePrincipalIA = inventarioIA.seleccionar(1);
                     posicionYEnemigo = posicionYEnemigo2;
                     posicionXEnemigo = posicionXEnemigo2;
                     posicionEnemigo = posicionYEnemigo2 + "" + posicionXEnemigo2;
@@ -391,8 +404,8 @@ public class Tablero {
                 }
                 break;
             case 3:
-                if (inventarioEnemigos[2].getPuntosDeVida() > 0) {
-                    personajePrincipalIA = inventarioEnemigos[2];
+                if (inventarioIA.seleccionar(2).getPuntosDeVida() > 0) {
+                    personajePrincipalIA = inventarioIA.seleccionar(2);
                     posicionYEnemigo = posicionYEnemigo3;
                     posicionXEnemigo = posicionXEnemigo3;
                     posicionEnemigo = posicionYEnemigo3 + "" + posicionXEnemigo3;
@@ -401,8 +414,8 @@ public class Tablero {
                 }
                 break;
             case 4:
-                if (inventarioEnemigos[3].getPuntosDeVida() > 0) {
-                    personajePrincipalIA = inventarioEnemigos[3];
+                if (inventarioIA.seleccionar(3).getPuntosDeVida() > 0) {
+                    personajePrincipalIA = inventarioIA.seleccionar(3);
                     posicionYEnemigo = posicionYEnemigo4;
                     posicionXEnemigo = posicionXEnemigo4;
                     posicionEnemigo = posicionYEnemigo4 + "" + posicionXEnemigo4;
@@ -411,8 +424,8 @@ public class Tablero {
                 }
                 break;
             case 5:
-                if (inventarioEnemigos[4].getPuntosDeVida() > 0) {
-                    personajePrincipalIA = inventarioEnemigos[4];
+                if (inventarioIA.seleccionar(4).getPuntosDeVida() > 0) {
+                    personajePrincipalIA = inventarioIA.seleccionar(4);
                     posicionYEnemigo = posicionYEnemigo5;
                     posicionXEnemigo = posicionXEnemigo5;
                     posicionEnemigo = posicionYEnemigo5 + "" + posicionXEnemigo5;
@@ -435,21 +448,21 @@ public class Tablero {
                 tmp1 = Integer.parseInt(posicionEnemigo);//convierte la posicion en un int
 
                 while (posicionXEnemigo + movimiento < 0
-                        || tablero[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Arbol && posicionXEnemigo + movimiento < 0) {
+                        || casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Arbol && posicionXEnemigo + movimiento < 0) {
                     movimiento++;
                 }
 
-                while (posicionXEnemigo + movimiento >= m
-                        || tablero[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Arbol && posicionXEnemigo + movimiento >= n) {
+                while (posicionXEnemigo + movimiento >= columnas
+                        || casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Arbol && posicionXEnemigo + movimiento >= columnas) {
                     movimiento--;
                 }
-                if (posicionXEnemigo + movimiento >= 0 && posicionXEnemigo + movimiento < m) {
-                    if (tablero[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Planicie
-                            || tablero[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Agua && vuela == true
-                            || tablero[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Arbol && vuela == true) {
+                if (posicionXEnemigo + movimiento >= 0 && posicionXEnemigo + movimiento < columnas) {
+                    if (casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Planicie
+                            || casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Agua && vuela == true
+                            || casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Arbol && vuela == true) {
 
-                        tablero[posicionYEnemigo][posicionXEnemigo] = terrenos[0];
-                        tablero[posicionYEnemigo][posicionXEnemigo + movimiento] = personajePrincipalIA;
+                        casillas[posicionYEnemigo][posicionXEnemigo] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);
+                        casillas[posicionYEnemigo][posicionXEnemigo + movimiento] = personajePrincipalIA;
                         tmp1 = tmp1 + (movimiento);
                         if (tmp1 < 10) {
                             posicionEnemigo = 0 + "" + tmp1;
@@ -467,20 +480,20 @@ public class Tablero {
                 posicionEnemigo = posicionYEnemigo + "" + posicionXEnemigo;//suma la posicion "X" y "Y", para hacerlos un numero unico
                 tmp1 = Integer.parseInt(posicionEnemigo);//convierte la posicion en un int
                 while (posicionXEnemigo + movimiento < 0
-                        || tablero[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Arbol && posicionXEnemigo + movimiento < 0) {
+                        || casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Arbol && posicionXEnemigo + movimiento < 0) {
                     movimiento++;
                 }
-                while (posicionXEnemigo + movimiento >= m
-                        || tablero[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Arbol && posicionXEnemigo + movimiento >= m) {
+                while (posicionXEnemigo + movimiento >= columnas
+                        || casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Arbol && posicionXEnemigo + movimiento >= columnas) {
                     movimiento--;
                 }
-                if (posicionXEnemigo + movimiento >= 0 && posicionXEnemigo + movimiento < m) {
-                    if (tablero[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Planicie
-                            || tablero[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Agua && vuela == true
-                            || tablero[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Arbol && vuela == true) {
+                if (posicionXEnemigo + movimiento >= 0 && posicionXEnemigo + movimiento < columnas) {
+                    if (casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Planicie
+                            || casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Agua && vuela == true
+                            || casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Arbol && vuela == true) {
 
-                        tablero[posicionYEnemigo][posicionXEnemigo] = terrenos[0];
-                        tablero[posicionYEnemigo][posicionXEnemigo + movimiento] = personajePrincipalIA;
+                        casillas[posicionYEnemigo][posicionXEnemigo] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);
+                        casillas[posicionYEnemigo][posicionXEnemigo + movimiento] = personajePrincipalIA;
 
                         tmp1 = tmp1 + (movimiento);
                         if (tmp1 < 10) {
@@ -547,14 +560,14 @@ public class Tablero {
             while (posicionYJugador + distanciaAtaque < 0) {
                 distanciaAtaque++;
             }
-            while (posicionYJugador + distanciaAtaque >= n) {
+            while (posicionYJugador + distanciaAtaque >= filas) {
                 distanciaAtaque--;
             }
             for (int i = posicionYJugador; i >= posicionYJugador + distanciaAtaque; i--) {//posicion y-1?
-                if (tablero[i][posicionXJugador] instanceof Enemigos) {
-                    Enemigos enemigoGolpeado = (Enemigos) tablero[i][posicionXJugador];//casteo
-                    if (tablero[i][posicionXJugador] instanceof Enemigos) {
-                        enemigoGolpeado = (Enemigos) tablero[i][posicionXJugador];
+                if (casillas[i][posicionXJugador] instanceof NoJugable) {
+                    NoJugable enemigoGolpeado = (NoJugable) casillas[i][posicionXJugador];//casteo
+                    if (casillas[i][posicionXJugador] instanceof NoJugable) {
+                        enemigoGolpeado = (NoJugable) casillas[i][posicionXJugador];
                     }
                     personajePrincipalUsuario.ataque(enemigoGolpeado);
                 }
@@ -564,14 +577,14 @@ public class Tablero {
             while (posicionYJugador + distanciaAtaque < 0) {
                 distanciaAtaque++;
             }
-            while (posicionYJugador + distanciaAtaque >= n) {
+            while (posicionYJugador + distanciaAtaque >= filas) {
                 distanciaAtaque--;
             }
             for (int i = posicionYJugador; i <= posicionYJugador + distanciaAtaque; i++) {//posicion y-1?
-                if (tablero[i][posicionXJugador] instanceof Enemigos) {
-                    Enemigos enemigoGolpeado = (Enemigos) tablero[i][posicionXJugador];//casteo
-                    if (tablero[i][posicionXJugador] instanceof Enemigos) {
-                        enemigoGolpeado = (Enemigos) tablero[i][posicionXJugador];
+                if (casillas[i][posicionXJugador] instanceof NoJugable) {
+                    NoJugable enemigoGolpeado = (NoJugable) casillas[i][posicionXJugador];//casteo
+                    if (casillas[i][posicionXJugador] instanceof NoJugable) {
+                        enemigoGolpeado = (NoJugable) casillas[i][posicionXJugador];
                     }
                     personajePrincipalUsuario.ataque(enemigoGolpeado);
                 }
@@ -587,14 +600,14 @@ public class Tablero {
             while (posicionXJugador + distanciaAtaque < 0) {
                 distanciaAtaque++;
             }
-            while (posicionXJugador + distanciaAtaque >= m) {
+            while (posicionXJugador + distanciaAtaque >= columnas) {
                 distanciaAtaque--;
             }
             for (int i = posicionXJugador; i >= posicionXJugador + distanciaAtaque; i--) {//posicion y-1?
-                if (tablero[posicionYJugador][i] instanceof Enemigos) {
-                    Enemigos enemigoGolpeado = (Enemigos) tablero[posicionYJugador][i];
-                    if (tablero[posicionYJugador][i] instanceof Enemigos) {
-                        enemigoGolpeado = (Enemigos) tablero[posicionYJugador][i];
+                if (casillas[posicionYJugador][i] instanceof NoJugable) {
+                    NoJugable enemigoGolpeado = (NoJugable) casillas[posicionYJugador][i];
+                    if (casillas[posicionYJugador][i] instanceof NoJugable) {
+                        enemigoGolpeado = (NoJugable) casillas[posicionYJugador][i];
                     }
                     personajePrincipalUsuario.ataque(enemigoGolpeado);
                 }
@@ -604,14 +617,14 @@ public class Tablero {
             while (posicionXJugador + distanciaAtaque < 0) {
                 distanciaAtaque++;
             }
-            while (posicionXJugador + distanciaAtaque >= m) {
+            while (posicionXJugador + distanciaAtaque >= columnas) {
                 distanciaAtaque--;
             }
             for (int i = posicionXJugador; i < posicionXJugador + distanciaAtaque; i++) {//posicion y-1?
-                if (tablero[posicionYJugador][i] instanceof Enemigos) {
-                    Enemigos enemigoGolpeado = (Enemigos) tablero[posicionYJugador][i];
-                    if (tablero[posicionYJugador][i] instanceof Enemigos) {
-                        enemigoGolpeado = (Enemigos) tablero[posicionYJugador][i];
+                if (casillas[posicionYJugador][i] instanceof NoJugable) {
+                    NoJugable enemigoGolpeado = (NoJugable) casillas[posicionYJugador][i];
+                    if (casillas[posicionYJugador][i] instanceof NoJugable) {
+                        enemigoGolpeado = (NoJugable) casillas[posicionYJugador][i];
                     }
                     personajePrincipalUsuario.ataque(enemigoGolpeado);
                 }
@@ -623,27 +636,27 @@ public class Tablero {
         personajeAtaca = 0;
         switch (personajeAtaca) {
             case 1:
-                personajePrincipalIA = inventarioEnemigos[0];
+                personajePrincipalIA = inventarioIA.seleccionar(0);
                 posicionYEnemigo = posicionYEnemigo1;
                 posicionXEnemigo = posicionXEnemigo1;
                 break;
             case 2:
-                personajePrincipalIA = inventarioEnemigos[1];
+                personajePrincipalIA = inventarioIA.seleccionar(1);
                 posicionYEnemigo = posicionYEnemigo2;
                 posicionXEnemigo = posicionXEnemigo2;
                 break;
             case 3:
-                personajePrincipalIA = inventarioEnemigos[2];
+                personajePrincipalIA = inventarioIA.seleccionar(2);
                 posicionYEnemigo = posicionYEnemigo3;
                 posicionXEnemigo = posicionXEnemigo3;
                 break;
             case 4:
-                personajePrincipalIA = inventarioEnemigos[3];
+                personajePrincipalIA = inventarioIA.seleccionar(3);
                 posicionYEnemigo = posicionYEnemigo4;
                 posicionXEnemigo = posicionXEnemigo4;
                 break;
             case 5:
-                personajePrincipalIA = inventarioEnemigos[4];
+                personajePrincipalIA = inventarioIA.seleccionar(4);
                 posicionYEnemigo = posicionYEnemigo5;
                 posicionXEnemigo = posicionXEnemigo5;
                 break;
@@ -656,14 +669,14 @@ public class Tablero {
             while (posicionYEnemigo + distanciaAtaque < 0) {
                 distanciaAtaque++;
             }
-            while (posicionYEnemigo + distanciaAtaque >= n) {
+            while (posicionYEnemigo + distanciaAtaque >= filas) {
                 distanciaAtaque--;
             }
             for (int i = posicionYEnemigo; i >= posicionYEnemigo + distanciaAtaque; i--) {//posicion y-1?
-                if (tablero[i][posicionXEnemigo] instanceof Jugables) {
-                    Jugables jugableGolpeado = (Jugables) tablero[i][posicionXEnemigo];//casteo
-                    if (tablero[i][posicionXEnemigo] instanceof Jugables) {
-                        jugableGolpeado = (Jugables) tablero[i][posicionXEnemigo];
+                if (casillas[i][posicionXEnemigo] instanceof Jugable) {
+                    Jugable jugableGolpeado = (Jugable) casillas[i][posicionXEnemigo];//casteo
+                    if (casillas[i][posicionXEnemigo] instanceof Jugable) {
+                        jugableGolpeado = (Jugable) casillas[i][posicionXEnemigo];
                     }
                     personajePrincipalIA.ataque(jugableGolpeado);
                 }
@@ -673,14 +686,14 @@ public class Tablero {
             while (posicionYEnemigo + distanciaAtaque < 0) {
                 distanciaAtaque++;
             }
-            while (posicionYEnemigo + distanciaAtaque >= n) {
+            while (posicionYEnemigo + distanciaAtaque >= columnas) {
                 distanciaAtaque--;
             }
             for (int i = posicionYEnemigo; i <= posicionYEnemigo + distanciaAtaque; i++) {//posicion y-1?
-                if (tablero[i][posicionXEnemigo] instanceof Jugables) {
-                    Jugables jugableGolpeado = (Jugables) tablero[i][posicionXEnemigo];//casteo
-                    if (tablero[i][posicionXEnemigo] instanceof Enemigos) {
-                        jugableGolpeado = (Jugables) tablero[i][posicionXEnemigo];
+                if (casillas[i][posicionXEnemigo] instanceof Jugable) {
+                    Jugable jugableGolpeado = (Jugable) casillas[i][posicionXEnemigo];//casteo
+                    if (casillas[i][posicionXEnemigo] instanceof NoJugable) {
+                        jugableGolpeado = (Jugable) casillas[i][posicionXEnemigo];
                     }
                     personajePrincipalIA.ataque(jugableGolpeado);
                 }
@@ -692,27 +705,27 @@ public class Tablero {
 
         switch (personajeAtaca) {
             case 1:
-                personajePrincipalIA = inventarioEnemigos[0];
+                personajePrincipalIA = inventarioIA.seleccionar(0);
                 posicionYEnemigo = posicionYEnemigo1;
                 posicionXEnemigo = posicionXEnemigo1;
                 break;
             case 2:
-                personajePrincipalIA = inventarioEnemigos[0];
+                personajePrincipalIA = inventarioIA.seleccionar(1);
                 posicionYEnemigo = posicionYEnemigo2;
                 posicionXEnemigo = posicionXEnemigo2;
                 break;
             case 3:
-                personajePrincipalIA = inventarioEnemigos[0];
+                personajePrincipalIA = inventarioIA.seleccionar(2);
                 posicionYEnemigo = posicionYEnemigo3;
                 posicionXEnemigo = posicionXEnemigo3;
                 break;
             case 4:
-                personajePrincipalIA = inventarioEnemigos[0];
+                personajePrincipalIA = inventarioIA.seleccionar(3);
                 posicionYEnemigo = posicionYEnemigo4;
                 posicionXEnemigo = posicionXEnemigo4;
                 break;
             case 5:
-                personajePrincipalIA = inventarioEnemigos[0];
+                personajePrincipalIA = inventarioIA.seleccionar(4);
                 posicionYEnemigo = posicionYEnemigo5;
                 posicionXEnemigo = posicionXEnemigo5;
                 break;
@@ -725,14 +738,14 @@ public class Tablero {
             while (posicionXEnemigo + distanciaAtaque < 0) {
                 distanciaAtaque++;
             }
-            while (posicionXEnemigo + distanciaAtaque >= m) {
+            while (posicionXEnemigo + distanciaAtaque >= columnas) {
                 distanciaAtaque--;
             }
             for (int i = posicionXEnemigo; i >= posicionXEnemigo + distanciaAtaque; i--) {//posicion y-1?
-                if (tablero[posicionYEnemigo][i] instanceof Jugables) {
-                    Jugables jugableGolpeado = (Jugables) tablero[posicionYEnemigo][i];
-                    if (tablero[posicionYEnemigo][i] instanceof Jugables) {
-                        jugableGolpeado = (Jugables) tablero[posicionYEnemigo][i];
+                if (casillas[posicionYEnemigo][i] instanceof Jugable) {
+                    Jugable jugableGolpeado = (Jugable) casillas[posicionYEnemigo][i];
+                    if (casillas[posicionYEnemigo][i] instanceof Jugable) {
+                        jugableGolpeado = (Jugable) casillas[posicionYEnemigo][i];
                     }
                     personajePrincipalIA.ataque(jugableGolpeado);
                 }
@@ -741,14 +754,14 @@ public class Tablero {
             while (posicionXEnemigo + distanciaAtaque < 0) {
                 distanciaAtaque++;
             }
-            while (posicionXEnemigo + distanciaAtaque >= m) {
+            while (posicionXEnemigo + distanciaAtaque >= columnas) {
                 distanciaAtaque--;
             }
             for (int i = posicionXEnemigo; i < posicionXEnemigo + distanciaAtaque; i++) {//posicion y-1?
-                if (tablero[posicionYEnemigo][i] instanceof Jugables) {
-                    Jugables jugableGolpeado = (Jugables) tablero[posicionYEnemigo][i];
-                    if (tablero[posicionYEnemigo][i] instanceof Jugables) {
-                        jugableGolpeado = (Jugables) tablero[posicionYEnemigo][i];
+                if (casillas[posicionYEnemigo][i] instanceof Jugable) {
+                    Jugable jugableGolpeado = (Jugable) casillas[posicionYEnemigo][i];
+                    if (casillas[posicionYEnemigo][i] instanceof Jugable) {
+                        jugableGolpeado = (Jugable) casillas[posicionYEnemigo][i];
                     }
                     personajePrincipalIA.ataque(jugableGolpeado);
                 }
@@ -757,54 +770,54 @@ public class Tablero {
     }
 
     public void eliminarJugadoresEnemigos() {
-        if (tablero[posicionYEnemigo1][posicionXEnemigo1] instanceof Enemigos && inventarioEnemigos[0].getPuntosDeVida() <= 0) {
-            Enemigos personaje1 = (Enemigos) tablero[posicionYEnemigo1][posicionXEnemigo1];//casteo
-            if (inventarioEnemigos[0].getPuntosDeVida() <= 0) {//verifica que el vehiculo ya no tenga vida
-                tablero[posicionYEnemigo1][posicionXEnemigo1] = terrenos[0];//reemplaza el espacio del vehiculo por campo
+        if (casillas[posicionYEnemigo1][posicionXEnemigo1] instanceof NoJugable && inventarioIA.seleccionar(0).getPuntosDeVida() <= 0) {
+            NoJugable personaje1 = (NoJugable) casillas[posicionYEnemigo1][posicionXEnemigo1];//casteo
+            if (inventarioIA.seleccionar(0).getPuntosDeVida() <= 0) {//verifica que el vehiculo ya no tenga vida
+                casillas[posicionYEnemigo1][posicionXEnemigo1] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);//reemplaza el espacio del vehiculo por campo
                 posicionYEnemigo1 = 0;
                 posicionXEnemigo1 = 0;
                 posicionEnemigo1 = "";
-                System.out.println("El personaje 1 ha sido eliminado, puntos de vida= " + inventarioEnemigos[0].getPuntosDeVida());
+                System.out.println("El personaje 1 ha sido eliminado, puntos de vida= " + inventarioIA.seleccionar(0).getPuntosDeVida());
             }
         }
-        if (tablero[posicionYEnemigo2][posicionXEnemigo2] instanceof Enemigos && inventarioEnemigos[1].getPuntosDeVida() <= 0) {
-            Enemigos personaje2 = (Enemigos) tablero[posicionYEnemigo2][posicionXEnemigo2];//casteo
-            if (inventarioEnemigos[1].getPuntosDeVida() <= 0) {//verifica que el vehiculo ya no tenga vida
-                tablero[posicionYEnemigo2][posicionXEnemigo2] = terrenos[0];//reemplaza el espacio del vehiculo por campo
+        if (casillas[posicionYEnemigo2][posicionXEnemigo2] instanceof NoJugable && inventarioIA.seleccionar(1).getPuntosDeVida() <= 0) {
+            NoJugable personaje2 = (NoJugable) casillas[posicionYEnemigo2][posicionXEnemigo2];//casteo
+            if (inventarioIA.seleccionar(1).getPuntosDeVida() <= 0) {//verifica que el vehiculo ya no tenga vida
+                casillas[posicionYEnemigo2][posicionXEnemigo2] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);//reemplaza el espacio del vehiculo por campo
                 posicionYEnemigo2 = 2;
                 posicionXEnemigo2 = 0;
                 posicionEnemigo2 = "";
-                System.out.println("El personaje 2 ha sido eliminado, puntos de vida= " + inventarioEnemigos[1].getPuntosDeVida());
+                System.out.println("El personaje 2 ha sido eliminado, puntos de vida= " + inventarioIA.seleccionar(1).getPuntosDeVida());
             }
         }
-        if (tablero[posicionYEnemigo3][posicionXEnemigo3] instanceof Enemigos && inventarioEnemigos[2].getPuntosDeVida() <= 0) {
-            Enemigos personaje3 = (Enemigos) tablero[posicionYEnemigo3][posicionXEnemigo3];//casteo
-            if (inventarioEnemigos[2].getPuntosDeVida() <= 0) {//verifica que el vehiculo ya no tenga vida
-                tablero[posicionYEnemigo3][posicionXEnemigo3] = terrenos[0];//reemplaza el espacio del vehiculo por campo
+        if (casillas[posicionYEnemigo3][posicionXEnemigo3] instanceof NoJugable && inventarioIA.seleccionar(2).getPuntosDeVida() <= 0) {
+            NoJugable personaje3 = (NoJugable) casillas[posicionYEnemigo3][posicionXEnemigo3];//casteo
+            if (inventarioIA.seleccionar(2).getPuntosDeVida() <= 0) {//verifica que el vehiculo ya no tenga vida
+                casillas[posicionYEnemigo3][posicionXEnemigo3] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);//reemplaza el espacio del vehiculo por campo
                 posicionYEnemigo3 = 2;
                 posicionXEnemigo3 = 0;
                 posicionEnemigo3 = "";
-                System.out.println("El personaje 3 ha sido eliminado, puntos de vida= " + inventarioEnemigos[2].getPuntosDeVida());
+                System.out.println("El personaje 3 ha sido eliminado, puntos de vida= " + inventarioIA.seleccionar(2).getPuntosDeVida());
             }
         }
-        if (tablero[posicionYEnemigo4][posicionXEnemigo4] instanceof Enemigos && inventarioEnemigos[3].getPuntosDeVida() <= 0) {
-            Enemigos personaje4 = (Enemigos) tablero[posicionYEnemigo4][posicionXEnemigo4];//casteo
-            if (inventarioEnemigos[3].getPuntosDeVida() <= 0) {//verifica que el vehiculo ya no tenga vida
-                tablero[posicionYEnemigo4][posicionXEnemigo4] = terrenos[0];//reemplaza el espacio del vehiculo por campo
+        if (casillas[posicionYEnemigo4][posicionXEnemigo4] instanceof NoJugable && inventarioIA.seleccionar(3).getPuntosDeVida() <= 0) {
+            NoJugable personaje4 = (NoJugable) casillas[posicionYEnemigo4][posicionXEnemigo4];//casteo
+            if (inventarioIA.seleccionar(3).getPuntosDeVida() <= 0) {//verifica que el vehiculo ya no tenga vida
+                casillas[posicionYEnemigo4][posicionXEnemigo4] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);//reemplaza el espacio del vehiculo por campo
                 posicionYEnemigo4 = 2;
                 posicionXEnemigo4 = 0;
                 posicionEnemigo4 = "";
-                System.out.println("El personaje 4 ha sido eliminado, puntos de vida= " + inventarioEnemigos[3].getPuntosDeVida());
+                System.out.println("El personaje 4 ha sido eliminado, puntos de vida= " + inventarioIA.seleccionar(3).getPuntosDeVida());
             }
         }
-        if (tablero[posicionYEnemigo5][posicionXEnemigo5] instanceof Enemigos && inventarioEnemigos[4].getPuntosDeVida() <= 0) {
-            Enemigos personaje5 = (Enemigos) tablero[posicionYEnemigo5][posicionXEnemigo5];//casteo
-            if (inventarioEnemigos[4].getPuntosDeVida() <= 0) {
-                tablero[posicionYEnemigo5][posicionXEnemigo5] = terrenos[0];
+        if (casillas[posicionYEnemigo5][posicionXEnemigo5] instanceof NoJugable && inventarioIA.seleccionar(4).getPuntosDeVida() <= 0) {
+            NoJugable personaje5 = (NoJugable) casillas[posicionYEnemigo5][posicionXEnemigo5];//casteo
+            if (inventarioIA.seleccionar(3).getPuntosDeVida() <= 0) {
+                casillas[posicionYEnemigo5][posicionXEnemigo5] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);
                 posicionYEnemigo5 = 2;
                 posicionXEnemigo5 = 0;
                 posicionEnemigo5 = "";
-                System.out.println("El personaje 5 ha sido eliminado, puntos de vida= " + inventarioEnemigos[4].getPuntosDeVida());
+                System.out.println("El personaje 5 ha sido eliminado, puntos de vida= " + inventarioIA.seleccionar(4).getPuntosDeVida());
             }
         }
     }

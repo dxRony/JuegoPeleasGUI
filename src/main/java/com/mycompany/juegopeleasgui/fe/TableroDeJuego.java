@@ -6,6 +6,7 @@ import com.mycompany.juegopeleasgui.be.CrearTablero;
 import com.mycompany.juegopeleasgui.be.jugadores.IA;
 import com.mycompany.juegopeleasgui.be.jugadores.Usuario;
 import com.mycompany.juegopeleasgui.be.tablero.Tablero;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 public class TableroDeJuego extends javax.swing.JFrame {
@@ -18,6 +19,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
     private Archivo archivo;
     private Usuario usuario;
     private IA ia;
+    private Partida partida;
 
     public TableroDeJuego(Usuario usuario, IA ia) {
         this.usuario = usuario;
@@ -31,29 +33,41 @@ public class TableroDeJuego extends javax.swing.JFrame {
         txtPersonajePrincipal.setVisible(true);
         boxDificultad.setVisible(false);
         lblDificultad.setVisible(false);
-        
+
         lblDireccionAtaque.setVisible(false);
         btnAtaqueArriba.setVisible(false);
         btnAtaqueAbajo.setVisible(false);
         btnAtaqueIzquierda.setVisible(false);
         btnAtaqueDerecha.setVisible(false);
-        
-        lblDireccionMovimiento.setVisible(false);
-        btnMovimientoArriba.setVisible(false);
-        btnMovimientoAbajo.setVisible(false);
-        btnMovimientoIzquierda.setVisible(false);
-        btnMovimientoDerecha.setVisible(false);
-        
+
+        lblDireccionMovimiento.setVisible(true);
+        btnMovimientoArriba.setVisible(true);
+        btnMovimientoAbajo.setVisible(true);
+        btnMovimientoIzquierda.setVisible(true);
+        btnMovimientoDerecha.setVisible(true);
+
         lblAcciones.setVisible(false);
         btnAtacar.setVisible(false);
         btnMover.setVisible(false);
         btnUsarArticulo.setVisible(false);
         btnIniciarPartida.setVisible(false);
-        
+
     }
 
     public Tablero getTableroNuevo() {
         return tableroNuevo;
+    }
+
+    public JButton getBtnAtacar() {
+        return btnAtacar;
+    }
+
+    public JButton getBtnMover() {
+        return btnMover;
+    }
+
+    public JButton getBtnUsarArticulo() {
+        return btnUsarArticulo;
     }
 
     /**
@@ -91,6 +105,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
         btnAtacar = new javax.swing.JButton();
         btnIniciarPartida = new javax.swing.JButton();
         btnUsarArticulo = new javax.swing.JButton();
+        btnTerminarTurno = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -182,7 +197,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
             }
         });
         pnlTableroDeJuego.add(btnRegresarPrincipal);
-        btnRegresarPrincipal.setBounds(110, 610, 190, 23);
+        btnRegresarPrincipal.setBounds(10, 610, 190, 23);
 
         btnAtaqueArriba.setText("N");
         btnAtaqueArriba.addActionListener(new java.awt.event.ActionListener() {
@@ -231,18 +246,38 @@ public class TableroDeJuego extends javax.swing.JFrame {
         lblDireccionMovimiento.setBounds(880, 140, 230, 16);
 
         btnMovimientoAbajo.setText("S");
+        btnMovimientoAbajo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMovimientoAbajoActionPerformed(evt);
+            }
+        });
         pnlTableroDeJuego.add(btnMovimientoAbajo);
         btnMovimientoAbajo.setBounds(960, 210, 50, 30);
 
         btnMovimientoIzquierda.setText("O");
+        btnMovimientoIzquierda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMovimientoIzquierdaActionPerformed(evt);
+            }
+        });
         pnlTableroDeJuego.add(btnMovimientoIzquierda);
         btnMovimientoIzquierda.setBounds(900, 190, 50, 30);
 
         btnMovimientoArriba.setText("N");
+        btnMovimientoArriba.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMovimientoArribaActionPerformed(evt);
+            }
+        });
         pnlTableroDeJuego.add(btnMovimientoArriba);
         btnMovimientoArriba.setBounds(960, 170, 50, 30);
 
         btnMovimientoDerecha.setText("E");
+        btnMovimientoDerecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMovimientoDerechaActionPerformed(evt);
+            }
+        });
         pnlTableroDeJuego.add(btnMovimientoDerecha);
         btnMovimientoDerecha.setBounds(1020, 190, 50, 30);
 
@@ -278,9 +313,18 @@ public class TableroDeJuego extends javax.swing.JFrame {
         pnlTableroDeJuego.add(btnIniciarPartida);
         btnIniciarPartida.setBounds(20, 500, 190, 23);
 
-        btnUsarArticulo.setText("Usuar un articulo");
+        btnUsarArticulo.setText("Usar un articulo");
         pnlTableroDeJuego.add(btnUsarArticulo);
         btnUsarArticulo.setBounds(230, 520, 130, 23);
+
+        btnTerminarTurno.setText("btnTerminarTurno");
+        btnTerminarTurno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTerminarTurnoActionPerformed(evt);
+            }
+        });
+        pnlTableroDeJuego.add(btnTerminarTurno);
+        btnTerminarTurno.setBounds(270, 570, 200, 23);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -299,19 +343,19 @@ public class TableroDeJuego extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAtaqueAbajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtaqueAbajoActionPerformed
-        // TODO add your handling code here:
+        tableroNuevo.ataqueJugadorY(false);
     }//GEN-LAST:event_btnAtaqueAbajoActionPerformed
 
     private void btnAtaqueIzquierdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtaqueIzquierdaActionPerformed
-        // TODO add your handling code here:
+        tableroNuevo.ataqueJugadorX(false);
     }//GEN-LAST:event_btnAtaqueIzquierdaActionPerformed
 
     private void btnAtaqueDerechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtaqueDerechaActionPerformed
-        // TODO add your handling code here:
+        tableroNuevo.ataqueJugadorX(true);
     }//GEN-LAST:event_btnAtaqueDerechaActionPerformed
 
     private void btnAtaqueArribaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtaqueArribaActionPerformed
-        // TODO add your handling code here:
+        tableroNuevo.ataqueJugadorY(true);
     }//GEN-LAST:event_btnAtaqueArribaActionPerformed
 
     private void btnRegresarPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarPrincipalActionPerformed
@@ -359,18 +403,62 @@ public class TableroDeJuego extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCargarMapaActionPerformed
 
     private void btnMoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoverActionPerformed
-        // TODO add your handling code here:
+        lblDireccionMovimiento.setVisible(true);
+        btnMovimientoArriba.setVisible(true);
+        btnMovimientoAbajo.setVisible(true);
+        btnMovimientoIzquierda.setVisible(true);
+        btnMovimientoDerecha.setVisible(true);
     }//GEN-LAST:event_btnMoverActionPerformed
 
     private void btnAtacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtacarActionPerformed
-        // TODO add your handling code here:
+        lblDireccionAtaque.setVisible(true);
+        btnAtaqueArriba.setVisible(true);
+        btnAtaqueAbajo.setVisible(true);
+        btnAtaqueIzquierda.setVisible(true);
+        btnAtaqueDerecha.setVisible(true);
     }//GEN-LAST:event_btnAtacarActionPerformed
 
     private void btnIniciarPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarPartidaActionPerformed
-        Partida partida = new Partida(usuario, ia, tableroNuevo);
+        partida = new Partida(usuario, ia, tableroNuevo);
         partida.iniciarPartida();
+        if (partida.isTurno()) {
+            partida.mostrarOpcionesJugadorTurno(btnMover, btnAtacar, btnUsarArticulo);
+        } else {
+            System.out.println("a");
+        }
 
     }//GEN-LAST:event_btnIniciarPartidaActionPerformed
+
+    private void btnMovimientoArribaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMovimientoArribaActionPerformed
+        tableroNuevo.moverJugadorY(true);
+        tableroNuevo.pintarMapa();
+        tableroNuevo.anadirBotones(pnlTablero, this);
+
+    }//GEN-LAST:event_btnMovimientoArribaActionPerformed
+
+    private void btnMovimientoAbajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMovimientoAbajoActionPerformed
+        tableroNuevo.moverJugadorY(false);
+        tableroNuevo.pintarMapa();
+        tableroNuevo.anadirBotones(pnlTablero, this);
+
+    }//GEN-LAST:event_btnMovimientoAbajoActionPerformed
+
+    private void btnMovimientoDerechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMovimientoDerechaActionPerformed
+        tableroNuevo.moverJugadorX(true);
+        tableroNuevo.pintarMapa();
+        tableroNuevo.anadirBotones(pnlTablero, this);
+    }//GEN-LAST:event_btnMovimientoDerechaActionPerformed
+
+    private void btnMovimientoIzquierdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMovimientoIzquierdaActionPerformed
+        tableroNuevo.moverJugadorX(false);
+        tableroNuevo.pintarMapa();
+        tableroNuevo.anadirBotones(pnlTablero, this);
+
+    }//GEN-LAST:event_btnMovimientoIzquierdaActionPerformed
+
+    private void btnTerminarTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTerminarTurnoActionPerformed
+        partida.cambiarTurno();
+    }//GEN-LAST:event_btnTerminarTurnoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> boxDificultad;
@@ -389,6 +477,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
     private javax.swing.JButton btnMovimientoDerecha;
     private javax.swing.JButton btnMovimientoIzquierda;
     private javax.swing.JButton btnRegresarPrincipal;
+    private javax.swing.JButton btnTerminarTurno;
     private javax.swing.JButton btnUsarArticulo;
     private javax.swing.JLabel lblAcciones;
     private javax.swing.JLabel lblDificultad;

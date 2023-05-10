@@ -4,9 +4,9 @@ import com.mycompany.juegopeleasgui.be.terrenos.Agua;
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
+import javax.swing.JLabel;
 
-public class Casilla extends JButton {
+public class Casilla extends JLabel {
 
     private Image imagen;
     public int tamaño;
