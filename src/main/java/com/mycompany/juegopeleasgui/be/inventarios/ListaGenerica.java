@@ -56,6 +56,15 @@ public class ListaGenerica<T> {
         return lista;
     }
 
+    public int getTamaño() {
+        Nodo<T> recorrido = primero;
+        int tamano = 0;
+        while (recorrido != null) {
+            tamano++;
+        }
+        return tamano;
+    }
+
     public void setLista(String lista) {
         this.lista = lista;
     }

@@ -12,6 +12,7 @@ import com.mycompany.juegopeleasgui.fe.MenuPrincipal;
 import java.util.Random;
 import java.util.Scanner;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 
 public class Partida {
 
@@ -33,15 +34,17 @@ public class Partida {
     private JButton btnAtacar;
     private JButton btnMover;
     private JButton btnUsarArticulo;
+    private JFrame frameTablero;
 
     private boolean turno;
     private boolean usuarioVive;
     private boolean iaVive;
 
-    public Partida(Usuario usuario, IA ia, Tablero tableroNuevo) {
+    public Partida(Usuario usuario, IA ia, Tablero tableroNuevo, JFrame frameTablero) {
         this.usuario = usuario;
         this.ia = ia;
         this.tablero = tableroNuevo;
+        this.frameTablero = frameTablero;
         leer = new Scanner(System.in);
         random = new Random();
         noJugable = new NoJugable(1);
@@ -64,14 +67,13 @@ public class Partida {
             Personaje personajeAtacado = obtenerPersonajeAtacado();
             if (isTurno()) {
                 System.out.println("Es tu turno");
-//                mostrarOpcionesJugadorTurno();
-                //mostrar los botones de accion del jugador en el frame
+                leer.nextLine();
             } else {
                 System.out.println("Es el turno de la IA");
                 mostrarOpcionesIAMovimiento();
-                //donde debe realizar el ataque en los personajes disponibles
+
             }
-          //  cambiarTurno();
+            cambiarTurno();
         } while (usuarioVive == true && iaVive == true);
         System.out.println("La partida ha terminado");
         ganoJugador();
@@ -90,8 +92,28 @@ public class Partida {
         btnUsarArticulo.setVisible(true);
     }
 
-    private void mostrarOpcionesIAMovimiento() {
-
+    public void mostrarOpcionesIAMovimiento() {
+        int opcionMovimiento = random.nextInt(1, 4);
+        switch (opcionMovimiento) {
+            case 1:
+               // tablero.moverEnemigosY(true);
+                tablero.pintarMapa();
+                break;
+            case 2:
+              //  tablero.moverEnemigosY(false);
+                tablero.pintarMapa();
+                break;
+            case 3:
+               // tablero.moverEnemigosX(false);
+                tablero.pintarMapa();
+                break;
+            case 4:
+              //  tablero.moverEnemigosX(true);
+                tablero.pintarMapa();
+                break;
+            default:
+                break;
+        }
     }
 
     public void cambiarTurno() {

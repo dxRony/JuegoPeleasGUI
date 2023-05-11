@@ -123,6 +123,7 @@ public class Tablero {
             }
             generarPersonajes(ia.getDificultad());
             crearPosiciones(ia.getDificultad());
+
         } catch (IndexOutOfBoundsException e) {
             JOptionPane.showMessageDialog(null, "Unexpected error");
             return false;
@@ -157,88 +158,102 @@ public class Tablero {
         posicionJugador = "";
         posicionYJugador = 7;
         posicionXJugador = 8;
-        if (dificultad == 1) {
-            inventarioIA.agregar(listaEnemigos[4]);
-            inventarioIA.agregar(listaEnemigos[3]);
-            inventarioIA.agregar(listaEnemigos[2]);
-            casillas[3][3] = inventarioIA.seleccionar(0);
-            casillas[4][4] = inventarioIA.seleccionar(1);
-            casillas[5][5] = inventarioIA.seleccionar(2);
-            posicionEnemigo1 = "";
-            posicionYEnemigo1 = 3;
-            posicionXEnemigo1 = 3;
-            posicionEnemigo2 = "";
-            posicionYEnemigo2 = 4;
-            posicionXEnemigo2 = 4;
-            posicionEnemigo3 = "";
-            posicionYEnemigo3 = 5;
-            posicionXEnemigo3 = 5;
-        } else if (dificultad == 2) {
-            inventarioIA.agregar(listaEnemigos[4]);
-            inventarioIA.agregar(listaEnemigos[3]);
-            inventarioIA.agregar(listaEnemigos[2]);
-            inventarioIA.agregar(listaEnemigos[1]);
-            casillas[3][3] = inventarioIA.seleccionar(0);
-            casillas[4][4] = inventarioIA.seleccionar(1);
-            casillas[5][5] = inventarioIA.seleccionar(2);
-            casillas[1][1] = inventarioIA.seleccionar(3);
-            posicionEnemigo1 = "";
-            posicionYEnemigo1 = 3;
-            posicionXEnemigo1 = 3;
-            posicionEnemigo2 = "";
-            posicionYEnemigo2 = 4;
-            posicionXEnemigo2 = 4;
-            posicionEnemigo3 = "";
-            posicionYEnemigo3 = 5;
-            posicionXEnemigo3 = 5;
-            posicionEnemigo4 = "";
-            posicionYEnemigo4 = 1;
-            posicionXEnemigo4 = 1;
-        } else if (dificultad == 3) {
-            inventarioIA.agregar(listaEnemigos[4]);
-            inventarioIA.agregar(listaEnemigos[3]);
-            inventarioIA.agregar(listaEnemigos[2]);
-            inventarioIA.agregar(listaEnemigos[1]);
-            inventarioIA.agregar(listaEnemigos[0]);
-            casillas[3][3] = inventarioIA.seleccionar(0);
-            casillas[4][4] = inventarioIA.seleccionar(1);
-            casillas[5][5] = inventarioIA.seleccionar(2);
-            casillas[1][1] = inventarioIA.seleccionar(3);
-            casillas[8][8] = inventarioIA.seleccionar(4);
-            posicionEnemigo1 = "";
-            posicionYEnemigo1 = 3;
-            posicionXEnemigo1 = 3;
-            posicionEnemigo2 = "";
-            posicionYEnemigo2 = 4;
-            posicionXEnemigo2 = 4;
-            posicionEnemigo3 = "";
-            posicionYEnemigo3 = 5;
-            posicionXEnemigo3 = 5;
-            posicionEnemigo4 = "";
-            posicionYEnemigo4 = 1;
-            posicionXEnemigo4 = 1;
-            posicionEnemigo5 = "";
-            posicionYEnemigo5 = 8;
-            posicionXEnemigo5 = 8;
+        switch (dificultad) {
+            case 1:
+                inventarioIA.agregar(listaEnemigos[4]);
+                inventarioIA.agregar(listaEnemigos[3]);
+                inventarioIA.agregar(listaEnemigos[2]);
+                casillas[3][3] = inventarioIA.seleccionar(0);
+                casillas[4][4] = inventarioIA.seleccionar(1);
+                casillas[5][5] = inventarioIA.seleccionar(2);
+                posicionEnemigo1 = "";
+                posicionYEnemigo1 = 3;
+                posicionXEnemigo1 = 3;
+                posicionEnemigo2 = "";
+                posicionYEnemigo2 = 4;
+                posicionXEnemigo2 = 4;
+                posicionEnemigo3 = "";
+                posicionYEnemigo3 = 5;
+                posicionXEnemigo3 = 5;
+                break;
+            case 2:
+                inventarioIA.agregar(listaEnemigos[4]);
+                inventarioIA.agregar(listaEnemigos[3]);
+                inventarioIA.agregar(listaEnemigos[2]);
+                inventarioIA.agregar(listaEnemigos[1]);
+                casillas[3][3] = inventarioIA.seleccionar(0);
+                casillas[4][4] = inventarioIA.seleccionar(1);
+                casillas[5][5] = inventarioIA.seleccionar(2);
+                casillas[1][1] = inventarioIA.seleccionar(3);
+                posicionEnemigo1 = "";
+                posicionYEnemigo1 = 3;
+                posicionXEnemigo1 = 3;
+                posicionEnemigo2 = "";
+                posicionYEnemigo2 = 4;
+                posicionXEnemigo2 = 4;
+                posicionEnemigo3 = "";
+                posicionYEnemigo3 = 5;
+                posicionXEnemigo3 = 5;
+                posicionEnemigo4 = "";
+                posicionYEnemigo4 = 1;
+                posicionXEnemigo4 = 1;
+                break;
+            case 3:
+                inventarioIA.agregar(listaEnemigos[4]);
+                inventarioIA.agregar(listaEnemigos[3]);
+                inventarioIA.agregar(listaEnemigos[2]);
+                inventarioIA.agregar(listaEnemigos[1]);
+                inventarioIA.agregar(listaEnemigos[0]);
+                casillas[3][3] = inventarioIA.seleccionar(0);
+                casillas[4][4] = inventarioIA.seleccionar(1);
+                casillas[5][5] = inventarioIA.seleccionar(2);
+                casillas[1][1] = inventarioIA.seleccionar(3);
+                casillas[8][8] = inventarioIA.seleccionar(4);
+                posicionEnemigo1 = "";
+                posicionYEnemigo1 = 3;
+                posicionXEnemigo1 = 3;
+                posicionEnemigo2 = "";
+                posicionYEnemigo2 = 4;
+                posicionXEnemigo2 = 4;
+                posicionEnemigo3 = "";
+                posicionYEnemigo3 = 5;
+                posicionXEnemigo3 = 5;
+                posicionEnemigo4 = "";
+                posicionYEnemigo4 = 1;
+                posicionXEnemigo4 = 1;
+                posicionEnemigo5 = "";
+                posicionYEnemigo5 = 8;
+                posicionXEnemigo5 = 8;
+                break;
+            default:
+                break;
         }
     }
 
     public void crearPosiciones(int dificultad) {
         posicionJugador = posicionYJugador + "" + posicionXJugador;
         posicionEnemigo = posicionYEnemigo + "" + posicionXEnemigo;
-        if (dificultad == 1) {
-            posicionEnemigo1 = posicionYEnemigo1 + "" + posicionXEnemigo1;
-            posicionEnemigo2 = posicionYEnemigo2 + "" + posicionXEnemigo2;
-        } else if (dificultad == 2) {
-            posicionEnemigo1 = posicionYEnemigo1 + "" + posicionXEnemigo1;
-            posicionEnemigo2 = posicionYEnemigo2 + "" + posicionXEnemigo2;
-            posicionEnemigo3 = posicionYEnemigo3 + "" + posicionXEnemigo3;
-        } else if (dificultad == 3) {
-            posicionEnemigo1 = posicionYEnemigo1 + "" + posicionXEnemigo1;
-            posicionEnemigo2 = posicionYEnemigo2 + "" + posicionXEnemigo2;
-            posicionEnemigo3 = posicionYEnemigo3 + "" + posicionXEnemigo3;
-            posicionEnemigo4 = posicionYEnemigo4 + "" + posicionXEnemigo4;
-            posicionEnemigo5 = posicionYEnemigo5 + "" + posicionXEnemigo5;
+        switch (dificultad) {
+            case 1:
+                posicionEnemigo1 = posicionYEnemigo1 + "" + posicionXEnemigo1;
+                posicionEnemigo2 = posicionYEnemigo2 + "" + posicionXEnemigo2;
+                posicionEnemigo1 = posicionYEnemigo1 + "" + posicionXEnemigo1;
+                break;
+            case 2:
+                posicionEnemigo1 = posicionYEnemigo1 + "" + posicionXEnemigo1;
+                posicionEnemigo2 = posicionYEnemigo2 + "" + posicionXEnemigo2;
+                posicionEnemigo3 = posicionYEnemigo3 + "" + posicionXEnemigo3;
+                posicionEnemigo4 = posicionYEnemigo4 + "" + posicionXEnemigo4;
+                break;
+            case 3:
+                posicionEnemigo1 = posicionYEnemigo1 + "" + posicionXEnemigo1;
+                posicionEnemigo2 = posicionYEnemigo2 + "" + posicionXEnemigo2;
+                posicionEnemigo3 = posicionYEnemigo3 + "" + posicionXEnemigo3;
+                posicionEnemigo4 = posicionYEnemigo4 + "" + posicionXEnemigo4;
+                posicionEnemigo5 = posicionYEnemigo5 + "" + posicionXEnemigo5;
+                break;
+            default:
+                break;
         }
     }
 
@@ -362,7 +377,7 @@ public class Tablero {
                         || casillas[posicionYJugador][posicionXJugador + movimiento] instanceof Agua && vuela == true
                         || casillas[posicionYJugador][posicionXJugador + movimiento] instanceof Arbol && vuela == true) {
 
-                    casillas[posicionYJugador][posicionXJugador] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);;
+                    casillas[posicionYJugador][posicionXJugador] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);
                     casillas[posicionYJugador][posicionXJugador + movimiento] = personajePrincipalUsuario;
 
                     tmp1 = tmp1 + (movimiento);
@@ -380,17 +395,14 @@ public class Tablero {
         }
     }
 
-    public void moverEnemigosX(boolean derecha) {
-        int eleccion = random.nextInt(0, 5) + 1;
-        switch (eleccion) {
+    public void moverEnemigosX(boolean derecha, int personajeMueve) {
+        switch (personajeMueve + 1) {
             case 1:
                 if (inventarioIA.seleccionar(0).getPuntosDeVida() > 0) {
                     personajePrincipalIA = inventarioIA.seleccionar(0);
                     posicionYEnemigo = posicionYEnemigo1;
                     posicionXEnemigo = posicionXEnemigo1;
-                    posicionEnemigo = posicionYEnemigo1 + "" + posicionXEnemigo1;
-                } else {
-                    eleccion = 0;
+                    posicionEnemigo = posicionYEnemigo + "" + posicionXEnemigo;
                 }
                 break;
             case 2:
@@ -398,9 +410,7 @@ public class Tablero {
                     personajePrincipalIA = inventarioIA.seleccionar(1);
                     posicionYEnemigo = posicionYEnemigo2;
                     posicionXEnemigo = posicionXEnemigo2;
-                    posicionEnemigo = posicionYEnemigo2 + "" + posicionXEnemigo2;
-                } else {
-                    eleccion = 0;
+                    posicionEnemigo = posicionYEnemigo + "" + posicionXEnemigo;
                 }
                 break;
             case 3:
@@ -408,9 +418,7 @@ public class Tablero {
                     personajePrincipalIA = inventarioIA.seleccionar(2);
                     posicionYEnemigo = posicionYEnemigo3;
                     posicionXEnemigo = posicionXEnemigo3;
-                    posicionEnemigo = posicionYEnemigo3 + "" + posicionXEnemigo3;
-                } else {
-                    eleccion = 0;
+                    posicionEnemigo = posicionYEnemigo + "" + posicionXEnemigo;
                 }
                 break;
             case 4:
@@ -418,9 +426,7 @@ public class Tablero {
                     personajePrincipalIA = inventarioIA.seleccionar(3);
                     posicionYEnemigo = posicionYEnemigo4;
                     posicionXEnemigo = posicionXEnemigo4;
-                    posicionEnemigo = posicionYEnemigo4 + "" + posicionXEnemigo4;
-                } else {
-                    eleccion = 0;
+                    posicionEnemigo = posicionYEnemigo + "" + posicionXEnemigo;
                 }
                 break;
             case 5:
@@ -428,16 +434,14 @@ public class Tablero {
                     personajePrincipalIA = inventarioIA.seleccionar(4);
                     posicionYEnemigo = posicionYEnemigo5;
                     posicionXEnemigo = posicionXEnemigo5;
-                    posicionEnemigo = posicionYEnemigo5 + "" + posicionXEnemigo5;
-                } else {
-                    eleccion = 0;
+                    posicionEnemigo = posicionYEnemigo + "" + posicionXEnemigo;
                 }
                 break;
             default:
                 break;
         }
-        System.out.println("personajePrincipalIA=" + personajePrincipalIA.getPuntosDeVida());
-        System.out.println("opcionPrincipal = " + eleccion);
+        System.out.println("personajePrincipalIA(vida)=" + personajePrincipalIA.getPuntosDeVida());
+        System.out.println("personajeMueve = " + personajeMueve);
         System.out.println("personajePrincipalIA = " + personajePrincipalIA.getNombre());
         if (personajePrincipalIA.getPuntosDeVida() > 0) {
             int movimiento = personajePrincipalIA.getMovimiento();
@@ -508,48 +512,204 @@ public class Tablero {
                 movimiento = movimiento * -1;
                 System.out.println(personajePrincipalIA + " se movio: " + movimiento + " casillas en direccion al oeste");
             }
-            if (eleccion == 1) {
-                posicionYEnemigo1 = posicionYEnemigo;
-                posicionXEnemigo1 = posicionXEnemigo;
-                posicionEnemigo1 = posicionYEnemigo1 + "" + posicionXEnemigo1;
-                ataqueEnemigosY(true, 1);
-                ataqueEnemigosY(false, 1);
-                ataqueEnemigosX(true, 1);
-                ataqueEnemigosX(false, 1);
-            } else if (eleccion == 2) {
-                posicionYEnemigo2 = posicionYEnemigo;
-                posicionXEnemigo2 = posicionXEnemigo;
-                posicionEnemigo2 = posicionYEnemigo2 + "" + posicionXEnemigo2;
-                ataqueEnemigosY(true, 2);
-                ataqueEnemigosY(false, 2);
-                ataqueEnemigosX(true, 2);
-                ataqueEnemigosX(false, 2);
-            } else if (eleccion == 3) {
-                posicionYEnemigo3 = posicionYEnemigo;
-                posicionXEnemigo3 = posicionXEnemigo;
-                posicionEnemigo3 = posicionYEnemigo3 + "" + posicionXEnemigo3;
-                ataqueEnemigosY(true, 3);
-                ataqueEnemigosY(false, 3);
-                ataqueEnemigosX(true, 3);
-                ataqueEnemigosX(false, 3);
-            } else if (eleccion == 4) {
-                posicionYEnemigo4 = posicionYEnemigo;
-                posicionXEnemigo4 = posicionXEnemigo;
-                posicionEnemigo4 = posicionYEnemigo4 + "" + posicionXEnemigo4;
-                ataqueEnemigosY(true, 4);
-                ataqueEnemigosY(false, 4);
-                ataqueEnemigosX(true, 4);
-                ataqueEnemigosX(false, 4);
-            } else if (eleccion == 5) {
-                posicionYEnemigo5 = posicionYEnemigo;
-                posicionXEnemigo5 = posicionXEnemigo;
-                posicionEnemigo5 = posicionYEnemigo5 + "" + posicionXEnemigo5;
-                ataqueEnemigosY(true, 5);
-                ataqueEnemigosY(false, 5);
-                ataqueEnemigosX(true, 5);
-                ataqueEnemigosX(false, 5);
+        }
+        if (personajeMueve == 1) {
+            posicionYEnemigo1 = posicionYEnemigo;
+            posicionXEnemigo1 = posicionXEnemigo;
+            posicionEnemigo1 = posicionYEnemigo1 + "" + posicionXEnemigo1;
+            ataqueEnemigosY(true, 1);
+            ataqueEnemigosY(false, 1);
+            ataqueEnemigosX(true, 1);
+            ataqueEnemigosX(false, 1);
+        } else if (personajeMueve == 2) {
+            posicionYEnemigo2 = posicionYEnemigo;
+            posicionXEnemigo2 = posicionXEnemigo;
+            posicionEnemigo2 = posicionYEnemigo2 + "" + posicionXEnemigo2;
+            ataqueEnemigosY(true, 2);
+            ataqueEnemigosY(false, 2);
+            ataqueEnemigosX(true, 2);
+            ataqueEnemigosX(false, 2);
+        } else if (personajeMueve == 3) {
+            posicionYEnemigo3 = posicionYEnemigo;
+            posicionXEnemigo3 = posicionXEnemigo;
+            posicionEnemigo3 = posicionYEnemigo3 + "" + posicionXEnemigo3;
+            ataqueEnemigosY(true, 3);
+            ataqueEnemigosY(false, 3);
+            ataqueEnemigosX(true, 3);
+            ataqueEnemigosX(false, 3);
+        } else if (personajeMueve == 4) {
+            posicionYEnemigo4 = posicionYEnemigo;
+            posicionXEnemigo4 = posicionXEnemigo;
+            posicionEnemigo4 = posicionYEnemigo4 + "" + posicionXEnemigo4;
+            ataqueEnemigosY(true, 4);
+            ataqueEnemigosY(false, 4);
+            ataqueEnemigosX(true, 4);
+            ataqueEnemigosX(false, 4);
+        } else if (personajeMueve == 5) {
+            posicionYEnemigo5 = posicionYEnemigo;
+            posicionXEnemigo5 = posicionXEnemigo;
+            posicionEnemigo5 = posicionYEnemigo5 + "" + posicionXEnemigo5;
+            ataqueEnemigosY(true, 5);
+            ataqueEnemigosY(false, 5);
+            ataqueEnemigosX(true, 5);
+            ataqueEnemigosX(false, 5);
+        }
+
+        personajePrincipalIA = listaEnemigos[5];
+    }
+
+    public void moverEnemigosY(boolean arriba, int personajeMueve) {
+        switch (personajeMueve + 1) {
+            case 1:
+                if (inventarioIA.seleccionar(0).getPuntosDeVida() > 0) {
+                    personajePrincipalIA = inventarioIA.seleccionar(0);
+                    posicionYEnemigo = posicionYEnemigo1;
+                    posicionXEnemigo = posicionXEnemigo1;
+                    posicionEnemigo = posicionYEnemigo1 + "" + posicionXEnemigo1;
+                }
+                break;
+            case 2:
+                if (inventarioIA.seleccionar(1).getPuntosDeVida() > 0) {
+                    personajePrincipalIA = inventarioIA.seleccionar(1);
+                    posicionYEnemigo = posicionYEnemigo2;
+                    posicionXEnemigo = posicionXEnemigo2;
+                    posicionEnemigo = posicionYEnemigo2 + "" + posicionXEnemigo2;
+                }
+                break;
+            case 3:
+                if (inventarioIA.seleccionar(2).getPuntosDeVida() > 0) {
+                    personajePrincipalIA = inventarioIA.seleccionar(2);
+                    posicionYEnemigo = posicionYEnemigo3;
+                    posicionXEnemigo = posicionXEnemigo3;
+                    posicionEnemigo = posicionYEnemigo3 + "" + posicionXEnemigo3;
+                }
+                break;
+            case 4:
+                if (inventarioIA.seleccionar(3).getPuntosDeVida() > 0) {
+                    personajePrincipalIA = inventarioIA.seleccionar(3);
+                    posicionYEnemigo = posicionYEnemigo4;
+                    posicionXEnemigo = posicionXEnemigo4;
+                    posicionEnemigo = posicionYEnemigo4 + "" + posicionXEnemigo4;
+                }
+                break;
+            case 5:
+                if (inventarioIA.seleccionar(4).getPuntosDeVida() > 0) {
+                    personajePrincipalIA = inventarioIA.seleccionar(4);
+                    posicionYEnemigo = posicionYEnemigo5;
+                    posicionXEnemigo = posicionXEnemigo5;
+                    posicionEnemigo = posicionYEnemigo5 + "" + posicionXEnemigo5;
+                }
+                break;
+            default:
+                break;
+        }
+        System.out.println("personajePrincipalIA(vida)=" + personajePrincipalIA.getPuntosDeVida());
+        System.out.println("personajeMueve = " + personajeMueve);
+        System.out.println("personajePrincipalIA = " + personajePrincipalIA.getNombre());
+        if (personajePrincipalIA.getPuntosDeVida() > 0) {
+            boolean vuela = personajePrincipalIA.isVuela();
+            int movimiento = personajePrincipalIA.getMovimiento();
+            if (arriba == true) {
+                movimiento = movimiento * -1;
+                int tmp1 = 0;
+                tmp1 = Integer.parseInt(posicionEnemigo);//convierte la posicion en un int
+                while (posicionYEnemigo + movimiento < 0
+                        || casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Arbol && posicionYEnemigo + movimiento < 0) {
+                    movimiento++;
+                }
+                while (posicionYEnemigo + movimiento >= filas
+                        || casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Arbol && posicionYEnemigo + movimiento >= filas) {
+                    movimiento--;
+                }
+                if (posicionYEnemigo + movimiento >= 0 && posicionYEnemigo + movimiento < filas) {
+                    if (casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Planicie
+                            || casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Agua && vuela == true
+                            || casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Arbol && vuela == true) {//verifica que la siguiente casilla sea campo
+                        casillas[posicionYEnemigo][posicionXEnemigo] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);//reemplaza la casilla por campo, de donde se movio el vehiculo
+                        casillas[posicionYEnemigo + movimiento][posicionXEnemigo] = personajePrincipalIA;//cambia al vehiculo del jugador a la nueva posicion
+
+                        tmp1 = tmp1 + (movimiento * 10);
+                        if (tmp1 < 10) {//pasa el valor de la posicion de int a string
+                            posicionEnemigo = 0 + "" + tmp1;
+                        } else {
+                            posicionEnemigo = String.valueOf(tmp1);
+                        }
+                        posicionYEnemigo = tmp1 / 10;//individualiza la posicion del vehiculo en el eje "Y"
+                        posicionXEnemigo = tmp1 % 10;//individualiza la posicion del vehiculo en el eje "X"
+                    }
+                }
+                movimiento = movimiento * -1;
+                System.out.println(personajePrincipalIA + " se movio: " + movimiento + " casillas en direccion al norte");
+            } else if (arriba == false) {
+                int tmp1 = 0;
+                posicionEnemigo = posicionYEnemigo + "" + posicionXEnemigo;//suma la posicion "X" y "Y", para hacerlos un numero unico
+                tmp1 = Integer.parseInt(posicionEnemigo);//convierte la posicion en un int
+                while (posicionYEnemigo + movimiento >= filas
+                        || casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Arbol && posicionYEnemigo + movimiento >= filas) {
+                    movimiento--;
+                }
+                if (posicionYEnemigo + movimiento >= 0 && posicionYEnemigo + movimiento < filas) {
+                    if (casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Planicie
+                            || casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Agua && vuela == true
+                            || casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Arbol && vuela == true) {//verifica que la siguiente casilla sea campo
+                        casillas[posicionYEnemigo][posicionXEnemigo] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);//reemplaza la casilla por campo, de donde se movio el vehiculo
+                        casillas[posicionYEnemigo + movimiento][posicionXEnemigo] = personajePrincipalIA;//cambia al vehiculo del jugador a la nueva posicion
+
+                        tmp1 = tmp1 + (movimiento * 10);//modifica el valor de la posicion del vehiculo
+                        if (tmp1 < 10) {//pasa el valor de la posicion de int a string
+                            posicionEnemigo = 0 + "" + tmp1;
+                        } else {
+                            posicionEnemigo = String.valueOf(tmp1);
+                        }
+                        posicionYEnemigo = tmp1 / 10;//individualiza la posicion del vehiculo en el eje "Y"
+                        posicionXEnemigo = tmp1 % 10;//individualiza la posicion del vehiculo en el eje "X"
+                    }
+                }
+                System.out.println(personajePrincipalIA + " se movio: " + movimiento + " casillas en direccion al sur");
             }
         }
+        if (personajeMueve == 1) {
+            posicionYEnemigo1 = posicionYEnemigo;
+            posicionXEnemigo1 = posicionXEnemigo;
+            posicionEnemigo1 = posicionYEnemigo1 + "" + posicionXEnemigo1;
+            ataqueEnemigosY(true, 1);
+            ataqueEnemigosY(false, 1);
+            ataqueEnemigosX(true, 1);
+            ataqueEnemigosX(false, 1);
+        } else if (personajeMueve == 2) {
+            posicionYEnemigo2 = posicionYEnemigo;
+            posicionXEnemigo2 = posicionXEnemigo;
+            posicionEnemigo2 = posicionYEnemigo2 + "" + posicionXEnemigo2;
+            ataqueEnemigosY(true, 2);
+            ataqueEnemigosY(false, 2);
+            ataqueEnemigosX(true, 2);
+            ataqueEnemigosX(false, 2);
+        } else if (personajeMueve == 3) {
+            posicionYEnemigo3 = posicionYEnemigo;
+            posicionXEnemigo3 = posicionXEnemigo;
+            posicionEnemigo3 = posicionYEnemigo3 + "" + posicionXEnemigo3;
+            ataqueEnemigosY(true, 3);
+            ataqueEnemigosY(false, 3);
+            ataqueEnemigosX(true, 3);
+            ataqueEnemigosX(false, 3);
+        } else if (personajeMueve == 4) {
+            posicionYEnemigo4 = posicionYEnemigo;
+            posicionXEnemigo4 = posicionXEnemigo;
+            posicionEnemigo4 = posicionYEnemigo4 + "" + posicionXEnemigo4;
+            ataqueEnemigosY(true, 4);
+            ataqueEnemigosY(false, 4);
+            ataqueEnemigosX(true, 4);
+            ataqueEnemigosX(false, 4);
+        } else if (personajeMueve == 5) {
+            posicionYEnemigo5 = posicionYEnemigo;
+            posicionXEnemigo5 = posicionXEnemigo;
+            posicionEnemigo5 = posicionYEnemigo5 + "" + posicionXEnemigo5;
+            ataqueEnemigosY(true, 5);
+            ataqueEnemigosY(false, 5);
+            ataqueEnemigosX(true, 5);
+            ataqueEnemigosX(false, 5);
+        }
+        personajePrincipalIA = listaEnemigos[5];
     }
 
     public void ataqueJugadorY(boolean arriba) {
@@ -820,6 +980,61 @@ public class Tablero {
                 System.out.println("El personaje 5 ha sido eliminado, puntos de vida= " + inventarioIA.seleccionar(4).getPuntosDeVida());
             }
         }
+    }
+
+    public void realizarTurnoIA() {
+        int tamanoInventario = 0;
+        if (ia.getDificultad() == 1) {
+            tamanoInventario = 3;
+        } else if (ia.getDificultad() == 2) {
+            tamanoInventario = 4;
+        } else if (ia.getDificultad() == 3) {
+            tamanoInventario = 5;
+        }
+        for (int i = 0; i < tamanoInventario; i++) {
+            int opcionMovimiento = random.nextInt(1, 4);
+            System.out.println("opcionMovimiento = " + opcionMovimiento);
+            System.out.println("indice = " + i);
+            switch (opcionMovimiento) {
+                case 1:
+                    if (inventarioIA.seleccionar(i).getPuntosDeVida() > 0) {
+                        moverEnemigosY(true, i);
+                        pintarMapa();
+                    } else {
+                        System.out.println("El personaje no tiene vida");
+                    }
+
+                    break;
+                case 2:
+                    if (inventarioIA.seleccionar(i).getPuntosDeVida() > 0) {
+                        moverEnemigosY(false, i);
+                        pintarMapa();
+                    } else {
+                        System.out.println("El personaje no tiene vida");
+                    }
+                    break;
+                case 3:
+                    if (inventarioIA.seleccionar(i).getPuntosDeVida() > 0) {
+                        moverEnemigosX(false, i);
+                        pintarMapa();
+                    } else {
+                        System.out.println("El personaje no tiene vida");
+                    }
+                    break;
+                case 4:
+                    if (inventarioIA.seleccionar(i).getPuntosDeVida() > 0) {
+                        moverEnemigosX(true, i);
+                        pintarMapa();
+                    } else {
+                        System.out.println("El personaje no tiene vida");
+                    }
+                    break;
+                default:
+                    break;
+            }
+            System.out.println("CAMBIO EL PERSONAJE");
+        }
+
     }
 
     public void getId(String id) {

@@ -16,7 +16,9 @@ import com.mycompany.juegopeleasgui.be.personajes.personajeJugable.Dragon;
 import com.mycompany.juegopeleasgui.be.personajes.personajeJugable.Gigante;
 import com.mycompany.juegopeleasgui.be.personajes.personajeJugable.JugableVacio;
 import com.mycompany.juegopeleasgui.be.personajes.personajeJugable.Mago;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 public class Usuario extends Jugador {
@@ -78,9 +80,9 @@ public class Usuario extends Jugador {
     }
 
     public void almacenarPrincipalUsuario(int personaje) {
-        
+
         this.personajePrincipalUsuario = inventarioUsuario.seleccionar(personaje);
-        System.out.println("Tu personaje principal es: "+personajePrincipalUsuario.getNombre());
+        System.out.println("Tu personaje principal es: " + personajePrincipalUsuario.getNombre());
     }
 
     public int getOro() {
@@ -105,6 +107,54 @@ public class Usuario extends Jugador {
 
     public ListaGenerica<Articulo> getInventarioArticulos() {
         return inventarioArticulos;
+    }
+
+    public void activarBotonesMovimiento(JLabel lblDireccion, JButton btnArriba, JButton btnAbajo, JButton btnDerecha, JButton btnIzuierda) {
+        lblDireccion.setVisible(true);
+        btnArriba.setVisible(true);
+        btnArriba.setEnabled(true);
+        btnAbajo.setVisible(true);
+        btnAbajo.setEnabled(true);
+        btnDerecha.setVisible(true);
+        btnDerecha.setEnabled(true);
+        btnIzuierda.setVisible(true);
+        btnIzuierda.setEnabled(true);
+    }
+
+    public void desactivarBotonesMovimiento(JLabel lblDireccion, JButton btnArriba, JButton btnAbajo, JButton btnDerecha, JButton btnIzuierda) {
+        lblDireccion.setVisible(false);
+        btnArriba.setVisible(false);
+        btnArriba.setEnabled(false);
+        btnAbajo.setVisible(false);
+        btnAbajo.setEnabled(false);
+        btnDerecha.setVisible(false);
+        btnDerecha.setEnabled(false);
+        btnIzuierda.setVisible(false);
+        btnIzuierda.setEnabled(false);
+    }
+
+    public void activarBotonesAtaque(JLabel lblAtaque, JButton btnArriba, JButton btnAbajo, JButton btnDerecha, JButton btnIzuierda) {
+        lblAtaque.setVisible(true);
+        btnArriba.setVisible(true);
+        btnArriba.setEnabled(true);
+        btnAbajo.setVisible(true);
+        btnAbajo.setEnabled(true);
+        btnDerecha.setVisible(true);
+        btnDerecha.setEnabled(true);
+        btnIzuierda.setVisible(true);
+        btnIzuierda.setEnabled(true);
+    }
+
+    public void desactivarBotonesAtaque(JLabel lblAtaque, JButton btnArriba, JButton btnAbajo, JButton btnDerecha, JButton btnIzuierda) {
+        lblAtaque.setVisible(false);
+        btnArriba.setVisible(false);
+        btnArriba.setEnabled(false);
+        btnAbajo.setVisible(false);
+        btnAbajo.setEnabled(false);
+        btnDerecha.setVisible(false);
+        btnDerecha.setEnabled(false);
+        btnIzuierda.setVisible(false);
+        btnIzuierda.setEnabled(false);
     }
 
 }
