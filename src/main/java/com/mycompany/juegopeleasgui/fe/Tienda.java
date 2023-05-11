@@ -4,8 +4,6 @@ import com.mycompany.juegopeleasgui.be.articulos.Articulo;
 import com.mycompany.juegopeleasgui.be.jugadores.IA;
 import com.mycompany.juegopeleasgui.be.jugadores.Usuario;
 import com.mycompany.juegopeleasgui.be.personajes.Jugable;
-import java.awt.Dimension;
-import java.awt.Toolkit;
 
 public class Tienda extends javax.swing.JFrame {
 

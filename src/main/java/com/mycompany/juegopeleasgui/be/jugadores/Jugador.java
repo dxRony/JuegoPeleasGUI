@@ -1,6 +1,8 @@
 package com.mycompany.juegopeleasgui.be.jugadores;
 
-public class Jugador {
+import java.io.Serializable;
+
+public class Jugador implements Serializable{
 
     protected String nombre;
 
@@ -15,5 +17,7 @@ public class Jugador {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    
+    
 
 }

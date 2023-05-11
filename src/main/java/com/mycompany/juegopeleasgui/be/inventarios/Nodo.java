@@ -1,6 +1,8 @@
 package com.mycompany.juegopeleasgui.be.inventarios;
 
-public class Nodo<T> {
+import java.io.Serializable;
+
+public class Nodo<T> implements Serializable {
 
     protected T contenido;
     protected Nodo<T> siguiente;

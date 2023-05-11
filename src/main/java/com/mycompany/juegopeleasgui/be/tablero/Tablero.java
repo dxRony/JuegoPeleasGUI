@@ -24,8 +24,8 @@ public class Tablero {
     private String ruta = "tableros.txt";
 
     private Casilla casillas[][];
-    private int filas;
-    private int columnas;
+    private int filas;//=y
+    private int columnas;//x
     private String nombre;
     private Random random;
     private Usuario usuario;
@@ -65,22 +65,11 @@ public class Tablero {
     private int posicionYEnemigo5;
     private int posicionXEnemigo5;
 
-    private String posicionEnemigo6;
-    private int posicionYEnemigo6;
-    private int posicionXEnemigo6;
-
-    private String posicionEnemigo7;
-    private int posicionYEnemigo7;
-    private int posicionXEnemigo7;
-
-    private String posicionEnemigo8;
-    private int posicionYEnemigo8;
-    private int posicionXEnemigo8;
-
     public Tablero(Usuario usuario, IA ia, String id, int filas, int columnas) {
-        this.casillas = new Casilla[filas][columnas];
+
         this.filas = filas;
         this.columnas = columnas;
+        this.casillas = new Casilla[this.filas][this.columnas];
         this.usuario = usuario;
         this.ia = ia;
         random = new Random();
@@ -90,6 +79,9 @@ public class Tablero {
         personajePrincipalIA = ia.getPersonajePrincipalIA();
         listaEnemigos = ia.getListaEnemigos();
         dificultad = ia.getDificultad();
+        posicionJugador = "";
+        posicionYJugador = 7;
+        posicionXJugador = 8;
     }
 
     public void crearTableroVacio() {
@@ -132,6 +124,7 @@ public class Tablero {
     }
 
     public void pintarMapa() {
+        mostrarEstadisticas();
         System.out.println("El tablero de juego es...");
         for (int x = 0; x < columnas; x++) {
             for (int y = 0; y < filas; y++) {
@@ -141,11 +134,12 @@ public class Tablero {
         }
     }
 
-    public void anadirBotones(JPanel pnlJuego, JFrame pnlTableroDeJuego) {
-        pnlJuego.setLayout(new GridLayout(filas, columnas));
-        for (int i = 0; i < columnas; i++) {
-            for (int j = 0; j < filas; j++) {
-                pnlJuego.add(casillas[i][j]);
+    public void anadirBotones(JPanel pnlTablero, JFrame pnlTableroDeJuego) {
+        pnlTablero.removeAll();
+        pnlTablero.setLayout(new GridLayout(filas, columnas));
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                pnlTablero.add(casillas[i][j]);
             }
         }
         System.out.println("anadiendo botones");
@@ -153,16 +147,22 @@ public class Tablero {
         //pnlTableroDeJuego.setVisible(true);
     }
 
+    public void actualizarTablero(JPanel pnlTablero) {
+        // pnlTablero.removeAll();
+        pnlTablero.repaint();
+        pnlTablero.revalidate();
+
+    }
+
     public void generarPersonajes(int dificultad) {
         casillas[7][8] = personajePrincipalUsuario;
-        posicionJugador = "";
-        posicionYJugador = 7;
-        posicionXJugador = 8;
         switch (dificultad) {
             case 1:
                 inventarioIA.agregar(listaEnemigos[4]);
                 inventarioIA.agregar(listaEnemigos[3]);
                 inventarioIA.agregar(listaEnemigos[2]);
+                inventarioIA.agregar(listaEnemigos[5]);
+                inventarioIA.agregar(listaEnemigos[5]);
                 casillas[3][3] = inventarioIA.seleccionar(0);
                 casillas[4][4] = inventarioIA.seleccionar(1);
                 casillas[5][5] = inventarioIA.seleccionar(2);
@@ -181,6 +181,7 @@ public class Tablero {
                 inventarioIA.agregar(listaEnemigos[3]);
                 inventarioIA.agregar(listaEnemigos[2]);
                 inventarioIA.agregar(listaEnemigos[1]);
+                inventarioIA.agregar(listaEnemigos[5]);
                 casillas[3][3] = inventarioIA.seleccionar(0);
                 casillas[4][4] = inventarioIA.seleccionar(1);
                 casillas[5][5] = inventarioIA.seleccionar(2);
@@ -230,6 +231,34 @@ public class Tablero {
         }
     }
 
+    public void mostrarEstadisticas() {//muestra las posiciones y puntos de vida en la consola
+
+        System.out.println("----------------------------------------------------------------");
+        System.out.print("|   ****Posiciones****");
+        System.out.println("     |        ****Puntos de Vida****      |");
+        System.out.println("|         (y x)            |                                    |");
+        System.out.println("----------------------------------------------------------------");
+        System.out.print("|Posicion jugador= " + posicionJugador + "(" + personajePrincipalUsuario.getNombre() + ")   |");
+        System.out.println("    Puntos de vida jugador=  " + personajePrincipalUsuario.getPuntosDeVida() + "(" + personajePrincipalUsuario.getNombre() + ") |");
+        System.out.println("----------------------------------------------------------------");
+
+        System.out.print("|Posicion enemigo 1= " + posicionEnemigo1 + "(" + inventarioIA.seleccionar(0).getNombre() + ") |");
+        System.out.println("    Puntos de vida enemigo 1= " + inventarioIA.seleccionar(0).getPuntosDeVida() + "(" + inventarioIA.seleccionar(0).getNombre() + ")|");
+
+        System.out.print("|Posicion enemigo 2= " + posicionEnemigo2 + "(" + inventarioIA.seleccionar(1).getNombre() + ") |");
+        System.out.println("    Puntos de vida enemigo 2= " + inventarioIA.seleccionar(1).getPuntosDeVida() + "(" + inventarioIA.seleccionar(1).getNombre() + ")|");
+
+        System.out.print("|Posicion enemigo 3= " + posicionEnemigo3 + "(" + inventarioIA.seleccionar(2).getNombre() + ") |");
+        System.out.println("    Puntos de vida enemigo 3= " + inventarioIA.seleccionar(2).getPuntosDeVida() + "(" + inventarioIA.seleccionar(2).getNombre() + ")|");
+
+        System.out.print("|Posicion enemigo 4= " + posicionEnemigo4 + "(" + inventarioIA.seleccionar(3).getNombre() + ") |");
+        System.out.println("    Puntos de vida enemigo 4= " + inventarioIA.seleccionar(3).getPuntosDeVida() + "(" + inventarioIA.seleccionar(3).getNombre() + ")|");
+
+        System.out.print("|Posicion enemigo 5= " + posicionEnemigo5 + "(" + inventarioIA.seleccionar(4).getNombre() + ") |");
+        System.out.println("    Puntos de vida enemigo 5= " + inventarioIA.seleccionar(4).getPuntosDeVida() + "(" + inventarioIA.seleccionar(4).getNombre() + ")|");
+        System.out.println("----------------------------------------------------------------");
+    }
+
     public void crearPosiciones(int dificultad) {
         posicionJugador = posicionYJugador + "" + posicionXJugador;
         posicionEnemigo = posicionYEnemigo + "" + posicionXEnemigo;
@@ -237,7 +266,7 @@ public class Tablero {
             case 1:
                 posicionEnemigo1 = posicionYEnemigo1 + "" + posicionXEnemigo1;
                 posicionEnemigo2 = posicionYEnemigo2 + "" + posicionXEnemigo2;
-                posicionEnemigo1 = posicionYEnemigo1 + "" + posicionXEnemigo1;
+                posicionEnemigo3 = posicionYEnemigo3 + "" + posicionXEnemigo3;
                 break;
             case 2:
                 posicionEnemigo1 = posicionYEnemigo1 + "" + posicionXEnemigo1;
@@ -395,321 +424,151 @@ public class Tablero {
         }
     }
 
-    public void moverEnemigosX(boolean derecha, int personajeMueve) {
-        switch (personajeMueve + 1) {
-            case 1:
-                if (inventarioIA.seleccionar(0).getPuntosDeVida() > 0) {
-                    personajePrincipalIA = inventarioIA.seleccionar(0);
-                    posicionYEnemigo = posicionYEnemigo1;
-                    posicionXEnemigo = posicionXEnemigo1;
-                    posicionEnemigo = posicionYEnemigo + "" + posicionXEnemigo;
-                }
-                break;
-            case 2:
-                if (inventarioIA.seleccionar(1).getPuntosDeVida() > 0) {
-                    personajePrincipalIA = inventarioIA.seleccionar(1);
-                    posicionYEnemigo = posicionYEnemigo2;
-                    posicionXEnemigo = posicionXEnemigo2;
-                    posicionEnemigo = posicionYEnemigo + "" + posicionXEnemigo;
-                }
-                break;
-            case 3:
-                if (inventarioIA.seleccionar(2).getPuntosDeVida() > 0) {
-                    personajePrincipalIA = inventarioIA.seleccionar(2);
-                    posicionYEnemigo = posicionYEnemigo3;
-                    posicionXEnemigo = posicionXEnemigo3;
-                    posicionEnemigo = posicionYEnemigo + "" + posicionXEnemigo;
-                }
-                break;
-            case 4:
-                if (inventarioIA.seleccionar(3).getPuntosDeVida() > 0) {
-                    personajePrincipalIA = inventarioIA.seleccionar(3);
-                    posicionYEnemigo = posicionYEnemigo4;
-                    posicionXEnemigo = posicionXEnemigo4;
-                    posicionEnemigo = posicionYEnemigo + "" + posicionXEnemigo;
-                }
-                break;
-            case 5:
-                if (inventarioIA.seleccionar(4).getPuntosDeVida() > 0) {
-                    personajePrincipalIA = inventarioIA.seleccionar(4);
-                    posicionYEnemigo = posicionYEnemigo5;
-                    posicionXEnemigo = posicionXEnemigo5;
-                    posicionEnemigo = posicionYEnemigo + "" + posicionXEnemigo;
-                }
-                break;
-            default:
-                break;
-        }
-        System.out.println("personajePrincipalIA(vida)=" + personajePrincipalIA.getPuntosDeVida());
+    public void moverEnemigosY(boolean arriba, int personajeMueve) {
+        cambiarPrincipalIA(personajeMueve);
         System.out.println("personajeMueve = " + personajeMueve);
-        System.out.println("personajePrincipalIA = " + personajePrincipalIA.getNombre());
-        if (personajePrincipalIA.getPuntosDeVida() > 0) {
-            int movimiento = personajePrincipalIA.getMovimiento();
-            boolean vuela = personajePrincipalIA.isVuela();
-            if (derecha == true) {
-                int tmp1 = 0;
-                posicionEnemigo = posicionYEnemigo + "" + posicionXEnemigo;//suma la posicion "X" y "Y", para hacerlos un numero unico
-                tmp1 = Integer.parseInt(posicionEnemigo);//convierte la posicion en un int
+        System.out.println("personajePrincipalIA = " + personajePrincipalIA);
+        boolean vuela = personajePrincipalIA.isVuela();
+        int movimiento = personajePrincipalIA.getMovimiento();
 
-                while (posicionXEnemigo + movimiento < 0
-                        || casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Arbol && posicionXEnemigo + movimiento < 0) {
-                    movimiento++;
-                }
+        if (arriba == true) {//realiza el movimiento hacia arriba
+            movimiento = movimiento * -1;
+            int tmp1 = 0;
+            tmp1 = Integer.parseInt(posicionEnemigo);
 
-                while (posicionXEnemigo + movimiento >= columnas
-                        || casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Arbol && posicionXEnemigo + movimiento >= columnas) {
-                    movimiento--;
-                }
-                if (posicionXEnemigo + movimiento >= 0 && posicionXEnemigo + movimiento < columnas) {
-                    if (casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Planicie
-                            || casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Agua && vuela == true
-                            || casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Arbol && vuela == true) {
-
-                        casillas[posicionYEnemigo][posicionXEnemigo] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);
-                        casillas[posicionYEnemigo][posicionXEnemigo + movimiento] = personajePrincipalIA;
-                        tmp1 = tmp1 + (movimiento);
-                        if (tmp1 < 10) {
-                            posicionEnemigo = 0 + "" + tmp1;
-                        } else {
-                            posicionEnemigo = String.valueOf(tmp1);
-                        }
-                        posicionYEnemigo = tmp1 / 10;
-                        posicionXEnemigo = tmp1 % 10;
-                    }
-                }
-                System.out.println(personajePrincipalIA + " se movio: " + movimiento + " casillas en direccion al este");
-            } else if (derecha == false) {
-                movimiento = movimiento * -1;
-                int tmp1 = 0;
-                posicionEnemigo = posicionYEnemigo + "" + posicionXEnemigo;//suma la posicion "X" y "Y", para hacerlos un numero unico
-                tmp1 = Integer.parseInt(posicionEnemigo);//convierte la posicion en un int
-                while (posicionXEnemigo + movimiento < 0
-                        || casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Arbol && posicionXEnemigo + movimiento < 0) {
-                    movimiento++;
-                }
-                while (posicionXEnemigo + movimiento >= columnas
-                        || casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Arbol && posicionXEnemigo + movimiento >= columnas) {
-                    movimiento--;
-                }
-                if (posicionXEnemigo + movimiento >= 0 && posicionXEnemigo + movimiento < columnas) {
-                    if (casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Planicie
-                            || casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Agua && vuela == true
-                            || casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Arbol && vuela == true) {
-
-                        casillas[posicionYEnemigo][posicionXEnemigo] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);
-                        casillas[posicionYEnemigo][posicionXEnemigo + movimiento] = personajePrincipalIA;
-
-                        tmp1 = tmp1 + (movimiento);
-                        if (tmp1 < 10) {
-                            posicionEnemigo = 0 + "" + tmp1;
-                        } else {
-                            posicionEnemigo = String.valueOf(tmp1);
-                        }
-                        posicionYEnemigo = tmp1 / 10;
-                        posicionXEnemigo = tmp1 % 10;
-                    }
-                }
-                movimiento = movimiento * -1;
-                System.out.println(personajePrincipalIA + " se movio: " + movimiento + " casillas en direccion al oeste");
+            while (posicionYEnemigo + movimiento < 0//verifica que los valores no sobrepasen la matriz
+                    || casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Arbol && posicionYEnemigo + movimiento < 0) {
+                movimiento++;
             }
-        }
-        if (personajeMueve == 1) {
-            posicionYEnemigo1 = posicionYEnemigo;
-            posicionXEnemigo1 = posicionXEnemigo;
-            posicionEnemigo1 = posicionYEnemigo1 + "" + posicionXEnemigo1;
-            ataqueEnemigosY(true, 1);
-            ataqueEnemigosY(false, 1);
-            ataqueEnemigosX(true, 1);
-            ataqueEnemigosX(false, 1);
-        } else if (personajeMueve == 2) {
-            posicionYEnemigo2 = posicionYEnemigo;
-            posicionXEnemigo2 = posicionXEnemigo;
-            posicionEnemigo2 = posicionYEnemigo2 + "" + posicionXEnemigo2;
-            ataqueEnemigosY(true, 2);
-            ataqueEnemigosY(false, 2);
-            ataqueEnemigosX(true, 2);
-            ataqueEnemigosX(false, 2);
-        } else if (personajeMueve == 3) {
-            posicionYEnemigo3 = posicionYEnemigo;
-            posicionXEnemigo3 = posicionXEnemigo;
-            posicionEnemigo3 = posicionYEnemigo3 + "" + posicionXEnemigo3;
-            ataqueEnemigosY(true, 3);
-            ataqueEnemigosY(false, 3);
-            ataqueEnemigosX(true, 3);
-            ataqueEnemigosX(false, 3);
-        } else if (personajeMueve == 4) {
-            posicionYEnemigo4 = posicionYEnemigo;
-            posicionXEnemigo4 = posicionXEnemigo;
-            posicionEnemigo4 = posicionYEnemigo4 + "" + posicionXEnemigo4;
-            ataqueEnemigosY(true, 4);
-            ataqueEnemigosY(false, 4);
-            ataqueEnemigosX(true, 4);
-            ataqueEnemigosX(false, 4);
-        } else if (personajeMueve == 5) {
-            posicionYEnemigo5 = posicionYEnemigo;
-            posicionXEnemigo5 = posicionXEnemigo;
-            posicionEnemigo5 = posicionYEnemigo5 + "" + posicionXEnemigo5;
-            ataqueEnemigosY(true, 5);
-            ataqueEnemigosY(false, 5);
-            ataqueEnemigosX(true, 5);
-            ataqueEnemigosX(false, 5);
-        }
+            while (posicionYEnemigo + movimiento >= filas
+                    || casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Arbol && posicionYEnemigo + movimiento >= filas) {
+                movimiento--;
+            }
+            if (posicionYEnemigo + movimiento >= 0 && posicionYEnemigo + movimiento < filas) {
+                if (casillas[posicionYEnemigo + movimiento][posicionYEnemigo] instanceof Planicie
+                        || casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Agua && vuela == true
+                        || casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Arbol && vuela == true) {//verifica que la siguiente casilla sea campo
+                    casillas[posicionYEnemigo][posicionXEnemigo] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);//reemplaza la casilla por campo, de donde se movio el vehiculo
+                    casillas[posicionYEnemigo + movimiento][posicionXEnemigo] = personajePrincipalIA;
 
-        personajePrincipalIA = listaEnemigos[5];
+                    tmp1 = tmp1 + (movimiento * 10);
+                    if (tmp1 < 10) {
+                        posicionEnemigo = 0 + "" + tmp1;
+                    } else {
+                        posicionEnemigo = String.valueOf(tmp1);
+                    }
+                    posicionYEnemigo = tmp1 / 10;
+                    posicionXEnemigo = tmp1 % 10;
+                }
+            }
+            movimiento = movimiento * -1;
+            System.out.println(personajePrincipalIA.getName() + "Te moviste(IA): " + movimiento + " casillas en direccion al norte");
+        } else if (arriba == false) {//realiza el movimiento hacia abajo
+            int tmp1 = 0;
+            tmp1 = Integer.parseInt(posicionEnemigo);
+
+            while (posicionYEnemigo + movimiento < 0
+                    || casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Arbol && posicionYEnemigo + movimiento < 0) {
+                movimiento++;
+            }
+            while (posicionYEnemigo + movimiento >= filas
+                    || casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Arbol && posicionYEnemigo + movimiento >= filas) {
+                movimiento--;
+            }
+            if (posicionYEnemigo + movimiento >= 0 && posicionYEnemigo + movimiento < filas) {
+                if (casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Planicie
+                        || casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Agua && vuela == true
+                        || casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Arbol && vuela == true) {
+                    casillas[posicionYEnemigo][posicionXEnemigo] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);;
+                    casillas[posicionYEnemigo + movimiento][posicionXEnemigo] = personajePrincipalIA;
+
+                    tmp1 = tmp1 + (movimiento * 10);
+                    if (tmp1 < 10) {
+                        posicionEnemigo = 0 + "" + tmp1;
+                    } else {
+                        posicionEnemigo = String.valueOf(tmp1);
+                    }
+                    posicionYEnemigo = tmp1 / 10;
+                    posicionXEnemigo = tmp1 % 10;
+                }
+            }
+            System.out.println("Te moviste(IA): " + movimiento + " casillas en direccion al sur");
+        }
+        devolverPosicionesPrincipalIA(personajeMueve);
     }
 
-    public void moverEnemigosY(boolean arriba, int personajeMueve) {
-        switch (personajeMueve + 1) {
-            case 1:
-                if (inventarioIA.seleccionar(0).getPuntosDeVida() > 0) {
-                    personajePrincipalIA = inventarioIA.seleccionar(0);
-                    posicionYEnemigo = posicionYEnemigo1;
-                    posicionXEnemigo = posicionXEnemigo1;
-                    posicionEnemigo = posicionYEnemigo1 + "" + posicionXEnemigo1;
-                }
-                break;
-            case 2:
-                if (inventarioIA.seleccionar(1).getPuntosDeVida() > 0) {
-                    personajePrincipalIA = inventarioIA.seleccionar(1);
-                    posicionYEnemigo = posicionYEnemigo2;
-                    posicionXEnemigo = posicionXEnemigo2;
-                    posicionEnemigo = posicionYEnemigo2 + "" + posicionXEnemigo2;
-                }
-                break;
-            case 3:
-                if (inventarioIA.seleccionar(2).getPuntosDeVida() > 0) {
-                    personajePrincipalIA = inventarioIA.seleccionar(2);
-                    posicionYEnemigo = posicionYEnemigo3;
-                    posicionXEnemigo = posicionXEnemigo3;
-                    posicionEnemigo = posicionYEnemigo3 + "" + posicionXEnemigo3;
-                }
-                break;
-            case 4:
-                if (inventarioIA.seleccionar(3).getPuntosDeVida() > 0) {
-                    personajePrincipalIA = inventarioIA.seleccionar(3);
-                    posicionYEnemigo = posicionYEnemigo4;
-                    posicionXEnemigo = posicionXEnemigo4;
-                    posicionEnemigo = posicionYEnemigo4 + "" + posicionXEnemigo4;
-                }
-                break;
-            case 5:
-                if (inventarioIA.seleccionar(4).getPuntosDeVida() > 0) {
-                    personajePrincipalIA = inventarioIA.seleccionar(4);
-                    posicionYEnemigo = posicionYEnemigo5;
-                    posicionXEnemigo = posicionXEnemigo5;
-                    posicionEnemigo = posicionYEnemigo5 + "" + posicionXEnemigo5;
-                }
-                break;
-            default:
-                break;
-        }
-        System.out.println("personajePrincipalIA(vida)=" + personajePrincipalIA.getPuntosDeVida());
+    public void moverEnemigosX(boolean derecha, int personajeMueve) {
         System.out.println("personajeMueve = " + personajeMueve);
-        System.out.println("personajePrincipalIA = " + personajePrincipalIA.getNombre());
-        if (personajePrincipalIA.getPuntosDeVida() > 0) {
-            boolean vuela = personajePrincipalIA.isVuela();
-            int movimiento = personajePrincipalIA.getMovimiento();
-            if (arriba == true) {
-                movimiento = movimiento * -1;
-                int tmp1 = 0;
-                tmp1 = Integer.parseInt(posicionEnemigo);//convierte la posicion en un int
-                while (posicionYEnemigo + movimiento < 0
-                        || casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Arbol && posicionYEnemigo + movimiento < 0) {
-                    movimiento++;
-                }
-                while (posicionYEnemigo + movimiento >= filas
-                        || casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Arbol && posicionYEnemigo + movimiento >= filas) {
-                    movimiento--;
-                }
-                if (posicionYEnemigo + movimiento >= 0 && posicionYEnemigo + movimiento < filas) {
-                    if (casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Planicie
-                            || casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Agua && vuela == true
-                            || casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Arbol && vuela == true) {//verifica que la siguiente casilla sea campo
-                        casillas[posicionYEnemigo][posicionXEnemigo] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);//reemplaza la casilla por campo, de donde se movio el vehiculo
-                        casillas[posicionYEnemigo + movimiento][posicionXEnemigo] = personajePrincipalIA;//cambia al vehiculo del jugador a la nueva posicion
+        cambiarPrincipalIA(personajeMueve);
+        System.out.println("personajePrincipalIA = " + personajePrincipalIA);
 
-                        tmp1 = tmp1 + (movimiento * 10);
-                        if (tmp1 < 10) {//pasa el valor de la posicion de int a string
-                            posicionEnemigo = 0 + "" + tmp1;
-                        } else {
-                            posicionEnemigo = String.valueOf(tmp1);
-                        }
-                        posicionYEnemigo = tmp1 / 10;//individualiza la posicion del vehiculo en el eje "Y"
-                        posicionXEnemigo = tmp1 % 10;//individualiza la posicion del vehiculo en el eje "X"
-                    }
-                }
-                movimiento = movimiento * -1;
-                System.out.println(personajePrincipalIA + " se movio: " + movimiento + " casillas en direccion al norte");
-            } else if (arriba == false) {
-                int tmp1 = 0;
-                posicionEnemigo = posicionYEnemigo + "" + posicionXEnemigo;//suma la posicion "X" y "Y", para hacerlos un numero unico
-                tmp1 = Integer.parseInt(posicionEnemigo);//convierte la posicion en un int
-                while (posicionYEnemigo + movimiento >= filas
-                        || casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Arbol && posicionYEnemigo + movimiento >= filas) {
-                    movimiento--;
-                }
-                if (posicionYEnemigo + movimiento >= 0 && posicionYEnemigo + movimiento < filas) {
-                    if (casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Planicie
-                            || casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Agua && vuela == true
-                            || casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Arbol && vuela == true) {//verifica que la siguiente casilla sea campo
-                        casillas[posicionYEnemigo][posicionXEnemigo] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);//reemplaza la casilla por campo, de donde se movio el vehiculo
-                        casillas[posicionYEnemigo + movimiento][posicionXEnemigo] = personajePrincipalIA;//cambia al vehiculo del jugador a la nueva posicion
-
-                        tmp1 = tmp1 + (movimiento * 10);//modifica el valor de la posicion del vehiculo
-                        if (tmp1 < 10) {//pasa el valor de la posicion de int a string
-                            posicionEnemigo = 0 + "" + tmp1;
-                        } else {
-                            posicionEnemigo = String.valueOf(tmp1);
-                        }
-                        posicionYEnemigo = tmp1 / 10;//individualiza la posicion del vehiculo en el eje "Y"
-                        posicionXEnemigo = tmp1 % 10;//individualiza la posicion del vehiculo en el eje "X"
-                    }
-                }
-                System.out.println(personajePrincipalIA + " se movio: " + movimiento + " casillas en direccion al sur");
+        int movimiento = personajePrincipalIA.getMovimiento();
+        boolean vuela = personajePrincipalIA.isVuela();
+        if (derecha == true) {//realiza el movimiento hacia la derecha
+            int tmp1 = 0;
+            tmp1 = Integer.parseInt(posicionEnemigo);//convierte la posicion en un int
+            while (posicionXEnemigo + movimiento < 0
+                    || casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Arbol && posicionXEnemigo + movimiento < 0) {
+                movimiento++;
             }
+            while (posicionXEnemigo + movimiento >= columnas
+                    || casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Arbol && posicionXEnemigo + movimiento >= columnas) {
+                movimiento--;
+            }
+            if (posicionXEnemigo + movimiento >= 0 && posicionXEnemigo + movimiento < columnas) {
+                if (casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Planicie
+                        || casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Agua && vuela == true
+                        || casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Arbol && vuela == true) {
+
+                    casillas[posicionYEnemigo][posicionXEnemigo] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);;
+                    casillas[posicionYEnemigo][posicionXEnemigo + movimiento] = personajePrincipalIA;
+                    tmp1 = tmp1 + (movimiento);
+                    if (tmp1 < 10) {
+                        posicionEnemigo = 0 + "" + tmp1;
+                    } else {
+                        posicionEnemigo = String.valueOf(tmp1);
+                    }
+                    posicionYEnemigo = tmp1 / 10;
+                    posicionXEnemigo = tmp1 % 10;
+                }
+            }
+            System.out.println("Te moviste: " + movimiento + " casillas en direccion al este");
+
+        } else if (derecha == false) {//realiza el movimiento hacia la izquierda
+            movimiento = movimiento * -1;
+            int tmp1 = 0;
+            tmp1 = Integer.parseInt(posicionEnemigo);
+
+            while (posicionXEnemigo + movimiento < 0
+                    || casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Arbol && posicionXEnemigo + movimiento < 0) {
+                movimiento++;
+            }
+            while (posicionXEnemigo + movimiento >= columnas
+                    || casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Arbol && posicionXEnemigo + movimiento >= columnas) {
+                movimiento--;
+            }
+            if (posicionXEnemigo + movimiento >= 0 && posicionXEnemigo + movimiento < columnas) {
+                if (casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Planicie
+                        || casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Agua && vuela == true
+                        || casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Arbol && vuela == true) {
+
+                    casillas[posicionYEnemigo][posicionXEnemigo] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);
+                    casillas[posicionYEnemigo][posicionXEnemigo + movimiento] = personajePrincipalIA;
+
+                    tmp1 = tmp1 + (movimiento);
+                    if (tmp1 < 10) {
+                        posicionEnemigo = 0 + "" + tmp1;
+                    } else {
+                        posicionEnemigo = String.valueOf(tmp1);
+                    }
+                    posicionYEnemigo = tmp1 / 10;
+                    posicionXEnemigo = tmp1 % 10;
+                }
+            }
+            movimiento = movimiento * -1;
+            System.out.println("Te moviste: " + movimiento + " casillas en direccion al oeste");
         }
-        if (personajeMueve == 1) {
-            posicionYEnemigo1 = posicionYEnemigo;
-            posicionXEnemigo1 = posicionXEnemigo;
-            posicionEnemigo1 = posicionYEnemigo1 + "" + posicionXEnemigo1;
-            ataqueEnemigosY(true, 1);
-            ataqueEnemigosY(false, 1);
-            ataqueEnemigosX(true, 1);
-            ataqueEnemigosX(false, 1);
-        } else if (personajeMueve == 2) {
-            posicionYEnemigo2 = posicionYEnemigo;
-            posicionXEnemigo2 = posicionXEnemigo;
-            posicionEnemigo2 = posicionYEnemigo2 + "" + posicionXEnemigo2;
-            ataqueEnemigosY(true, 2);
-            ataqueEnemigosY(false, 2);
-            ataqueEnemigosX(true, 2);
-            ataqueEnemigosX(false, 2);
-        } else if (personajeMueve == 3) {
-            posicionYEnemigo3 = posicionYEnemigo;
-            posicionXEnemigo3 = posicionXEnemigo;
-            posicionEnemigo3 = posicionYEnemigo3 + "" + posicionXEnemigo3;
-            ataqueEnemigosY(true, 3);
-            ataqueEnemigosY(false, 3);
-            ataqueEnemigosX(true, 3);
-            ataqueEnemigosX(false, 3);
-        } else if (personajeMueve == 4) {
-            posicionYEnemigo4 = posicionYEnemigo;
-            posicionXEnemigo4 = posicionXEnemigo;
-            posicionEnemigo4 = posicionYEnemigo4 + "" + posicionXEnemigo4;
-            ataqueEnemigosY(true, 4);
-            ataqueEnemigosY(false, 4);
-            ataqueEnemigosX(true, 4);
-            ataqueEnemigosX(false, 4);
-        } else if (personajeMueve == 5) {
-            posicionYEnemigo5 = posicionYEnemigo;
-            posicionXEnemigo5 = posicionXEnemigo;
-            posicionEnemigo5 = posicionYEnemigo5 + "" + posicionXEnemigo5;
-            ataqueEnemigosY(true, 5);
-            ataqueEnemigosY(false, 5);
-            ataqueEnemigosX(true, 5);
-            ataqueEnemigosX(false, 5);
-        }
-        personajePrincipalIA = listaEnemigos[5];
+        devolverPosicionesPrincipalIA(personajeMueve);
     }
 
     public void ataqueJugadorY(boolean arriba) {
@@ -982,6 +841,76 @@ public class Tablero {
         }
     }
 
+    public void cambiarPrincipalIA(int personajeMueve) {
+        switch (personajeMueve) {
+            case 0:
+                personajePrincipalIA = inventarioIA.seleccionar(personajeMueve);
+                posicionYEnemigo = posicionYEnemigo1;
+                posicionXEnemigo = posicionXEnemigo1;
+                posicionEnemigo = posicionYEnemigo1 + "" + posicionXEnemigo1;
+                break;
+            case 1:
+                personajePrincipalIA = inventarioIA.seleccionar(personajeMueve);
+                posicionYEnemigo = posicionYEnemigo2;
+                posicionXEnemigo = posicionXEnemigo2;
+                posicionEnemigo = posicionYEnemigo2 + "" + posicionXEnemigo2;
+                break;
+            case 2:
+                personajePrincipalIA = inventarioIA.seleccionar(personajeMueve);
+                posicionYEnemigo = posicionYEnemigo3;
+                posicionXEnemigo = posicionXEnemigo3;
+                posicionEnemigo = posicionYEnemigo3 + "" + posicionXEnemigo3;
+                break;
+            case 3:
+                personajePrincipalIA = inventarioIA.seleccionar(personajeMueve);
+                posicionYEnemigo = posicionYEnemigo4;
+                posicionXEnemigo = posicionXEnemigo4;
+                posicionEnemigo = posicionYEnemigo4 + "" + posicionXEnemigo4;
+                break;
+            case 4:
+                personajePrincipalIA = inventarioIA.seleccionar(personajeMueve);
+                posicionYEnemigo = posicionYEnemigo5;
+                posicionXEnemigo = posicionXEnemigo5;
+                posicionEnemigo = posicionYEnemigo5 + "" + posicionXEnemigo5;
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void devolverPosicionesPrincipalIA(int personajeMueve) {
+        switch (personajeMueve) {
+            case 0:
+                posicionYEnemigo1 = posicionYEnemigo;
+                posicionXEnemigo1 = posicionXEnemigo;
+                posicionEnemigo1 = posicionYEnemigo + "" + posicionXEnemigo;
+                break;
+            case 1:
+                posicionYEnemigo2 = posicionYEnemigo;
+                posicionXEnemigo2 = posicionXEnemigo;
+                posicionEnemigo2 = posicionYEnemigo + "" + posicionXEnemigo;
+                break;
+            case 2:
+                posicionYEnemigo3 = posicionYEnemigo;
+                posicionXEnemigo3 = posicionXEnemigo;
+                posicionEnemigo3 = posicionYEnemigo + "" + posicionXEnemigo;
+                break;
+            case 3:
+                posicionYEnemigo4 = posicionYEnemigo;
+                posicionXEnemigo4 = posicionXEnemigo;
+                posicionEnemigo4 = posicionYEnemigo + "" + posicionXEnemigo;
+                break;
+            case 4:
+                posicionYEnemigo5 = posicionYEnemigo;
+                posicionXEnemigo5 = posicionXEnemigo;
+                posicionEnemigo5 = posicionYEnemigo + "" + posicionXEnemigo;
+                break;
+            default:
+                break;
+        }
+        personajePrincipalIA = listaEnemigos[5];
+    }
+
     public void realizarTurnoIA() {
         int tamanoInventario = 0;
         if (ia.getDificultad() == 1) {
@@ -1003,7 +932,6 @@ public class Tablero {
                     } else {
                         System.out.println("El personaje no tiene vida");
                     }
-
                     break;
                 case 2:
                     if (inventarioIA.seleccionar(i).getPuntosDeVida() > 0) {
@@ -1034,7 +962,6 @@ public class Tablero {
             }
             System.out.println("CAMBIO EL PERSONAJE");
         }
-
     }
 
     public void getId(String id) {

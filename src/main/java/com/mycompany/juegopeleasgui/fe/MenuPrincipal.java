@@ -26,7 +26,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnGeneracionTablero.setEnabled(false);
         btnInventario.setEnabled(false);
         btnRanking.setEnabled(false);
-
+        lblIngresarNombre.setVisible(false);
+        fieldNombre.setVisible(false);
+        btnAceptar.setVisible(false);
+        btnGuardarJugador.setVisible(false);
         inventarioUsuario = usuario.getInventarioUsuario();
         inventarioArticulos = usuario.getInventarioArticulos();
     }
@@ -56,6 +59,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         lblCantidadOro = new javax.swing.JLabel();
         lblNombreTexto = new javax.swing.JLabel();
         lblIngresarNombre = new javax.swing.JLabel();
+        btnNuevoJugador = new javax.swing.JButton();
+        btnCargarJugador = new javax.swing.JButton();
+        btnGuardarJugador = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -151,55 +157,90 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         lblIngresarNombre.setText("Ingresa tu nombre");
 
+        btnNuevoJugador.setText("Nuevo Jugador");
+        btnNuevoJugador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoJugadorActionPerformed(evt);
+            }
+        });
+
+        btnCargarJugador.setText("Cargar Jugador");
+        btnCargarJugador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCargarJugadorActionPerformed(evt);
+            }
+        });
+
+        btnGuardarJugador.setText("Guardar Jugador");
+        btnGuardarJugador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarJugadorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlFrameLayout = new javax.swing.GroupLayout(pnlFrame);
         pnlFrame.setLayout(pnlFrameLayout);
         pnlFrameLayout.setHorizontalGroup(
             pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlFrameLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFrameLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(lblIngresarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(fieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47))
                     .addGroup(pnlFrameLayout.createSequentialGroup()
-                        .addGroup(pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(lblNombreTexto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(141, 141, 141)
+                        .addComponent(lblBienvenida))
+                    .addGroup(pnlFrameLayout.createSequentialGroup()
+                        .addGap(141, 141, 141)
+                        .addComponent(lblTitulo))
+                    .addGroup(pnlFrameLayout.createSequentialGroup()
+                        .addGap(123, 123, 123)
+                        .addComponent(btnIniciarPartida, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlFrameLayout.createSequentialGroup()
+                        .addGap(123, 123, 123)
+                        .addComponent(btnTienda, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlFrameLayout.createSequentialGroup()
+                        .addGap(123, 123, 123)
+                        .addComponent(btnGeneracionTablero, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlFrameLayout.createSequentialGroup()
+                        .addGap(123, 123, 123)
+                        .addComponent(btnInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlFrameLayout.createSequentialGroup()
+                        .addGap(123, 123, 123)
+                        .addComponent(btnRanking, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlFrameLayout.createSequentialGroup()
+                        .addGap(123, 123, 123)
+                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlFrameLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(lblNombre)
+                        .addGap(108, 108, 108)
+                        .addComponent(lblOro))
+                    .addGroup(pnlFrameLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(lblNombreTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(108, 108, 108)
+                        .addComponent(lblCantidadOro, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlFrameLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblIngresarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnNuevoJugador))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(pnlFrameLayout.createSequentialGroup()
+                                .addComponent(btnCargarJugador)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnGuardarJugador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(pnlFrameLayout.createSequentialGroup()
+                                .addComponent(fieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnIniciarPartida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnTienda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnGeneracionTablero, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                    .addComponent(btnInventario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnRanking, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFrameLayout.createSequentialGroup()
-                                .addGap(108, 108, 108)
-                                .addGroup(pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblOro)
-                                    .addComponent(lblCantidadOro, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(100, 100, 100))))))
-            .addGroup(pnlFrameLayout.createSequentialGroup()
-                .addGap(141, 141, 141)
-                .addGroup(pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblBienvenida)
-                    .addComponent(lblTitulo))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         pnlFrameLayout.setVerticalGroup(
             pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlFrameLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(6, 6, 6)
                 .addComponent(lblBienvenida)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
                 .addComponent(lblTitulo)
                 .addGap(12, 12, 12)
                 .addComponent(btnIniciarPartida)
@@ -211,22 +252,29 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(btnInventario)
                 .addGap(18, 18, 18)
                 .addComponent(btnRanking)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(12, 12, 12)
                 .addComponent(btnSalir)
                 .addGap(24, 24, 24)
-                .addGroup(pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblOro))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblNombreTexto, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-                    .addComponent(lblCantidadOro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlFrameLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(lblOro)))
+                .addGap(6, 6, 6)
+                .addGroup(pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblNombreTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCantidadOro, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnNuevoJugador)
+                    .addComponent(btnCargarJugador)
+                    .addComponent(btnGuardarJugador))
+                .addGap(18, 18, 18)
+                .addGroup(pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblIngresarNombre)
                     .addComponent(fieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAceptar)
-                    .addComponent(lblIngresarNombre))
-                .addContainerGap(12, Short.MAX_VALUE))
+                    .addComponent(btnAceptar))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -297,15 +345,35 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnIniciarPartidaActionPerformed
 
+    private void btnNuevoJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoJugadorActionPerformed
+        lblIngresarNombre.setVisible(true);
+        fieldNombre.setVisible(true);
+        btnAceptar.setVisible(true);
+        btnCargarJugador.setVisible(false);
+        btnNuevoJugador.setVisible(false);
+        btnGuardarJugador.setVisible(true);
+    }//GEN-LAST:event_btnNuevoJugadorActionPerformed
+
+    private void btnCargarJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarJugadorActionPerformed
+        usuario.cargarJugador();
+    }//GEN-LAST:event_btnCargarJugadorActionPerformed
+
+    private void btnGuardarJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarJugadorActionPerformed
+        usuario.guardarJugador(usuario);
+    }//GEN-LAST:event_btnGuardarJugadorActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
+    private javax.swing.JButton btnCargarJugador;
     private javax.swing.JButton btnGeneracionTablero;
+    private javax.swing.JButton btnGuardarJugador;
     private javax.swing.JButton btnIniciarPartida;
     private javax.swing.JButton btnInventario;
+    private javax.swing.JButton btnNuevoJugador;
     private javax.swing.JButton btnRanking;
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnTienda;

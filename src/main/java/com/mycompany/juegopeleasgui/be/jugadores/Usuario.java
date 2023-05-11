@@ -16,12 +16,17 @@ import com.mycompany.juegopeleasgui.be.personajes.personajeJugable.Dragon;
 import com.mycompany.juegopeleasgui.be.personajes.personajeJugable.Gigante;
 import com.mycompany.juegopeleasgui.be.personajes.personajeJugable.JugableVacio;
 import com.mycompany.juegopeleasgui.be.personajes.personajeJugable.Mago;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-public class Usuario extends Jugador {
+public class Usuario extends Jugador implements Serializable {
 
     private int oro;
     private Jugable[] listaJugables;
@@ -157,4 +162,25 @@ public class Usuario extends Jugador {
         btnIzuierda.setEnabled(false);
     }
 
+    public void guardarJugador(Usuario usuario) {
+        try {
+            ObjectOutputStream escribirUsuario = new ObjectOutputStream(new FileOutputStream("src\\main\\java\\archivo\\usuarios.bin"));
+            escribirUsuario.writeObject(usuario);
+            escribirUsuario.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void cargarJugador() {
+        try {
+            ObjectInputStream leerUsuario = new ObjectInputStream(new FileInputStream("src\\main\\java\\archivo\\usuarios.bin"));
+            Usuario miObjetoLeido = (Usuario) leerUsuario.readObject();
+            leerUsuario.close();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+    }
 }

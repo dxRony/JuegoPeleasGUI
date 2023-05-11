@@ -6,6 +6,7 @@ import com.mycompany.juegopeleasgui.be.personajes.personajeNoJugable.Bruja;
 import com.mycompany.juegopeleasgui.be.personajes.personajeNoJugable.Cancerbero;
 import com.mycompany.juegopeleasgui.be.personajes.personajeNoJugable.FlorCarnivora;
 import com.mycompany.juegopeleasgui.be.personajes.personajeNoJugable.Gargola;
+import com.mycompany.juegopeleasgui.be.personajes.personajeNoJugable.NoJugableVacio;
 import com.mycompany.juegopeleasgui.be.personajes.personajeNoJugable.Ogro;
 
 public class IA extends Jugador {
@@ -23,7 +24,7 @@ public class IA extends Jugador {
         listaEnemigos[2] = new FlorCarnivora(50);
         listaEnemigos[3] = new Gargola(60);
         listaEnemigos[4] = new Ogro(60);
-        listaEnemigos[5] = new NoJugable(95);
+        listaEnemigos[5] = new NoJugableVacio(95);
         inventarioIA = new ListaGenerica<NoJugable>();
     }
 

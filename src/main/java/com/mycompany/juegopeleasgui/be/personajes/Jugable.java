@@ -1,8 +1,9 @@
 package com.mycompany.juegopeleasgui.be.personajes;
 
 import com.mycompany.juegopeleasgui.be.articulos.Articulo;
+import java.io.Serializable;
 
-public class Jugable extends Personaje {
+public class Jugable extends Personaje implements Serializable {
 
     private int coste;
     private Articulo articulos = new Articulo();

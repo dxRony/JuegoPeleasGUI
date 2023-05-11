@@ -1,6 +1,8 @@
 package com.mycompany.juegopeleasgui.be.articulos;
 
-public class Articulo {
+import java.io.Serializable;
+
+public class Articulo implements Serializable{
 
     protected String nombre;
     protected int coste;

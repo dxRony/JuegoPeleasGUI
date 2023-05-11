@@ -1,6 +1,8 @@
 package com.mycompany.juegopeleasgui.be.inventarios;
 
-public class ListaGenerica<T> {
+import java.io.Serializable;
+
+public class ListaGenerica<T> implements Serializable {
 
     private Nodo<T> primero;
     private String lista;

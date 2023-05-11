@@ -7,7 +7,6 @@ import com.mycompany.juegopeleasgui.be.jugadores.Usuario;
 import com.mycompany.juegopeleasgui.be.personajes.Jugable;
 import com.mycompany.juegopeleasgui.be.personajes.NoJugable;
 import com.mycompany.juegopeleasgui.fe.MenuPrincipal;
-import java.util.Scanner;
 
 public class MotorJuego {
 
@@ -20,7 +19,7 @@ public class MotorJuego {
     private ListaGenerica<Jugable> inventarioUsuario;
     private int oro;
 
-    public MotorJuego() {//revisado
+    public MotorJuego() {
         usuario = new Usuario();
         ia = new IA();
         listaJugables = usuario.getListaJugables();

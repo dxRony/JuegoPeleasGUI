@@ -428,7 +428,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
     private void btnMovimientoArribaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMovimientoArribaActionPerformed
         tableroNuevo.moverJugadorY(true);
         tableroNuevo.pintarMapa();
-        pnlTablero.removeAll();
+        tableroNuevo.actualizarTablero(pnlTablero);
         tableroNuevo.anadirBotones(pnlTablero, this);
 
         usuario.desactivarBotonesMovimiento(lblDireccionMovimiento, btnMovimientoArriba, btnMovimientoAbajo, btnMovimientoDerecha, btnMovimientoIzquierda);
@@ -439,7 +439,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
     private void btnMovimientoAbajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMovimientoAbajoActionPerformed
         tableroNuevo.moverJugadorY(false);
         tableroNuevo.pintarMapa();
-        pnlTablero.removeAll();
+        tableroNuevo.actualizarTablero(pnlTablero);
         tableroNuevo.anadirBotones(pnlTablero, this);
 
         usuario.desactivarBotonesMovimiento(lblDireccionMovimiento, btnMovimientoArriba, btnMovimientoAbajo, btnMovimientoDerecha, btnMovimientoIzquierda);
@@ -450,7 +450,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
     private void btnMovimientoDerechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMovimientoDerechaActionPerformed
         tableroNuevo.moverJugadorX(true);
         tableroNuevo.pintarMapa();
-        pnlTablero.removeAll();
+        tableroNuevo.actualizarTablero(pnlTablero);
         tableroNuevo.anadirBotones(pnlTablero, this);
 
         usuario.desactivarBotonesMovimiento(lblDireccionMovimiento, btnMovimientoArriba, btnMovimientoAbajo, btnMovimientoDerecha, btnMovimientoIzquierda);
@@ -461,7 +461,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
     private void btnMovimientoIzquierdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMovimientoIzquierdaActionPerformed
         tableroNuevo.moverJugadorX(false);
         tableroNuevo.pintarMapa();
-        pnlTablero.removeAll();
+        tableroNuevo.actualizarTablero(pnlTablero);
         tableroNuevo.anadirBotones(pnlTablero, this);
 
         usuario.desactivarBotonesMovimiento(lblDireccionMovimiento, btnMovimientoArriba, btnMovimientoAbajo, btnMovimientoDerecha, btnMovimientoIzquierda);
@@ -470,6 +470,8 @@ public class TableroDeJuego extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMovimientoIzquierdaActionPerformed
 
     private void btnTerminarTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTerminarTurnoActionPerformed
+        tableroNuevo.actualizarTablero(pnlTablero);
+        tableroNuevo.anadirBotones(pnlTablero, this);
         btnTerminarTurno.setEnabled(false);
         btnNuevoTurno.setVisible(true);
         btnNuevoTurno.setEnabled(true);
@@ -485,7 +487,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
         btnIniciarPartida.setVisible(false);
 
         tableroNuevo.realizarTurnoIA();
-        pnlTablero.removeAll();
+        tableroNuevo.actualizarTablero(pnlTablero);
         tableroNuevo.anadirBotones(pnlTablero, this);
 
     }//GEN-LAST:event_btnTerminarTurnoActionPerformed
@@ -502,7 +504,10 @@ public class TableroDeJuego extends javax.swing.JFrame {
         btnAtacar.setEnabled(true);
         btnMover.setEnabled(true);
         btnUsarArticulo.setEnabled(true);
+        tableroNuevo.actualizarTablero(pnlTablero);
+        tableroNuevo.anadirBotones(pnlTablero, this);
         btnNuevoTurno.setEnabled(false);
+
     }//GEN-LAST:event_btnNuevoTurnoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
