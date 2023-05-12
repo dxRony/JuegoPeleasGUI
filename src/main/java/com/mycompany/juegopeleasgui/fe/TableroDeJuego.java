@@ -98,15 +98,15 @@ public class TableroDeJuego extends javax.swing.JFrame {
         pnlTablero.setLayout(pnlTableroLayout);
         pnlTableroLayout.setHorizontalGroup(
             pnlTableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 772, Short.MAX_VALUE)
+            .addGap(0, 848, Short.MAX_VALUE)
         );
         pnlTableroLayout.setVerticalGroup(
             pnlTableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 408, Short.MAX_VALUE)
+            .addGap(0, 438, Short.MAX_VALUE)
         );
 
         pnlTableroDeJuego.add(pnlTablero);
-        pnlTablero.setBounds(10, 40, 774, 410);
+        pnlTablero.setBounds(10, 40, 850, 440);
 
         lblTableroDeJuego.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblTableroDeJuego.setText("TABLERO DE JUEGO");
@@ -120,7 +120,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
             }
         });
         pnlTableroDeJuego.add(btnCargarMapa);
-        btnCargarMapa.setBounds(20, 470, 190, 23);
+        btnCargarMapa.setBounds(20, 490, 190, 23);
 
         btnMostrarTableros.setText("Mostrar Tableros");
         btnMostrarTableros.addActionListener(new java.awt.event.ActionListener() {
@@ -261,7 +261,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
         lblAcciones.setForeground(new java.awt.Color(0, 0, 0));
         lblAcciones.setText("Elige una accion");
         pnlTableroDeJuego.add(lblAcciones);
-        lblAcciones.setBounds(370, 470, 120, 16);
+        lblAcciones.setBounds(370, 490, 120, 16);
 
         btnMover.setText("Mover personaje");
         btnMover.addActionListener(new java.awt.event.ActionListener() {
@@ -270,7 +270,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
             }
         });
         pnlTableroDeJuego.add(btnMover);
-        btnMover.setBounds(240, 490, 170, 23);
+        btnMover.setBounds(240, 510, 170, 23);
 
         btnAtacar.setText("Atacar a un enemigo");
         btnAtacar.addActionListener(new java.awt.event.ActionListener() {
@@ -279,7 +279,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
             }
         });
         pnlTableroDeJuego.add(btnAtacar);
-        btnAtacar.setBounds(430, 490, 170, 23);
+        btnAtacar.setBounds(430, 510, 170, 23);
 
         btnIniciarPartida.setText("Iniciar Partida");
         btnIniciarPartida.addActionListener(new java.awt.event.ActionListener() {
@@ -288,7 +288,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
             }
         });
         pnlTableroDeJuego.add(btnIniciarPartida);
-        btnIniciarPartida.setBounds(20, 500, 190, 23);
+        btnIniciarPartida.setBounds(20, 520, 190, 23);
 
         btnUsarArticulo.setText("Usar un articulo");
         btnUsarArticulo.addActionListener(new java.awt.event.ActionListener() {
@@ -297,7 +297,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
             }
         });
         pnlTableroDeJuego.add(btnUsarArticulo);
-        btnUsarArticulo.setBounds(330, 520, 170, 23);
+        btnUsarArticulo.setBounds(330, 540, 170, 23);
 
         btnTerminarTurno.setText("Terminar turno");
         btnTerminarTurno.addActionListener(new java.awt.event.ActionListener() {
@@ -306,7 +306,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
             }
         });
         pnlTableroDeJuego.add(btnTerminarTurno);
-        btnTerminarTurno.setBounds(230, 550, 200, 23);
+        btnTerminarTurno.setBounds(230, 570, 200, 23);
 
         btnNuevoTurno.setText("Nuevo turno");
         btnNuevoTurno.addActionListener(new java.awt.event.ActionListener() {
@@ -315,7 +315,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
             }
         });
         pnlTableroDeJuego.add(btnNuevoTurno);
-        btnNuevoTurno.setBounds(440, 550, 160, 23);
+        btnNuevoTurno.setBounds(440, 570, 160, 23);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

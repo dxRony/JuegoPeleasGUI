@@ -16,6 +16,7 @@ public class GuardarJugador {
             ObjectOutputStream objetoSalida = new ObjectOutputStream(archivoSalida);
 
             objetoSalida.writeObject(usuario);
+            System.out.println(" se guardo el jugador= " + usuario.getNombre());
 
             objetoSalida.close();
             archivoSalida.close();

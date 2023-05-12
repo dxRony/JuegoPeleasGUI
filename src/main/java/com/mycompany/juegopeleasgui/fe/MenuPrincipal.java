@@ -20,20 +20,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     public MenuPrincipal(Usuario usuario, IA ia) {
         initComponents();
-
         this.usuario = usuario;
         this.ia = ia;
-        btnIniciarPartida.setEnabled(false);
-        btnTienda.setEnabled(false);
-        btnGeneracionTablero.setEnabled(false);
-        btnInventario.setEnabled(false);
-        btnRanking.setEnabled(false);
-        lblIngresarNombre.setVisible(false);
-        fieldNombre.setVisible(false);
-        btnAceptar.setVisible(false);
-        btnGuardarJugador.setVisible(false);
         inventarioUsuario = usuario.getInventarioUsuario();
         inventarioArticulos = usuario.getInventarioArticulos();
+        lblCantidadOro.setText(usuario.getOro() + "");
+        lblNombreTexto.setText(usuario.getNombre() + "");
     }
 
     /**
@@ -55,14 +47,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnRanking = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
         lblNombre = new javax.swing.JLabel();
-        fieldNombre = new javax.swing.JTextField();
-        btnAceptar = new javax.swing.JButton();
         lblOro = new javax.swing.JLabel();
         lblCantidadOro = new javax.swing.JLabel();
         lblNombreTexto = new javax.swing.JLabel();
-        lblIngresarNombre = new javax.swing.JLabel();
-        btnNuevoJugador = new javax.swing.JButton();
-        btnCargarJugador = new javax.swing.JButton();
         btnGuardarJugador = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -134,44 +121,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         lblNombre.setForeground(new java.awt.Color(0, 0, 0));
         lblNombre.setText("Nombre del Jugador:");
 
-        fieldNombre.setBackground(new java.awt.Color(204, 0, 51));
-        fieldNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fieldNombreActionPerformed(evt);
-            }
-        });
-
-        btnAceptar.setBackground(new java.awt.Color(255, 255, 255));
-        btnAceptar.setForeground(new java.awt.Color(0, 0, 0));
-        btnAceptar.setText("Aceptar");
-        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAceptarActionPerformed(evt);
-            }
-        });
-
         lblOro.setForeground(new java.awt.Color(0, 0, 0));
         lblOro.setText("Oro del Jugador:");
 
         lblNombreTexto.setBackground(new java.awt.Color(0, 0, 0));
         lblNombreTexto.setForeground(new java.awt.Color(0, 0, 0));
         lblNombreTexto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        lblIngresarNombre.setText("Ingresa tu nombre");
-
-        btnNuevoJugador.setText("Nuevo Jugador");
-        btnNuevoJugador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNuevoJugadorActionPerformed(evt);
-            }
-        });
-
-        btnCargarJugador.setText("Cargar Jugador");
-        btnCargarJugador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCargarJugadorActionPerformed(evt);
-            }
-        });
 
         btnGuardarJugador.setText("Guardar Jugador");
         btnGuardarJugador.addActionListener(new java.awt.event.ActionListener() {
@@ -208,9 +163,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addGap(123, 123, 123)
                         .addComponent(btnRanking, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlFrameLayout.createSequentialGroup()
-                        .addGap(123, 123, 123)
-                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlFrameLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(lblNombre)
                         .addGap(108, 108, 108)
@@ -221,21 +173,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addGap(108, 108, 108)
                         .addComponent(lblCantidadOro, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlFrameLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblIngresarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnNuevoJugador))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(pnlFrameLayout.createSequentialGroup()
-                                .addComponent(btnCargarJugador)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnGuardarJugador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(pnlFrameLayout.createSequentialGroup()
-                                .addComponent(fieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(39, Short.MAX_VALUE))
+                        .addGap(123, 123, 123)
+                        .addGroup(pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnGuardarJugador)
+                            .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
         pnlFrameLayout.setVerticalGroup(
             pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -266,17 +208,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGroup(pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblNombreTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCantidadOro, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNuevoJugador)
-                    .addComponent(btnCargarJugador)
-                    .addComponent(btnGuardarJugador))
-                .addGap(18, 18, 18)
-                .addGroup(pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblIngresarNombre)
-                    .addComponent(fieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAceptar))
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addGap(43, 43, 43)
+                .addComponent(btnGuardarJugador)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -292,26 +226,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void fieldNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldNombreActionPerformed
-
-    }//GEN-LAST:event_fieldNombreActionPerformed
-
-    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        String nombre = fieldNombre.getText();
-        usuario.setNombre(nombre);
-        lblNombreTexto.setText(usuario.getNombre() + "");
-        lblCantidadOro.setText(usuario.getOro() + "");
-        btnIniciarPartida.setEnabled(true);
-        btnTienda.setEnabled(true);
-        btnGeneracionTablero.setEnabled(true);
-        btnInventario.setEnabled(true);
-        btnRanking.setEnabled(true);
-        fieldNombre.setVisible(false);
-        btnAceptar.setVisible(false);
-        btnAceptar.setEnabled(false);
-        lblIngresarNombre.setVisible(false);
-    }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         System.exit(0);
@@ -347,20 +261,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnIniciarPartidaActionPerformed
 
-    private void btnNuevoJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoJugadorActionPerformed
-        lblIngresarNombre.setVisible(true);
-        fieldNombre.setVisible(true);
-        btnAceptar.setVisible(true);
-        btnCargarJugador.setVisible(false);
-        btnNuevoJugador.setVisible(false);
-        btnGuardarJugador.setVisible(true);
-    }//GEN-LAST:event_btnNuevoJugadorActionPerformed
-
-    private void btnCargarJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarJugadorActionPerformed
-        GuardarJugador cargarJugador = new GuardarJugador();
-        this.usuario = cargarJugador.leerArchivoBinario();
-    }//GEN-LAST:event_btnCargarJugadorActionPerformed
-
     private void btnGuardarJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarJugadorActionPerformed
         GuardarJugador guardarJugador = new GuardarJugador();
         guardarJugador.guardarArchivoBinario(usuario);
@@ -371,20 +271,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAceptar;
-    private javax.swing.JButton btnCargarJugador;
     private javax.swing.JButton btnGeneracionTablero;
     private javax.swing.JButton btnGuardarJugador;
     private javax.swing.JButton btnIniciarPartida;
     private javax.swing.JButton btnInventario;
-    private javax.swing.JButton btnNuevoJugador;
     private javax.swing.JButton btnRanking;
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnTienda;
-    private javax.swing.JTextField fieldNombre;
     private javax.swing.JLabel lblBienvenida;
     private javax.swing.JLabel lblCantidadOro;
-    private javax.swing.JLabel lblIngresarNombre;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblNombreTexto;
     private javax.swing.JLabel lblOro;

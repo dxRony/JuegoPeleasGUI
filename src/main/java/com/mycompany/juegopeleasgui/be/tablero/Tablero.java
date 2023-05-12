@@ -11,11 +11,15 @@ import com.mycompany.juegopeleasgui.be.terrenos.Arbol;
 import com.mycompany.juegopeleasgui.be.terrenos.Lava;
 import com.mycompany.juegopeleasgui.be.terrenos.Planicie;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -84,6 +88,16 @@ public class Tablero {
         posicionXJugador = 8;
     }
 
+    public void crearIconos(String nombreCasilla, JLabel casilla) {
+        ImageIcon icono = new ImageIcon("src\\main\\java\\iconos\\" + nombreCasilla + ".png");
+
+        Image imagen = icono.getImage().getScaledInstance(75, 50, Image.SCALE_SMOOTH);
+
+        ImageIcon imagenFinal = new ImageIcon(imagen);
+
+        casilla.setIcon(imagenFinal);
+    }
+
     public void crearTableroVacio() {//ta bien
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
@@ -103,12 +117,16 @@ public class Tablero {
                     for (int i = 0; i < caracteres.length; i++) {
                         if (caracteres[i].equals("~")) {
                             casillas[posicion][i] = new Agua(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);
+                            crearIconos("~", casillas[posicion][i]);
                         } else if (caracteres[i].equals("T")) {
                             casillas[posicion][i] = new Arbol(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);
+                            crearIconos("T", casillas[posicion][i]);
                         } else if (caracteres[i].equals("#")) {
                             casillas[posicion][i] = new Lava(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);
+                            crearIconos("#", casillas[posicion][i]);
                         } else if (caracteres[i].equals("-")) {
                             casillas[posicion][i] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);
+                            crearIconos("-", casillas[posicion][i]);
                         }
                     }
                 }
@@ -145,14 +163,13 @@ public class Tablero {
     }
 
     public void actualizarTablero(JPanel pnlTablero) {
-        // pnlTablero.removeAll();
         pnlTablero.repaint();
         pnlTablero.revalidate();
-
     }
 
     public void generarPersonajes(int dificultad) {
         casillas[7][8] = personajePrincipalUsuario;
+        crearIconos(casillas[7][8].toString(), casillas[7][8]);
         switch (dificultad) {
             case 1:
                 inventarioIA.agregar(listaEnemigos[4]);
@@ -163,6 +180,9 @@ public class Tablero {
                 casillas[3][3] = inventarioIA.seleccionar(0);
                 casillas[4][4] = inventarioIA.seleccionar(1);
                 casillas[5][5] = inventarioIA.seleccionar(2);
+                crearIconos(casillas[3][3].toString(), casillas[3][3]);
+                crearIconos(casillas[4][4].toString(), casillas[4][4]);
+                crearIconos(casillas[5][5].toString(), casillas[5][5]);
                 posicionEnemigo1 = "";
                 posicionYEnemigo1 = 3;
                 posicionXEnemigo1 = 3;
@@ -183,6 +203,10 @@ public class Tablero {
                 casillas[4][4] = inventarioIA.seleccionar(1);
                 casillas[5][5] = inventarioIA.seleccionar(2);
                 casillas[1][1] = inventarioIA.seleccionar(3);
+                crearIconos(casillas[3][3].toString(), casillas[3][3]);
+                crearIconos(casillas[4][4].toString(), casillas[4][4]);
+                crearIconos(casillas[5][5].toString(), casillas[5][5]);
+                crearIconos(casillas[1][1].toString(), casillas[1][1]);
                 posicionEnemigo1 = "";
                 posicionYEnemigo1 = 3;
                 posicionXEnemigo1 = 3;
@@ -207,6 +231,11 @@ public class Tablero {
                 casillas[5][5] = inventarioIA.seleccionar(2);
                 casillas[1][1] = inventarioIA.seleccionar(3);
                 casillas[8][8] = inventarioIA.seleccionar(4);
+                crearIconos(casillas[3][3].toString(), casillas[3][3]);
+                crearIconos(casillas[4][4].toString(), casillas[4][4]);
+                crearIconos(casillas[5][5].toString(), casillas[5][5]);
+                crearIconos(casillas[1][1].toString(), casillas[1][1]);
+                crearIconos(casillas[8][8].toString(), casillas[8][8]);
                 posicionEnemigo1 = "";
                 posicionYEnemigo1 = 3;
                 posicionXEnemigo1 = 3;
@@ -300,6 +329,7 @@ public class Tablero {
             if (posicionYJugador + movimiento >= 0 && posicionYJugador + movimiento < filas) {
                 if (casillas[posicionYJugador + movimiento][posicionXJugador] instanceof Planicie) {//verifica que la siguiente casilla sea campo
                     casillas[posicionYJugador][posicionXJugador] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);;//reemplaza la casilla por campo, de donde se movio el vehiculo
+                    crearIconos(casillas[posicionYJugador][posicionXJugador].toString(), casillas[posicionYJugador][posicionXJugador]);
                     casillas[posicionYJugador + movimiento][posicionXJugador] = personajePrincipalUsuario;//cambia al personaje del jugador a la nueva posicion
 
                     tmp1 = tmp1 + (movimiento * 10);
@@ -327,6 +357,7 @@ public class Tablero {
             if (posicionYJugador + movimiento >= 0 && posicionYJugador + movimiento < filas) {
                 if (casillas[posicionYJugador + movimiento][posicionXJugador] instanceof Planicie) {
                     casillas[posicionYJugador][posicionXJugador] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);;
+                    crearIconos(casillas[posicionYJugador][posicionXJugador].toString(), casillas[posicionYJugador][posicionXJugador]);
                     casillas[posicionYJugador + movimiento][posicionXJugador] = personajePrincipalUsuario;
 
                     tmp1 = tmp1 + (movimiento * 10);
@@ -358,6 +389,7 @@ public class Tablero {
             if (posicionXJugador + movimiento >= 0 && posicionXJugador + movimiento < columnas) {
                 if (casillas[posicionYJugador][posicionXJugador + movimiento] instanceof Planicie) {
                     casillas[posicionYJugador][posicionXJugador] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);;
+                    crearIconos(casillas[posicionYJugador][posicionXJugador].toString(), casillas[posicionYJugador][posicionXJugador]);
                     casillas[posicionYJugador][posicionXJugador + movimiento] = personajePrincipalUsuario;
                     tmp1 = tmp1 + (movimiento);
                     if (tmp1 < 10) {
@@ -383,6 +415,7 @@ public class Tablero {
             if (posicionXJugador + movimiento >= 0 && posicionXJugador + movimiento < columnas) {
                 if (casillas[posicionYJugador][posicionXJugador + movimiento] instanceof Planicie) {
                     casillas[posicionYJugador][posicionXJugador] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);
+                    crearIconos(casillas[posicionYJugador][posicionXJugador].toString(), casillas[posicionYJugador][posicionXJugador]);
                     casillas[posicionYJugador][posicionXJugador + movimiento] = personajePrincipalUsuario;
                     tmp1 = tmp1 + (movimiento);
                     if (tmp1 < 10) {
@@ -415,6 +448,7 @@ public class Tablero {
             if (posicionYEnemigo + movimiento >= 0 && posicionYEnemigo + movimiento < filas) {
                 if (casillas[posicionYEnemigo + movimiento][posicionYEnemigo] instanceof Planicie) {//verifica que la siguiente casilla sea campo
                     casillas[posicionYEnemigo][posicionXEnemigo] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);//reemplaza la casilla por campo, de donde se movio el vehiculo
+                    crearIconos(casillas[posicionYEnemigo][posicionXEnemigo].toString(), casillas[posicionYEnemigo][posicionXEnemigo]);
                     casillas[posicionYEnemigo + movimiento][posicionXEnemigo] = personajePrincipalIA;
 
                     tmp1 = tmp1 + (movimiento * 10);
@@ -439,6 +473,7 @@ public class Tablero {
             if (posicionYEnemigo + movimiento >= 0 && posicionYEnemigo + movimiento < filas) {
                 if (casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Planicie) {
                     casillas[posicionYEnemigo][posicionXEnemigo] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);;
+                    crearIconos(casillas[posicionYEnemigo][posicionXEnemigo].toString(), casillas[posicionYEnemigo][posicionXEnemigo]);
                     casillas[posicionYEnemigo + movimiento][posicionXEnemigo] = personajePrincipalIA;
 
                     tmp1 = tmp1 + (movimiento * 10);
@@ -473,6 +508,7 @@ public class Tablero {
             if (posicionXEnemigo + movimiento >= 0 && posicionXEnemigo + movimiento < columnas) {
                 if (casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Planicie) {
                     casillas[posicionYEnemigo][posicionXEnemigo] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);;
+                    crearIconos(casillas[posicionYEnemigo][posicionXEnemigo].toString(), casillas[posicionYEnemigo][posicionXEnemigo]);
                     casillas[posicionYEnemigo][posicionXEnemigo + movimiento] = personajePrincipalIA;
                     tmp1 = tmp1 + (movimiento);
                     if (tmp1 < 10) {
@@ -498,6 +534,7 @@ public class Tablero {
             if (posicionXEnemigo + movimiento >= 0 && posicionXEnemigo + movimiento < columnas) {
                 if (casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Planicie) {
                     casillas[posicionYEnemigo][posicionXEnemigo] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);
+                    crearIconos(casillas[posicionYEnemigo][posicionXEnemigo].toString(), casillas[posicionYEnemigo][posicionXEnemigo]);
                     casillas[posicionYEnemigo][posicionXEnemigo + movimiento] = personajePrincipalIA;
 
                     tmp1 = tmp1 + (movimiento);
@@ -770,49 +807,49 @@ public class Tablero {
     public void devolverPosicionesPrincipalIA(int personajeMueve) {
         switch (personajeMueve) {
             case 0:
-                //   ataqueEnemigosY(true, personajeMueve);
-                //  ataqueEnemigosY(false, personajeMueve);
-                //  ataqueEnemigosX(true, personajeMueve);
-                // ataqueEnemigosX(false, personajeMueve);
                 posicionYEnemigo1 = posicionYEnemigo;
                 posicionXEnemigo1 = posicionXEnemigo;
                 posicionEnemigo1 = posicionYEnemigo + "" + posicionXEnemigo;
+                ataqueEnemigosY(true, personajeMueve);
+                ataqueEnemigosY(false, personajeMueve);
+                ataqueEnemigosX(true, personajeMueve);
+                ataqueEnemigosX(false, personajeMueve);
                 break;
             case 1:
-                // ataqueEnemigosY(true, personajeMueve);
-                //  ataqueEnemigosY(false, personajeMueve);
-                //  ataqueEnemigosX(true, personajeMueve);
-                //  ataqueEnemigosX(false, personajeMueve);
                 posicionYEnemigo2 = posicionYEnemigo;
                 posicionXEnemigo2 = posicionXEnemigo;
                 posicionEnemigo2 = posicionYEnemigo + "" + posicionXEnemigo;
+                ataqueEnemigosY(true, personajeMueve);
+                ataqueEnemigosY(false, personajeMueve);
+                ataqueEnemigosX(true, personajeMueve);
+                ataqueEnemigosX(false, personajeMueve);
                 break;
             case 2:
-                //   ataqueEnemigosY(true, personajeMueve);
-                //  ataqueEnemigosY(false, personajeMueve);
-                //  ataqueEnemigosX(true, personajeMueve);
-                //  ataqueEnemigosX(false, personajeMueve);
                 posicionYEnemigo3 = posicionYEnemigo;
                 posicionXEnemigo3 = posicionXEnemigo;
                 posicionEnemigo3 = posicionYEnemigo + "" + posicionXEnemigo;
+                ataqueEnemigosY(true, personajeMueve);
+                ataqueEnemigosY(false, personajeMueve);
+                ataqueEnemigosX(true, personajeMueve);
+                ataqueEnemigosX(false, personajeMueve);
                 break;
             case 3:
-                //  ataqueEnemigosY(true, personajeMueve);
-                //  ataqueEnemigosY(false, personajeMueve);
-                //  ataqueEnemigosX(true, personajeMueve);
-                //  ataqueEnemigosX(false, personajeMueve);
                 posicionYEnemigo4 = posicionYEnemigo;
                 posicionXEnemigo4 = posicionXEnemigo;
                 posicionEnemigo4 = posicionYEnemigo + "" + posicionXEnemigo;
+                ataqueEnemigosY(true, personajeMueve);
+                ataqueEnemigosY(false, personajeMueve);
+                ataqueEnemigosX(true, personajeMueve);
+                ataqueEnemigosX(false, personajeMueve);
                 break;
             case 4:
-                //   ataqueEnemigosY(true, personajeMueve);
-                //  ataqueEnemigosY(false, personajeMueve);
-                // ataqueEnemigosX(true, personajeMueve);
-                //  ataqueEnemigosX(false, personajeMueve);
                 posicionYEnemigo5 = posicionYEnemigo;
                 posicionXEnemigo5 = posicionXEnemigo;
                 posicionEnemigo5 = posicionYEnemigo + "" + posicionXEnemigo;
+                ataqueEnemigosY(true, personajeMueve);
+                ataqueEnemigosY(false, personajeMueve);
+                ataqueEnemigosX(true, personajeMueve);
+                ataqueEnemigosX(false, personajeMueve);
                 break;
             default:
                 break;

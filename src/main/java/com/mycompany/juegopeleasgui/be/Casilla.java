@@ -1,23 +1,18 @@
 package com.mycompany.juegopeleasgui.be;
 
-import com.mycompany.juegopeleasgui.be.terrenos.Agua;
-import java.awt.Color;
-import java.awt.Image;
-import javax.swing.ImageIcon;
+import java.io.Serializable;
 import javax.swing.JLabel;
 
-public class Casilla extends JLabel {
+public class Casilla extends JLabel implements Serializable {
 
-    private Image imagen;
-    public int tamaño;
+    private int tamaño;
     private int posicionX;
     private int posicionY;
+    
 
     public Casilla(int tamaño) {
         this.tamaño = tamaño;
-        this.imagen = new ImageIcon(Agua.imagenAgua).getImage();
         this.setSize(tamaño, tamaño);
-        this.setBackground(Color.white);
     }
 
     public int getTamaño() {
@@ -43,13 +38,4 @@ public class Casilla extends JLabel {
     public void setPosicionY(int posicionY) {
         this.posicionY = posicionY;
     }
-
-    public void cambiarImagen(String path) {
-        this.imagen = new ImageIcon(getClass().getResource(Agua.imagenAgua)).getImage();
-    }
-
-    public void revelarCasilla() {
-        this.imagen = new ImageIcon(getClass().getResource(Agua.imagenAgua)).getImage();
-    }
-
 }

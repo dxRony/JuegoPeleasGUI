@@ -16,7 +16,6 @@ public class Personaje extends Casilla {
 
     public Personaje(int tamaño) {
         super(tamaño);
-
     }
 
     public int calcularDano() {
