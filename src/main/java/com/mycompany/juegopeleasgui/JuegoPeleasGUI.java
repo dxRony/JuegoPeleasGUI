@@ -1,9 +1,11 @@
 package com.mycompany.juegopeleasgui;
 
+import com.mycompany.juegopeleasgui.fe.ElegirUsuario;
+
 public class JuegoPeleasGUI {
 
     public static void main(String[] args) {
-        MotorJuego juego = new MotorJuego();
-        juego.iniciarPartida();
+        ElegirUsuario juego = new ElegirUsuario();
+        juego.setVisible(true);
     }
 }

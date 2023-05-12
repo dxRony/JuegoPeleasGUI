@@ -1,12 +1,18 @@
 package com.mycompany.juegopeleasgui.be.personajes;
 
 import com.mycompany.juegopeleasgui.be.articulos.Articulo;
+import com.mycompany.juegopeleasgui.be.articulos.mejoras.Dano;
+import com.mycompany.juegopeleasgui.be.articulos.mejoras.Movilidad;
+import com.mycompany.juegopeleasgui.be.articulos.mejoras.Vida;
+import com.mycompany.juegopeleasgui.be.articulos.objetos.CapaDeMovilidad;
+import com.mycompany.juegopeleasgui.be.articulos.objetos.ElixirVerde;
+import com.mycompany.juegopeleasgui.be.articulos.objetos.SemillaDeLaVida;
 import java.io.Serializable;
+import javax.swing.JOptionPane;
 
 public class Jugable extends Personaje implements Serializable {
 
     private int coste;
-    private Articulo articulos = new Articulo();
 
     public Jugable(int tamaño) {
         super(tamaño);
@@ -15,25 +21,29 @@ public class Jugable extends Personaje implements Serializable {
     }
 
     public void adquirirValoresArticulo(Articulo articulos) {
-        int vidaArticulo = articulos.getVida();
-        int danoArticulo = articulos.getDano();
-        int movilidadArticulo = articulos.getMovilidad();
-        int movimientoArticulo = articulos.getMovimiento();
-        if (vidaArticulo != 0) {
-            puntosDeVida += vidaArticulo;
-            System.out.println("Le has agregado 50 pts de vida a tu personaje!!!");
-        } else if (danoArticulo != 0) {
-            puntosAtaque += danoArticulo;
-            System.out.println("Le has agregado 50 pts de ataque a tu personaje!!!");
+        String mensaje = "nada :(";
+        if (articulos instanceof CapaDeMovilidad) {
+            mensaje = "Utilizaste: " + articulos.toString() + "\n Este articulo agrega 1 casilla de movimiento a tu personaje!!!";
+            this.movimiento++;
+        } else if (articulos instanceof Dano) {
+            mensaje = "Utilizaste: " + articulos.toString();
 
-        } else if (movilidadArticulo != 0) {
-            movimiento += movilidadArticulo;
-            System.out.println("Le has agregado 50 pts de movilidad a tu personaje!!!");
+        } else if (articulos instanceof ElixirVerde) {
+            mensaje = "Utilizaste: " + articulos.toString() + "\n Este articulo cura 50 puntos de vida!!!";
+            this.puntosDeVida += 50;
 
-        } else if (movimientoArticulo != 0) {
-            movimiento += movilidadArticulo;
-            System.out.println("Le has agregado 50 pts de movimiento a tu personaje!!!");
+        } else if (articulos instanceof Movilidad) {
+            mensaje = "Utilizaste: " + articulos.toString();
+
+        } else if (articulos instanceof SemillaDeLaVida) {
+            mensaje = "Utilizaste: " + articulos.toString();
+
+        } else if (articulos instanceof Vida) {
+            mensaje = "Utilizaste: " + articulos.toString() + "\n Este articulo agrega 50 puntos de vida!!!";
+            this.puntosDeVida += 50;
+
         }
+        JOptionPane.showMessageDialog(null, mensaje);
     }
 
     public void aplicarArticulo(Articulo articulo) {
@@ -43,4 +53,5 @@ public class Jugable extends Personaje implements Serializable {
     public int getCoste() {
         return coste;
     }
+
 }

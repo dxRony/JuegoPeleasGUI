@@ -1,6 +1,7 @@
 package com.mycompany.juegopeleasgui.be.tablero;
 
 import com.mycompany.juegopeleasgui.be.Casilla;
+import com.mycompany.juegopeleasgui.be.articulos.Articulo;
 import com.mycompany.juegopeleasgui.be.inventarios.ListaGenerica;
 import com.mycompany.juegopeleasgui.be.jugadores.IA;
 import com.mycompany.juegopeleasgui.be.jugadores.Usuario;
@@ -37,6 +38,7 @@ public class Tablero {
     private int dificultad;
     private ListaGenerica<NoJugable> inventarioIA;
     private Jugable personajePrincipalUsuario;
+    private ListaGenerica<Articulo> inventarioArticulo;
     private NoJugable personajePrincipalIA;
     private NoJugable[] listaEnemigos;
 
@@ -78,6 +80,7 @@ public class Tablero {
         random = new Random();
         leer = new Scanner(System.in);
         inventarioIA = ia.getInventarioIA();
+        inventarioArticulo = usuario.getInventarioArticulos();
         personajePrincipalUsuario = usuario.getPersonajePrincipalUsuario();
         personajePrincipalIA = ia.getPersonajePrincipalIA();
         listaEnemigos = ia.getListaEnemigos();
@@ -92,9 +95,9 @@ public class Tablero {
 
         Image imagen = icono.getImage().getScaledInstance(75, 50, Image.SCALE_SMOOTH);
 
-        ImageIcon imagenFinal = new ImageIcon(imagen);
+        ImageIcon imagenEscalada = new ImageIcon(imagen);
 
-        casilla.setIcon(imagenFinal);
+        casilla.setIcon(imagenEscalada);
     }
 
     public void crearTableroVacio() {//ta bien
@@ -132,7 +135,6 @@ public class Tablero {
             }
             generarPersonajes(ia.getDificultad());
             crearPosiciones(ia.getDificultad());
-
         } catch (IndexOutOfBoundsException e) {
             JOptionPane.showMessageDialog(null, "Unexpected error");
             return false;
@@ -801,6 +803,12 @@ public class Tablero {
             default:
                 break;
         }
+    }
+
+    public void usarArticulo(int articuloIndice) {
+        Articulo articulo = inventarioArticulo.seleccionar(articuloIndice);
+        personajePrincipalUsuario.aplicarArticulo(articulo);
+        
     }
 
     public void devolverPosicionesPrincipalIA(int personajeMueve) {

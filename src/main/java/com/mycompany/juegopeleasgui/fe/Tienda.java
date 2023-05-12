@@ -171,7 +171,7 @@ public class Tienda extends javax.swing.JFrame {
         pnlTienda.add(btnMovilidad);
         btnMovilidad.setBounds(202, 220, 210, 23);
 
-        btnSemillaVida.setText("Semilla de la Vida = 50");
+        btnSemillaVida.setText("Semilla de la Vida = 150");
         btnSemillaVida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSemillaVidaActionPerformed(evt);

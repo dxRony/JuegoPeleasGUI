@@ -48,6 +48,8 @@ public class TableroDeJuego extends javax.swing.JFrame {
         fieldIDTablero.setVisible(false);
         lblIDTablero.setVisible(false);
         btnMostrarTableros.setVisible(false);
+        fieldArticuloAUsar.setVisible(false);
+        lblSeleccionarArticulo.setVisible(false);
     }
 
     /**
@@ -89,6 +91,8 @@ public class TableroDeJuego extends javax.swing.JFrame {
         btnNuevoTurno = new javax.swing.JButton();
         fieldIDTablero = new javax.swing.JTextField();
         lblIDTablero = new javax.swing.JLabel();
+        fieldArticuloAUsar = new javax.swing.JTextField();
+        lblSeleccionarArticulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -335,6 +339,18 @@ public class TableroDeJuego extends javax.swing.JFrame {
         pnlTableroDeJuego.add(lblIDTablero);
         lblIDTablero.setBounds(20, 520, 250, 16);
 
+        fieldArticuloAUsar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldArticuloAUsarActionPerformed(evt);
+            }
+        });
+        pnlTableroDeJuego.add(fieldArticuloAUsar);
+        fieldArticuloAUsar.setBounds(920, 470, 70, 22);
+
+        lblSeleccionarArticulo.setText("Selecciona un articulo a utilizar");
+        pnlTableroDeJuego.add(lblSeleccionarArticulo);
+        lblSeleccionarArticulo.setBounds(870, 450, 190, 16);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -424,7 +440,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
         lblIDTablero.setVisible(true);
         String id = fieldIDTablero.getText();
         System.out.println("id(tableroFrame) = " + id);
-        
+
         crearTablero.leerArchivo(id);
         tableroNuevo = crearTablero.getNuevoTablero();
         tableroNuevo.anadirBotones(pnlTablero, this);
@@ -436,6 +452,9 @@ public class TableroDeJuego extends javax.swing.JFrame {
         lblJugador.setVisible(true);
         txtPersonajePrincipal.setVisible(true);
         btnIniciarPartida.setVisible(true);
+        fieldIDTablero.setVisible(false);
+        lblIDTablero.setVisible(false);
+
     }//GEN-LAST:event_btnCargarMapaActionPerformed
 
     private void btnMoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoverActionPerformed
@@ -528,7 +547,9 @@ public class TableroDeJuego extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTerminarTurnoActionPerformed
 
     private void btnUsarArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsarArticuloActionPerformed
-        // TODO add your handling code here:
+        fieldArticuloAUsar.setVisible(true);
+        lblSeleccionarArticulo.setVisible(true);
+
     }//GEN-LAST:event_btnUsarArticuloActionPerformed
 
     private void btnNuevoTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoTurnoActionPerformed
@@ -548,6 +569,15 @@ public class TableroDeJuego extends javax.swing.JFrame {
     private void fieldIDTableroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldIDTableroActionPerformed
         btnCargarMapa.setVisible(true);
     }//GEN-LAST:event_fieldIDTableroActionPerformed
+
+    private void fieldArticuloAUsarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldArticuloAUsarActionPerformed
+        String articuloAUtilizar = fieldArticuloAUsar.getText();
+        int articulo = Integer.parseInt(articuloAUtilizar) - 1;
+        
+        tableroNuevo.usarArticulo(articulo);
+        fieldArticuloAUsar.setVisible(false);
+        lblSeleccionarArticulo.setVisible(false);
+    }//GEN-LAST:event_fieldArticuloAUsarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> boxDificultad;
@@ -569,6 +599,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
     private javax.swing.JButton btnRegresarPrincipal;
     private javax.swing.JButton btnTerminarTurno;
     private javax.swing.JButton btnUsarArticulo;
+    private javax.swing.JTextField fieldArticuloAUsar;
     private javax.swing.JTextField fieldIDTablero;
     private javax.swing.JLabel lblAcciones;
     private javax.swing.JLabel lblDificultad;
@@ -576,6 +607,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
     private javax.swing.JLabel lblDireccionMovimiento;
     private javax.swing.JLabel lblIDTablero;
     private javax.swing.JLabel lblJugador;
+    private javax.swing.JLabel lblSeleccionarArticulo;
     private javax.swing.JLabel lblTableroDeJuego;
     private javax.swing.JPanel pnlTablero;
     private javax.swing.JPanel pnlTableroDeJuego;

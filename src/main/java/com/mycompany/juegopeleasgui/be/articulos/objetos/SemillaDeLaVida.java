@@ -6,7 +6,7 @@ public class SemillaDeLaVida extends Articulo {
 
     public SemillaDeLaVida() {
         nombre = "Semilla de la Vida";
-        coste = 50;
+        coste = 150;
         vida = 1;
         dano = 0;
         movilidad = 0;
