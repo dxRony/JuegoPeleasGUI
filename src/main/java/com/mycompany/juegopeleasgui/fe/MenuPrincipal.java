@@ -3,6 +3,7 @@ package com.mycompany.juegopeleasgui.fe;
 import com.mycompany.juegopeleasgui.Partida;
 import com.mycompany.juegopeleasgui.be.articulos.Articulo;
 import com.mycompany.juegopeleasgui.be.inventarios.ListaGenerica;
+import com.mycompany.juegopeleasgui.be.jugadores.GuardarJugador;
 import com.mycompany.juegopeleasgui.be.jugadores.IA;
 import com.mycompany.juegopeleasgui.be.jugadores.Usuario;
 import com.mycompany.juegopeleasgui.be.personajes.Jugable;
@@ -19,6 +20,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     public MenuPrincipal(Usuario usuario, IA ia) {
         initComponents();
+
         this.usuario = usuario;
         this.ia = ia;
         btnIniciarPartida.setEnabled(false);
@@ -355,11 +357,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNuevoJugadorActionPerformed
 
     private void btnCargarJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarJugadorActionPerformed
-        usuario.cargarJugador();
+        GuardarJugador cargarJugador = new GuardarJugador();
+        this.usuario = cargarJugador.leerArchivoBinario();
     }//GEN-LAST:event_btnCargarJugadorActionPerformed
 
     private void btnGuardarJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarJugadorActionPerformed
-        usuario.guardarJugador(usuario);
+        GuardarJugador guardarJugador = new GuardarJugador();
+        guardarJugador.guardarArchivoBinario(usuario);
     }//GEN-LAST:event_btnGuardarJugadorActionPerformed
 
     /**

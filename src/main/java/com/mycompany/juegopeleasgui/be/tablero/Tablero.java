@@ -24,8 +24,8 @@ public class Tablero {
     private String ruta = "tableros.txt";
 
     private Casilla casillas[][];
-    private int filas;//=y
-    private int columnas;//x
+    private int filas;//=y=n
+    private int columnas;//x=m
     private String nombre;
     private Random random;
     private Usuario usuario;
@@ -65,7 +65,7 @@ public class Tablero {
     private int posicionYEnemigo5;
     private int posicionXEnemigo5;
 
-    public Tablero(Usuario usuario, IA ia, String id, int filas, int columnas) {
+    public Tablero(Usuario usuario, IA ia, String id, int filas, int columnas) {//ta bien
 
         this.filas = filas;
         this.columnas = columnas;
@@ -84,7 +84,7 @@ public class Tablero {
         posicionXJugador = 8;
     }
 
-    public void crearTableroVacio() {
+    public void crearTableroVacio() {//ta bien
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
                 casillas[i][j] = new Casilla(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);
@@ -94,7 +94,7 @@ public class Tablero {
         }
     }
 
-    public boolean agregarLineas(String linea, int posicion, int dificultad) throws IOException {
+    public boolean agregarLineas(String linea, int posicion, int dificultad) throws IOException {//ta bien
         dificultad = this.dificultad;
         String[] caracteres = linea.split(",");
         try {
@@ -123,18 +123,18 @@ public class Tablero {
         return true;
     }
 
-    public void pintarMapa() {
+    public void pintarMapa() {//ta bien
         mostrarEstadisticas();
         System.out.println("El tablero de juego es...");
-        for (int x = 0; x < columnas; x++) {
-            for (int y = 0; y < filas; y++) {
+        for (int x = 0; x < filas; x++) {
+            for (int y = 0; y < columnas; y++) {
                 System.out.print(casillas[x][y] + " ");
             }
             System.out.println();
         }
     }
 
-    public void anadirBotones(JPanel pnlTablero, JFrame pnlTableroDeJuego) {
+    public void anadirBotones(JPanel pnlTablero, JFrame pnlTableroDeJuego) {//ta bien
         pnlTablero.removeAll();
         pnlTablero.setLayout(new GridLayout(filas, columnas));
         for (int i = 0; i < filas; i++) {
@@ -142,9 +142,6 @@ public class Tablero {
                 pnlTablero.add(casillas[i][j]);
             }
         }
-        System.out.println("anadiendo botones");
-        // pnlTableroDeJuego.getContentPane().add(pnlJuego);
-        //pnlTableroDeJuego.setVisible(true);
     }
 
     public void actualizarTablero(JPanel pnlTablero) {
@@ -287,28 +284,23 @@ public class Tablero {
     }
 
     public void moverJugadorY(boolean arriba) {
-
         boolean vuela = personajePrincipalUsuario.isVuela();
         int movimiento = personajePrincipalUsuario.getMovimiento();
+
         if (arriba == true) {//realiza el movimiento hacia arriba
             movimiento = movimiento * -1;
-            int tmp1 = 0;
-            tmp1 = Integer.parseInt(posicionJugador);
-
-            while (posicionYJugador + movimiento < 0//verifica que los valores no sobrepasen la matriz
+            while (posicionYJugador + movimiento < 0
                     || casillas[posicionYJugador + movimiento][posicionXJugador] instanceof Arbol && posicionYJugador + movimiento < 0) {
                 movimiento++;
             }
-            while (posicionYJugador + movimiento >= filas
-                    || casillas[posicionYJugador + movimiento][posicionXJugador] instanceof Arbol && posicionYJugador + movimiento >= filas) {
-                movimiento--;
-            }
+
+            int tmp1 = 0;
+            tmp1 = Integer.parseInt(posicionJugador);
+
             if (posicionYJugador + movimiento >= 0 && posicionYJugador + movimiento < filas) {
-                if (casillas[posicionYJugador + movimiento][posicionXJugador] instanceof Planicie
-                        || casillas[posicionYJugador + movimiento][posicionXJugador] instanceof Agua && vuela == true
-                        || casillas[posicionYJugador + movimiento][posicionXJugador] instanceof Arbol && vuela == true) {//verifica que la siguiente casilla sea campo
+                if (casillas[posicionYJugador + movimiento][posicionXJugador] instanceof Planicie) {//verifica que la siguiente casilla sea campo
                     casillas[posicionYJugador][posicionXJugador] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);;//reemplaza la casilla por campo, de donde se movio el vehiculo
-                    casillas[posicionYJugador + movimiento][posicionXJugador] = personajePrincipalUsuario;//cambia al vehiculo del jugador a la nueva posicion
+                    casillas[posicionYJugador + movimiento][posicionXJugador] = personajePrincipalUsuario;//cambia al personaje del jugador a la nueva posicion
 
                     tmp1 = tmp1 + (movimiento * 10);
                     if (tmp1 < 10) {
@@ -323,21 +315,17 @@ public class Tablero {
             movimiento = movimiento * -1;
             System.out.println("Te moviste: " + movimiento + " casillas en direccion al norte");
         } else if (arriba == false) {//realiza el movimiento hacia abajo
-            int tmp1 = 0;
-            tmp1 = Integer.parseInt(posicionJugador);
 
-            while (posicionYJugador + movimiento < 0
-                    || casillas[posicionYJugador + movimiento][posicionXJugador] instanceof Arbol && posicionYJugador + movimiento < 0) {
-                movimiento++;
-            }
             while (posicionYJugador + movimiento >= filas
                     || casillas[posicionYJugador + movimiento][posicionXJugador] instanceof Arbol && posicionYJugador + movimiento >= filas) {
                 movimiento--;
             }
+
+            int tmp1 = 0;
+            tmp1 = Integer.parseInt(posicionJugador);
+
             if (posicionYJugador + movimiento >= 0 && posicionYJugador + movimiento < filas) {
-                if (casillas[posicionYJugador + movimiento][posicionXJugador] instanceof Planicie
-                        || casillas[posicionYJugador + movimiento][posicionXJugador] instanceof Agua && vuela == true
-                        || casillas[posicionYJugador + movimiento][posicionXJugador] instanceof Arbol && vuela == true) {
+                if (casillas[posicionYJugador + movimiento][posicionXJugador] instanceof Planicie) {
                     casillas[posicionYJugador][posicionXJugador] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);;
                     casillas[posicionYJugador + movimiento][posicionXJugador] = personajePrincipalUsuario;
 
@@ -351,6 +339,7 @@ public class Tablero {
                     posicionXJugador = tmp1 % 10;
                 }
             }
+
             System.out.println("Te moviste: " + movimiento + " casillas en direccion al sur");
         }
     }
@@ -358,22 +347,16 @@ public class Tablero {
     public void moverJugadorX(boolean derecha) {
         int movimiento = personajePrincipalUsuario.getMovimiento();
         boolean vuela = personajePrincipalUsuario.isVuela();
+
         if (derecha == true) {//realiza el movimiento hacia la derecha
             int tmp1 = 0;
             tmp1 = Integer.parseInt(posicionJugador);//convierte la posicion en un int
-            while (posicionXJugador + movimiento < 0
-                    || casillas[posicionYJugador][posicionXJugador + movimiento] instanceof Arbol && posicionXJugador + movimiento < 0) {
-                movimiento++;
-            }
             while (posicionXJugador + movimiento >= columnas
                     || casillas[posicionYJugador][posicionXJugador + movimiento] instanceof Arbol && posicionXJugador + movimiento >= columnas) {
                 movimiento--;
             }
             if (posicionXJugador + movimiento >= 0 && posicionXJugador + movimiento < columnas) {
-                if (casillas[posicionYJugador][posicionXJugador + movimiento] instanceof Planicie
-                        || casillas[posicionYJugador][posicionXJugador + movimiento] instanceof Agua && vuela == true
-                        || casillas[posicionYJugador][posicionXJugador + movimiento] instanceof Arbol && vuela == true) {
-
+                if (casillas[posicionYJugador][posicionXJugador + movimiento] instanceof Planicie) {
                     casillas[posicionYJugador][posicionXJugador] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);;
                     casillas[posicionYJugador][posicionXJugador + movimiento] = personajePrincipalUsuario;
                     tmp1 = tmp1 + (movimiento);
@@ -386,29 +369,21 @@ public class Tablero {
                     posicionXJugador = tmp1 % 10;
                 }
             }
+
             System.out.println("Te moviste: " + movimiento + " casillas en direccion al este");
 
         } else if (derecha == false) {//realiza el movimiento hacia la izquierda
-            movimiento = movimiento * -1;
             int tmp1 = 0;
             tmp1 = Integer.parseInt(posicionJugador);
-
+            movimiento = movimiento * -1;
             while (posicionXJugador + movimiento < 0
                     || casillas[posicionYJugador][posicionXJugador + movimiento] instanceof Arbol && posicionXJugador + movimiento < 0) {
                 movimiento++;
             }
-            while (posicionXJugador + movimiento >= columnas
-                    || casillas[posicionYJugador][posicionXJugador + movimiento] instanceof Arbol && posicionXJugador + movimiento >= columnas) {
-                movimiento--;
-            }
             if (posicionXJugador + movimiento >= 0 && posicionXJugador + movimiento < columnas) {
-                if (casillas[posicionYJugador][posicionXJugador + movimiento] instanceof Planicie
-                        || casillas[posicionYJugador][posicionXJugador + movimiento] instanceof Agua && vuela == true
-                        || casillas[posicionYJugador][posicionXJugador + movimiento] instanceof Arbol && vuela == true) {
-
+                if (casillas[posicionYJugador][posicionXJugador + movimiento] instanceof Planicie) {
                     casillas[posicionYJugador][posicionXJugador] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);
                     casillas[posicionYJugador][posicionXJugador + movimiento] = personajePrincipalUsuario;
-
                     tmp1 = tmp1 + (movimiento);
                     if (tmp1 < 10) {
                         posicionJugador = 0 + "" + tmp1;
@@ -420,14 +395,12 @@ public class Tablero {
                 }
             }
             movimiento = movimiento * -1;
-            System.out.println("Te moviste: " + movimiento + " casillas en direccion al oeste");
+            System.out.println(personajePrincipalIA.getNombre() + " se movio: " + movimiento + " casillas en direccion al oeste");
         }
     }
 
     public void moverEnemigosY(boolean arriba, int personajeMueve) {
         cambiarPrincipalIA(personajeMueve);
-        System.out.println("personajeMueve = " + personajeMueve);
-        System.out.println("personajePrincipalIA = " + personajePrincipalIA);
         boolean vuela = personajePrincipalIA.isVuela();
         int movimiento = personajePrincipalIA.getMovimiento();
 
@@ -435,19 +408,12 @@ public class Tablero {
             movimiento = movimiento * -1;
             int tmp1 = 0;
             tmp1 = Integer.parseInt(posicionEnemigo);
-
             while (posicionYEnemigo + movimiento < 0//verifica que los valores no sobrepasen la matriz
                     || casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Arbol && posicionYEnemigo + movimiento < 0) {
                 movimiento++;
             }
-            while (posicionYEnemigo + movimiento >= filas
-                    || casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Arbol && posicionYEnemigo + movimiento >= filas) {
-                movimiento--;
-            }
             if (posicionYEnemigo + movimiento >= 0 && posicionYEnemigo + movimiento < filas) {
-                if (casillas[posicionYEnemigo + movimiento][posicionYEnemigo] instanceof Planicie
-                        || casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Agua && vuela == true
-                        || casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Arbol && vuela == true) {//verifica que la siguiente casilla sea campo
+                if (casillas[posicionYEnemigo + movimiento][posicionYEnemigo] instanceof Planicie) {//verifica que la siguiente casilla sea campo
                     casillas[posicionYEnemigo][posicionXEnemigo] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);//reemplaza la casilla por campo, de donde se movio el vehiculo
                     casillas[posicionYEnemigo + movimiento][posicionXEnemigo] = personajePrincipalIA;
 
@@ -462,23 +428,16 @@ public class Tablero {
                 }
             }
             movimiento = movimiento * -1;
-            System.out.println(personajePrincipalIA.getName() + "Te moviste(IA): " + movimiento + " casillas en direccion al norte");
+            System.out.println(personajePrincipalIA.getNombre() + " se movio: " + movimiento + " casillas en direccion al norte");
         } else if (arriba == false) {//realiza el movimiento hacia abajo
             int tmp1 = 0;
             tmp1 = Integer.parseInt(posicionEnemigo);
-
-            while (posicionYEnemigo + movimiento < 0
-                    || casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Arbol && posicionYEnemigo + movimiento < 0) {
-                movimiento++;
-            }
             while (posicionYEnemigo + movimiento >= filas
                     || casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Arbol && posicionYEnemigo + movimiento >= filas) {
                 movimiento--;
             }
             if (posicionYEnemigo + movimiento >= 0 && posicionYEnemigo + movimiento < filas) {
-                if (casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Planicie
-                        || casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Agua && vuela == true
-                        || casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Arbol && vuela == true) {
+                if (casillas[posicionYEnemigo + movimiento][posicionXEnemigo] instanceof Planicie) {
                     casillas[posicionYEnemigo][posicionXEnemigo] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);;
                     casillas[posicionYEnemigo + movimiento][posicionXEnemigo] = personajePrincipalIA;
 
@@ -492,7 +451,7 @@ public class Tablero {
                     posicionXEnemigo = tmp1 % 10;
                 }
             }
-            System.out.println("Te moviste(IA): " + movimiento + " casillas en direccion al sur");
+            System.out.println(personajePrincipalIA.getNombre() + " se movio: " + movimiento + " casillas en direccion al sur");
         }
         devolverPosicionesPrincipalIA(personajeMueve);
     }
@@ -507,19 +466,12 @@ public class Tablero {
         if (derecha == true) {//realiza el movimiento hacia la derecha
             int tmp1 = 0;
             tmp1 = Integer.parseInt(posicionEnemigo);//convierte la posicion en un int
-            while (posicionXEnemigo + movimiento < 0
-                    || casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Arbol && posicionXEnemigo + movimiento < 0) {
-                movimiento++;
-            }
             while (posicionXEnemigo + movimiento >= columnas
                     || casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Arbol && posicionXEnemigo + movimiento >= columnas) {
                 movimiento--;
             }
             if (posicionXEnemigo + movimiento >= 0 && posicionXEnemigo + movimiento < columnas) {
-                if (casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Planicie
-                        || casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Agua && vuela == true
-                        || casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Arbol && vuela == true) {
-
+                if (casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Planicie) {
                     casillas[posicionYEnemigo][posicionXEnemigo] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);;
                     casillas[posicionYEnemigo][posicionXEnemigo + movimiento] = personajePrincipalIA;
                     tmp1 = tmp1 + (movimiento);
@@ -532,7 +484,7 @@ public class Tablero {
                     posicionXEnemigo = tmp1 % 10;
                 }
             }
-            System.out.println("Te moviste: " + movimiento + " casillas en direccion al este");
+            System.out.println(personajePrincipalIA.getNombre() + " se movio: " + movimiento + " casillas en direccion al este");
 
         } else if (derecha == false) {//realiza el movimiento hacia la izquierda
             movimiento = movimiento * -1;
@@ -543,15 +495,8 @@ public class Tablero {
                     || casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Arbol && posicionXEnemigo + movimiento < 0) {
                 movimiento++;
             }
-            while (posicionXEnemigo + movimiento >= columnas
-                    || casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Arbol && posicionXEnemigo + movimiento >= columnas) {
-                movimiento--;
-            }
             if (posicionXEnemigo + movimiento >= 0 && posicionXEnemigo + movimiento < columnas) {
-                if (casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Planicie
-                        || casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Agua && vuela == true
-                        || casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Arbol && vuela == true) {
-
+                if (casillas[posicionYEnemigo][posicionXEnemigo + movimiento] instanceof Planicie) {
                     casillas[posicionYEnemigo][posicionXEnemigo] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);
                     casillas[posicionYEnemigo][posicionXEnemigo + movimiento] = personajePrincipalIA;
 
@@ -582,9 +527,9 @@ public class Tablero {
             while (posicionYJugador + distanciaAtaque >= filas) {
                 distanciaAtaque--;
             }
-            for (int i = posicionYJugador; i >= posicionYJugador + distanciaAtaque; i--) {//posicion y-1?
+            for (int i = posicionYJugador; i >= posicionYJugador + distanciaAtaque; i--) {
                 if (casillas[i][posicionXJugador] instanceof NoJugable) {
-                    NoJugable enemigoGolpeado = (NoJugable) casillas[i][posicionXJugador];//casteo
+                    NoJugable enemigoGolpeado = (NoJugable) casillas[i][posicionXJugador];
                     if (casillas[i][posicionXJugador] instanceof NoJugable) {
                         enemigoGolpeado = (NoJugable) casillas[i][posicionXJugador];
                     }
@@ -599,9 +544,9 @@ public class Tablero {
             while (posicionYJugador + distanciaAtaque >= filas) {
                 distanciaAtaque--;
             }
-            for (int i = posicionYJugador; i <= posicionYJugador + distanciaAtaque; i++) {//posicion y-1?
+            for (int i = posicionYJugador; i <= posicionYJugador + distanciaAtaque; i++) {
                 if (casillas[i][posicionXJugador] instanceof NoJugable) {
-                    NoJugable enemigoGolpeado = (NoJugable) casillas[i][posicionXJugador];//casteo
+                    NoJugable enemigoGolpeado = (NoJugable) casillas[i][posicionXJugador];
                     if (casillas[i][posicionXJugador] instanceof NoJugable) {
                         enemigoGolpeado = (NoJugable) casillas[i][posicionXJugador];
                     }
@@ -652,36 +597,8 @@ public class Tablero {
     }
 
     public void ataqueEnemigosY(boolean arriba, int personajeAtaca) {
-        personajeAtaca = 0;
-        switch (personajeAtaca) {
-            case 1:
-                personajePrincipalIA = inventarioIA.seleccionar(0);
-                posicionYEnemigo = posicionYEnemigo1;
-                posicionXEnemigo = posicionXEnemigo1;
-                break;
-            case 2:
-                personajePrincipalIA = inventarioIA.seleccionar(1);
-                posicionYEnemigo = posicionYEnemigo2;
-                posicionXEnemigo = posicionXEnemigo2;
-                break;
-            case 3:
-                personajePrincipalIA = inventarioIA.seleccionar(2);
-                posicionYEnemigo = posicionYEnemigo3;
-                posicionXEnemigo = posicionXEnemigo3;
-                break;
-            case 4:
-                personajePrincipalIA = inventarioIA.seleccionar(3);
-                posicionYEnemigo = posicionYEnemigo4;
-                posicionXEnemigo = posicionXEnemigo4;
-                break;
-            case 5:
-                personajePrincipalIA = inventarioIA.seleccionar(4);
-                posicionYEnemigo = posicionYEnemigo5;
-                posicionXEnemigo = posicionXEnemigo5;
-                break;
-            default:
-                break;
-        }
+        cambiarPrincipalIA(personajeAtaca);
+
         if (arriba == true) {
             int distanciaAtaque = personajePrincipalIA.getDistanciaAtaque();
             distanciaAtaque = distanciaAtaque * -1;
@@ -691,9 +608,9 @@ public class Tablero {
             while (posicionYEnemigo + distanciaAtaque >= filas) {
                 distanciaAtaque--;
             }
-            for (int i = posicionYEnemigo; i >= posicionYEnemigo + distanciaAtaque; i--) {//posicion y-1?
+            for (int i = posicionYEnemigo; i >= posicionYEnemigo + distanciaAtaque; i--) {
                 if (casillas[i][posicionXEnemigo] instanceof Jugable) {
-                    Jugable jugableGolpeado = (Jugable) casillas[i][posicionXEnemigo];//casteo
+                    Jugable jugableGolpeado = (Jugable) casillas[i][posicionXEnemigo];
                     if (casillas[i][posicionXEnemigo] instanceof Jugable) {
                         jugableGolpeado = (Jugable) casillas[i][posicionXEnemigo];
                     }
@@ -708,9 +625,9 @@ public class Tablero {
             while (posicionYEnemigo + distanciaAtaque >= columnas) {
                 distanciaAtaque--;
             }
-            for (int i = posicionYEnemigo; i <= posicionYEnemigo + distanciaAtaque; i++) {//posicion y-1?
+            for (int i = posicionYEnemigo; i <= posicionYEnemigo + distanciaAtaque; i++) {
                 if (casillas[i][posicionXEnemigo] instanceof Jugable) {
-                    Jugable jugableGolpeado = (Jugable) casillas[i][posicionXEnemigo];//casteo
+                    Jugable jugableGolpeado = (Jugable) casillas[i][posicionXEnemigo];
                     if (casillas[i][posicionXEnemigo] instanceof NoJugable) {
                         jugableGolpeado = (Jugable) casillas[i][posicionXEnemigo];
                     }
@@ -721,36 +638,8 @@ public class Tablero {
     }
 
     public void ataqueEnemigosX(boolean derecha, int personajeAtaca) {
+        cambiarPrincipalIA(personajeAtaca);
 
-        switch (personajeAtaca) {
-            case 1:
-                personajePrincipalIA = inventarioIA.seleccionar(0);
-                posicionYEnemigo = posicionYEnemigo1;
-                posicionXEnemigo = posicionXEnemigo1;
-                break;
-            case 2:
-                personajePrincipalIA = inventarioIA.seleccionar(1);
-                posicionYEnemigo = posicionYEnemigo2;
-                posicionXEnemigo = posicionXEnemigo2;
-                break;
-            case 3:
-                personajePrincipalIA = inventarioIA.seleccionar(2);
-                posicionYEnemigo = posicionYEnemigo3;
-                posicionXEnemigo = posicionXEnemigo3;
-                break;
-            case 4:
-                personajePrincipalIA = inventarioIA.seleccionar(3);
-                posicionYEnemigo = posicionYEnemigo4;
-                posicionXEnemigo = posicionXEnemigo4;
-                break;
-            case 5:
-                personajePrincipalIA = inventarioIA.seleccionar(4);
-                posicionYEnemigo = posicionYEnemigo5;
-                posicionXEnemigo = posicionXEnemigo5;
-                break;
-            default:
-                break;
-        }
         int distanciaAtaque = personajePrincipalIA.getDistanciaAtaque();
         if (derecha == false) {
             distanciaAtaque = distanciaAtaque * -1;
@@ -760,7 +649,7 @@ public class Tablero {
             while (posicionXEnemigo + distanciaAtaque >= columnas) {
                 distanciaAtaque--;
             }
-            for (int i = posicionXEnemigo; i >= posicionXEnemigo + distanciaAtaque; i--) {//posicion y-1?
+            for (int i = posicionXEnemigo; i >= posicionXEnemigo + distanciaAtaque; i--) {
                 if (casillas[posicionYEnemigo][i] instanceof Jugable) {
                     Jugable jugableGolpeado = (Jugable) casillas[posicionYEnemigo][i];
                     if (casillas[posicionYEnemigo][i] instanceof Jugable) {
@@ -776,7 +665,7 @@ public class Tablero {
             while (posicionXEnemigo + distanciaAtaque >= columnas) {
                 distanciaAtaque--;
             }
-            for (int i = posicionXEnemigo; i < posicionXEnemigo + distanciaAtaque; i++) {//posicion y-1?
+            for (int i = posicionXEnemigo; i < posicionXEnemigo + distanciaAtaque; i++) {
                 if (casillas[posicionYEnemigo][i] instanceof Jugable) {
                     Jugable jugableGolpeado = (Jugable) casillas[posicionYEnemigo][i];
                     if (casillas[posicionYEnemigo][i] instanceof Jugable) {
@@ -881,26 +770,46 @@ public class Tablero {
     public void devolverPosicionesPrincipalIA(int personajeMueve) {
         switch (personajeMueve) {
             case 0:
+                //   ataqueEnemigosY(true, personajeMueve);
+                //  ataqueEnemigosY(false, personajeMueve);
+                //  ataqueEnemigosX(true, personajeMueve);
+                // ataqueEnemigosX(false, personajeMueve);
                 posicionYEnemigo1 = posicionYEnemigo;
                 posicionXEnemigo1 = posicionXEnemigo;
                 posicionEnemigo1 = posicionYEnemigo + "" + posicionXEnemigo;
                 break;
             case 1:
+                // ataqueEnemigosY(true, personajeMueve);
+                //  ataqueEnemigosY(false, personajeMueve);
+                //  ataqueEnemigosX(true, personajeMueve);
+                //  ataqueEnemigosX(false, personajeMueve);
                 posicionYEnemigo2 = posicionYEnemigo;
                 posicionXEnemigo2 = posicionXEnemigo;
                 posicionEnemigo2 = posicionYEnemigo + "" + posicionXEnemigo;
                 break;
             case 2:
+                //   ataqueEnemigosY(true, personajeMueve);
+                //  ataqueEnemigosY(false, personajeMueve);
+                //  ataqueEnemigosX(true, personajeMueve);
+                //  ataqueEnemigosX(false, personajeMueve);
                 posicionYEnemigo3 = posicionYEnemigo;
                 posicionXEnemigo3 = posicionXEnemigo;
                 posicionEnemigo3 = posicionYEnemigo + "" + posicionXEnemigo;
                 break;
             case 3:
+                //  ataqueEnemigosY(true, personajeMueve);
+                //  ataqueEnemigosY(false, personajeMueve);
+                //  ataqueEnemigosX(true, personajeMueve);
+                //  ataqueEnemigosX(false, personajeMueve);
                 posicionYEnemigo4 = posicionYEnemigo;
                 posicionXEnemigo4 = posicionXEnemigo;
                 posicionEnemigo4 = posicionYEnemigo + "" + posicionXEnemigo;
                 break;
             case 4:
+                //   ataqueEnemigosY(true, personajeMueve);
+                //  ataqueEnemigosY(false, personajeMueve);
+                // ataqueEnemigosX(true, personajeMueve);
+                //  ataqueEnemigosX(false, personajeMueve);
                 posicionYEnemigo5 = posicionYEnemigo;
                 posicionXEnemigo5 = posicionXEnemigo;
                 posicionEnemigo5 = posicionYEnemigo + "" + posicionXEnemigo;

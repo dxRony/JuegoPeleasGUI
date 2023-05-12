@@ -6,6 +6,7 @@ public class ListaGenerica<T> implements Serializable {
 
     private Nodo<T> primero;
     private String lista;
+    private int tamano = 0;
 
     public ListaGenerica() {
         this.primero = null;
@@ -23,6 +24,7 @@ public class ListaGenerica<T> implements Serializable {
             }
             actual.setSiguiente(nuevo);
         }
+        tamano++;
     }
 
     public T seleccionar(int indice) {
@@ -58,17 +60,12 @@ public class ListaGenerica<T> implements Serializable {
         return lista;
     }
 
-    public int getTamaño() {
-        Nodo<T> recorrido = primero;
-        int tamano = 0;
-        while (recorrido != null) {
-            tamano++;
-        }
-        return tamano;
-    }
-
     public void setLista(String lista) {
         this.lista = lista;
+    }
+
+    public int getTamano() {
+        return tamano;
     }
 
 }

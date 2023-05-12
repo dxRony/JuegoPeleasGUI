@@ -335,20 +335,26 @@ public class TableroDeJuego extends javax.swing.JFrame {
 
     private void btnAtaqueAbajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtaqueAbajoActionPerformed
         tableroNuevo.ataqueJugadorY(false);
+
         usuario.desactivarBotonesAtaque(lblDireccionAtaque, btnAtaqueArriba, btnAtaqueAbajo, btnAtaqueDerecha, btnAtaqueIzquierda);
         btnTerminarTurno.setVisible(true);
+        btnTerminarTurno.setEnabled(true);
     }//GEN-LAST:event_btnAtaqueAbajoActionPerformed
 
     private void btnAtaqueIzquierdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtaqueIzquierdaActionPerformed
         tableroNuevo.ataqueJugadorX(false);
+
         usuario.desactivarBotonesAtaque(lblDireccionAtaque, btnAtaqueArriba, btnAtaqueAbajo, btnAtaqueDerecha, btnAtaqueIzquierda);
         btnTerminarTurno.setVisible(true);
+        btnTerminarTurno.setEnabled(true);
     }//GEN-LAST:event_btnAtaqueIzquierdaActionPerformed
 
     private void btnAtaqueDerechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtaqueDerechaActionPerformed
         tableroNuevo.ataqueJugadorX(true);
+
         usuario.desactivarBotonesAtaque(lblDireccionAtaque, btnAtaqueArriba, btnAtaqueAbajo, btnAtaqueDerecha, btnAtaqueIzquierda);
         btnTerminarTurno.setVisible(true);
+        btnTerminarTurno.setEnabled(true);
     }//GEN-LAST:event_btnAtaqueDerechaActionPerformed
 
     private void btnAtaqueArribaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtaqueArribaActionPerformed
@@ -356,6 +362,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
 
         usuario.desactivarBotonesAtaque(lblDireccionAtaque, btnAtaqueArriba, btnAtaqueAbajo, btnAtaqueDerecha, btnAtaqueIzquierda);
         btnTerminarTurno.setVisible(true);
+        btnTerminarTurno.setEnabled(true);
     }//GEN-LAST:event_btnAtaqueArribaActionPerformed
 
     private void btnRegresarPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarPrincipalActionPerformed
@@ -368,6 +375,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMostrarInventarioActionPerformed
 
     private void txtPersonajePrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPersonajePrincipalActionPerformed
+
         String principal = txtPersonajePrincipal.getText();
         int personajePrincipal = Integer.parseInt(principal) - 1;
         usuario.almacenarPrincipalUsuario(personajePrincipal);
