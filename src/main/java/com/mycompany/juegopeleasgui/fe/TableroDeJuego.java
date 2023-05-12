@@ -45,6 +45,9 @@ public class TableroDeJuego extends javax.swing.JFrame {
         btnTerminarTurno.setVisible(false);
         btnNuevoTurno.setVisible(false);
 
+        fieldIDTablero.setVisible(false);
+        lblIDTablero.setVisible(false);
+        btnMostrarTableros.setVisible(false);
     }
 
     /**
@@ -84,6 +87,8 @@ public class TableroDeJuego extends javax.swing.JFrame {
         btnUsarArticulo = new javax.swing.JButton();
         btnTerminarTurno = new javax.swing.JButton();
         btnNuevoTurno = new javax.swing.JButton();
+        fieldIDTablero = new javax.swing.JTextField();
+        lblIDTablero = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -120,7 +125,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
             }
         });
         pnlTableroDeJuego.add(btnCargarMapa);
-        btnCargarMapa.setBounds(20, 490, 190, 23);
+        btnCargarMapa.setBounds(250, 490, 190, 23);
 
         btnMostrarTableros.setText("Mostrar Tableros");
         btnMostrarTableros.addActionListener(new java.awt.event.ActionListener() {
@@ -129,7 +134,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
             }
         });
         pnlTableroDeJuego.add(btnMostrarTableros);
-        btnMostrarTableros.setBounds(870, 80, 190, 23);
+        btnMostrarTableros.setBounds(20, 490, 190, 23);
 
         boxDificultad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
         boxDificultad.addActionListener(new java.awt.event.ActionListener() {
@@ -138,12 +143,12 @@ public class TableroDeJuego extends javax.swing.JFrame {
             }
         });
         pnlTableroDeJuego.add(boxDificultad);
-        boxDificultad.setBounds(1120, 90, 72, 22);
+        boxDificultad.setBounds(280, 610, 72, 22);
 
         lblDificultad.setForeground(new java.awt.Color(0, 0, 0));
         lblDificultad.setText("Elige una dificultad");
         pnlTableroDeJuego.add(lblDificultad);
-        lblDificultad.setBounds(1110, 70, 120, 16);
+        lblDificultad.setBounds(260, 590, 120, 16);
 
         lblJugador.setForeground(new java.awt.Color(0, 0, 0));
         lblJugador.setText("Selecciona  a tu jugador principal");
@@ -156,7 +161,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
             }
         });
         pnlTableroDeJuego.add(txtPersonajePrincipal);
-        txtPersonajePrincipal.setBounds(870, 30, 64, 22);
+        txtPersonajePrincipal.setBounds(940, 30, 64, 22);
 
         btnMostrarInventario.setText("Mostrar Inventario");
         btnMostrarInventario.addActionListener(new java.awt.event.ActionListener() {
@@ -165,7 +170,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
             }
         });
         pnlTableroDeJuego.add(btnMostrarInventario);
-        btnMostrarInventario.setBounds(1100, 30, 140, 23);
+        btnMostrarInventario.setBounds(880, 80, 140, 23);
 
         btnRegresarPrincipal.setText("Regresar a Menu Principal");
         btnRegresarPrincipal.addActionListener(new java.awt.event.ActionListener() {
@@ -261,7 +266,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
         lblAcciones.setForeground(new java.awt.Color(0, 0, 0));
         lblAcciones.setText("Elige una accion");
         pnlTableroDeJuego.add(lblAcciones);
-        lblAcciones.setBounds(370, 490, 120, 16);
+        lblAcciones.setBounds(670, 520, 120, 16);
 
         btnMover.setText("Mover personaje");
         btnMover.addActionListener(new java.awt.event.ActionListener() {
@@ -270,7 +275,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
             }
         });
         pnlTableroDeJuego.add(btnMover);
-        btnMover.setBounds(240, 510, 170, 23);
+        btnMover.setBounds(540, 540, 170, 23);
 
         btnAtacar.setText("Atacar a un enemigo");
         btnAtacar.addActionListener(new java.awt.event.ActionListener() {
@@ -279,7 +284,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
             }
         });
         pnlTableroDeJuego.add(btnAtacar);
-        btnAtacar.setBounds(430, 510, 170, 23);
+        btnAtacar.setBounds(730, 540, 170, 23);
 
         btnIniciarPartida.setText("Iniciar Partida");
         btnIniciarPartida.addActionListener(new java.awt.event.ActionListener() {
@@ -288,7 +293,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
             }
         });
         pnlTableroDeJuego.add(btnIniciarPartida);
-        btnIniciarPartida.setBounds(20, 520, 190, 23);
+        btnIniciarPartida.setBounds(620, 490, 190, 23);
 
         btnUsarArticulo.setText("Usar un articulo");
         btnUsarArticulo.addActionListener(new java.awt.event.ActionListener() {
@@ -297,7 +302,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
             }
         });
         pnlTableroDeJuego.add(btnUsarArticulo);
-        btnUsarArticulo.setBounds(330, 540, 170, 23);
+        btnUsarArticulo.setBounds(630, 570, 170, 23);
 
         btnTerminarTurno.setText("Terminar turno");
         btnTerminarTurno.addActionListener(new java.awt.event.ActionListener() {
@@ -306,7 +311,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
             }
         });
         pnlTableroDeJuego.add(btnTerminarTurno);
-        btnTerminarTurno.setBounds(230, 570, 200, 23);
+        btnTerminarTurno.setBounds(530, 600, 200, 23);
 
         btnNuevoTurno.setText("Nuevo turno");
         btnNuevoTurno.addActionListener(new java.awt.event.ActionListener() {
@@ -315,7 +320,20 @@ public class TableroDeJuego extends javax.swing.JFrame {
             }
         });
         pnlTableroDeJuego.add(btnNuevoTurno);
-        btnNuevoTurno.setBounds(440, 570, 160, 23);
+        btnNuevoTurno.setBounds(740, 600, 160, 23);
+
+        fieldIDTablero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldIDTableroActionPerformed(evt);
+            }
+        });
+        pnlTableroDeJuego.add(fieldIDTablero);
+        fieldIDTablero.setBounds(90, 550, 64, 22);
+
+        lblIDTablero.setForeground(new java.awt.Color(0, 0, 0));
+        lblIDTablero.setText("Ingresa el ID del tablero que quieras jugar");
+        pnlTableroDeJuego.add(lblIDTablero);
+        lblIDTablero.setBounds(20, 520, 250, 16);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -387,7 +405,10 @@ public class TableroDeJuego extends javax.swing.JFrame {
         String dificultadString = boxDificultad.getSelectedItem().toString();
         int dificultad = Integer.parseInt(dificultadString);
         ia.setDificultad(dificultad);
-        btnCargarMapa.setVisible(true);
+
+        fieldIDTablero.setVisible(true);
+        lblIDTablero.setVisible(true);
+        btnMostrarTableros.setVisible(true);
     }//GEN-LAST:event_boxDificultadActionPerformed
 
     private void btnMostrarTablerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarTablerosActionPerformed
@@ -398,7 +419,13 @@ public class TableroDeJuego extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMostrarTablerosActionPerformed
 
     private void btnCargarMapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarMapaActionPerformed
-        crearTablero.leerArchivo();
+
+        fieldIDTablero.setVisible(true);
+        lblIDTablero.setVisible(true);
+        String id = fieldIDTablero.getText();
+        System.out.println("id(tableroFrame) = " + id);
+        
+        crearTablero.leerArchivo(id);
         tableroNuevo = crearTablero.getNuevoTablero();
         tableroNuevo.anadirBotones(pnlTablero, this);
 
@@ -518,6 +545,10 @@ public class TableroDeJuego extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnNuevoTurnoActionPerformed
 
+    private void fieldIDTableroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldIDTableroActionPerformed
+        btnCargarMapa.setVisible(true);
+    }//GEN-LAST:event_fieldIDTableroActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> boxDificultad;
     private javax.swing.JButton btnAtacar;
@@ -538,10 +569,12 @@ public class TableroDeJuego extends javax.swing.JFrame {
     private javax.swing.JButton btnRegresarPrincipal;
     private javax.swing.JButton btnTerminarTurno;
     private javax.swing.JButton btnUsarArticulo;
+    private javax.swing.JTextField fieldIDTablero;
     private javax.swing.JLabel lblAcciones;
     private javax.swing.JLabel lblDificultad;
     private javax.swing.JLabel lblDireccionAtaque;
     private javax.swing.JLabel lblDireccionMovimiento;
+    private javax.swing.JLabel lblIDTablero;
     private javax.swing.JLabel lblJugador;
     private javax.swing.JLabel lblTableroDeJuego;
     private javax.swing.JPanel pnlTablero;

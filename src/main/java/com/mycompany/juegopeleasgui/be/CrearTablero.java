@@ -25,7 +25,7 @@ public class CrearTablero {
 
     }
 
-    public void leerArchivo() { //Para crear mapas
+    public void leerArchivo(String id) { //Para crear mapas
         File f;
         BufferedReader br = null;
         String cadena;
@@ -36,11 +36,11 @@ public class CrearTablero {
             try {
                 br = new BufferedReader(new FileReader(f));
                 while ((cadena = br.readLine()) != null) {
-                    String id = " ";
-                    if (cadena.contains("tablero")) {
-                        String[] identificador = cadena.split("<<");
-                        String[] nombreId = identificador[1].split(">>");
+                    if (cadena.startsWith("tablero " + id)) {
+                        String[] identificador = cadena.split(" ");
+                        String[] nombreId = identificador[1].split(" ");
                         id = nombreId[0];
+                        System.out.println("id=" + id);
                     } else if (cadena.contains("dimension")) {
                         String[] dimension1 = cadena.split(" ");
                         String[] dimensiones = dimension1[1].split("X");
