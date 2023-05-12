@@ -2,6 +2,7 @@ package com.mycompany.juegopeleasgui.be.personajes;
 
 import com.mycompany.juegopeleasgui.be.Casilla;
 import java.util.Random;
+import javax.swing.JOptionPane;
 
 public class Personaje extends Casilla {
 
@@ -21,14 +22,15 @@ public class Personaje extends Casilla {
     public int calcularDano() {
         int danoHecho = 0;
         Random ran = new Random();
+        String mensaje = "";
         int probabilidad = ran.nextInt(100);
         if (probabilidad <= probabilidadAtaque) {
-            System.out.println("La probabildad de ataque fue: " + probabilidad + " (si la probabilidad es menor o igual a " + probabilidadAtaque + ", se acierta el ataque) ");
             danoHecho = puntosAtaque;
+            mensaje = this.toString() + " ataco. \nLa probabildad de ataque fue: " + probabilidad + " (si la probabilidad es menor o igual a " + probabilidadAtaque + ", se acierta el ataque)\nEl dano realizado es: " + danoHecho;
         } else {
-            System.out.println("La probabildad de ataque fue: " + probabilidad + " (si la probabilidad es mayor a " + probabilidadAtaque + ", se anula el ataque) ");
+            mensaje = this.toString() + " ataco. \nLa probabildad de ataque fue: " + probabilidad + " (si la probabilidad es mayor a " + probabilidadAtaque + ", se anula el ataque)\nEl dano realizado es: " + danoHecho;
         }
-        System.out.println("El dano realizado es: " + danoHecho);
+        JOptionPane.showMessageDialog(null, mensaje);
         return danoHecho;
     }
 

@@ -130,8 +130,10 @@ public class Inventario extends javax.swing.JFrame {
 
     private void btnRegresarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarMenuActionPerformed
         this.setVisible(false);
+        inventarioUsuario.pintarLista();
         inventarioUsuario.setLista("");
         inventarioArticulos.setLista("");
+        inventarioUsuario.pintarLista();
     }//GEN-LAST:event_btnRegresarMenuActionPerformed
 
 

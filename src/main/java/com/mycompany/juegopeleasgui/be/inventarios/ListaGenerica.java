@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class ListaGenerica<T> implements Serializable {
 
     private Nodo<T> primero;
+    private Nodo<T> ultimo;
     private String lista;
     private int tamano = 0;
 
@@ -60,8 +61,43 @@ public class ListaGenerica<T> implements Serializable {
         return lista;
     }
 
+    public void eliminarUltimo() {
+        if (tamano == 1) {
+            primero = null;
+            ultimo = null;
+            tamano = 0;
+        } else {
+            int penultimoIndice = tamano - 2;
+            Nodo<T> penultimo = getNodo(penultimoIndice);
+            penultimo.setSiguiente(null);
+            ultimo = penultimo;
+            tamano--;
+        }
+    }
+
+    public void vaciarLista() {
+        while (!listaVacia()) {
+            eliminarUltimo();
+        }
+    }
+
+    public boolean listaVacia() {
+        return primero == null;
+    }
+
     public void setLista(String lista) {
         this.lista = lista;
+    }
+
+    private Nodo<T> getNodo(int indice) {
+
+        Nodo<T> nodoActual = primero;
+        for (int i = 0; i < indice; i++) {
+            Nodo siguiente = nodoActual.getSiguiente();
+            nodoActual = siguiente;
+        }
+
+        return nodoActual;
     }
 
     public int getTamano() {

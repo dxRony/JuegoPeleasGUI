@@ -70,6 +70,8 @@ public class Tablero {
     private int posicionYEnemigo5;
     private int posicionXEnemigo5;
 
+    private ListaGenerica<String> turnoIA;
+
     public Tablero(Usuario usuario, IA ia, String id, int filas, int columnas) {//ta bien
 
         this.filas = filas;
@@ -88,6 +90,8 @@ public class Tablero {
         posicionJugador = "";
         posicionYJugador = 7;
         posicionXJugador = 8;
+
+        turnoIA = new ListaGenerica<String>();
     }
 
     public void crearIconos(String nombreCasilla, JLabel casilla) {
@@ -155,6 +159,7 @@ public class Tablero {
 
     public void anadirBotones(JPanel pnlTablero, JFrame pnlTableroDeJuego) {//ta bien
         pnlTablero.removeAll();
+        eliminarJugadoresEnemigos();
         pnlTablero.setLayout(new GridLayout(filas, columnas));
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
@@ -316,6 +321,7 @@ public class Tablero {
     public void moverJugadorY(boolean arriba) {
         boolean vuela = personajePrincipalUsuario.isVuela();
         int movimiento = personajePrincipalUsuario.getMovimiento();
+        String mensaje = "";
 
         if (arriba == true) {//realiza el movimiento hacia arriba
             movimiento = movimiento * -1;
@@ -323,7 +329,6 @@ public class Tablero {
                     || casillas[posicionYJugador + movimiento][posicionXJugador] instanceof Arbol && posicionYJugador + movimiento < 0) {
                 movimiento++;
             }
-
             int tmp1 = 0;
             tmp1 = Integer.parseInt(posicionJugador);
 
@@ -344,7 +349,7 @@ public class Tablero {
                 }
             }
             movimiento = movimiento * -1;
-            System.out.println("Te moviste: " + movimiento + " casillas en direccion al norte");
+            mensaje = "Te moviste: " + movimiento + " casillas en direccion al norte";
         } else if (arriba == false) {//realiza el movimiento hacia abajo
 
             while (posicionYJugador + movimiento >= filas
@@ -371,15 +376,15 @@ public class Tablero {
                     posicionXJugador = tmp1 % 10;
                 }
             }
-
-            System.out.println("Te moviste: " + movimiento + " casillas en direccion al sur");
+            mensaje = "Te moviste: " + movimiento + " casillas en direccion al sur";
         }
+        JOptionPane.showMessageDialog(null, mensaje);
     }
 
     public void moverJugadorX(boolean derecha) {
         int movimiento = personajePrincipalUsuario.getMovimiento();
         boolean vuela = personajePrincipalUsuario.isVuela();
-
+        String mensaje = "";
         if (derecha == true) {//realiza el movimiento hacia la derecha
             int tmp1 = 0;
             tmp1 = Integer.parseInt(posicionJugador);//convierte la posicion en un int
@@ -402,8 +407,7 @@ public class Tablero {
                     posicionXJugador = tmp1 % 10;
                 }
             }
-
-            System.out.println("Te moviste: " + movimiento + " casillas en direccion al este");
+            mensaje = "Te moviste: " + movimiento + " casillas en direccion al este";
 
         } else if (derecha == false) {//realiza el movimiento hacia la izquierda
             int tmp1 = 0;
@@ -429,7 +433,8 @@ public class Tablero {
                 }
             }
             movimiento = movimiento * -1;
-            System.out.println(personajePrincipalIA.getNombre() + " se movio: " + movimiento + " casillas en direccion al oeste");
+            mensaje = "Te moviste: " + movimiento + " casillas en direccion al oeste";
+            JOptionPane.showMessageDialog(null, mensaje);
         }
     }
 
@@ -437,7 +442,7 @@ public class Tablero {
         cambiarPrincipalIA(personajeMueve);
         boolean vuela = personajePrincipalIA.isVuela();
         int movimiento = personajePrincipalIA.getMovimiento();
-
+        String mensaje = "";
         if (arriba == true) {//realiza el movimiento hacia arriba
             movimiento = movimiento * -1;
             int tmp1 = 0;
@@ -463,7 +468,9 @@ public class Tablero {
                 }
             }
             movimiento = movimiento * -1;
-            System.out.println(personajePrincipalIA.getNombre() + " se movio: " + movimiento + " casillas en direccion al norte");
+            mensaje = personajePrincipalIA.getNombre() + " se movio: " + movimiento + " casillas en direccion al norte";
+            turnoIA.agregar(mensaje);
+
         } else if (arriba == false) {//realiza el movimiento hacia abajo
             int tmp1 = 0;
             tmp1 = Integer.parseInt(posicionEnemigo);
@@ -487,7 +494,8 @@ public class Tablero {
                     posicionXEnemigo = tmp1 % 10;
                 }
             }
-            System.out.println(personajePrincipalIA.getNombre() + " se movio: " + movimiento + " casillas en direccion al sur");
+            mensaje = personajePrincipalIA.getNombre() + " se movio: " + movimiento + " casillas en direccion al sur";
+            turnoIA.agregar(mensaje);
         }
         devolverPosicionesPrincipalIA(personajeMueve);
     }
@@ -496,7 +504,7 @@ public class Tablero {
         System.out.println("personajeMueve = " + personajeMueve);
         cambiarPrincipalIA(personajeMueve);
         System.out.println("personajePrincipalIA = " + personajePrincipalIA);
-
+        String mensaje = "";
         int movimiento = personajePrincipalIA.getMovimiento();
         boolean vuela = personajePrincipalIA.isVuela();
         if (derecha == true) {//realiza el movimiento hacia la derecha
@@ -521,7 +529,8 @@ public class Tablero {
                     posicionXEnemigo = tmp1 % 10;
                 }
             }
-            System.out.println(personajePrincipalIA.getNombre() + " se movio: " + movimiento + " casillas en direccion al este");
+            mensaje = personajePrincipalIA.getNombre() + " se movio: " + movimiento + " casillas en direccion al este";
+            turnoIA.agregar(mensaje);
 
         } else if (derecha == false) {//realiza el movimiento hacia la izquierda
             movimiento = movimiento * -1;
@@ -549,7 +558,8 @@ public class Tablero {
                 }
             }
             movimiento = movimiento * -1;
-            System.out.println("Te moviste: " + movimiento + " casillas en direccion al oeste");
+            mensaje = personajePrincipalIA.getNombre() + " se movio: " + movimiento + " casillas en direccion al oeste";
+            turnoIA.agregar(mensaje);
         }
         devolverPosicionesPrincipalIA(personajeMueve);
     }
@@ -720,6 +730,7 @@ public class Tablero {
             NoJugable personaje1 = (NoJugable) casillas[posicionYEnemigo1][posicionXEnemigo1];//casteo
             if (inventarioIA.seleccionar(0).getPuntosDeVida() <= 0) {//verifica que el vehiculo ya no tenga vida
                 casillas[posicionYEnemigo1][posicionXEnemigo1] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);//reemplaza el espacio del vehiculo por campo
+                crearIconos(casillas[posicionYEnemigo1][posicionXEnemigo1].toString(), casillas[posicionYEnemigo1][posicionXEnemigo1]);
                 posicionYEnemigo1 = 0;
                 posicionXEnemigo1 = 0;
                 posicionEnemigo1 = "";
@@ -730,6 +741,7 @@ public class Tablero {
             NoJugable personaje2 = (NoJugable) casillas[posicionYEnemigo2][posicionXEnemigo2];//casteo
             if (inventarioIA.seleccionar(1).getPuntosDeVida() <= 0) {//verifica que el vehiculo ya no tenga vida
                 casillas[posicionYEnemigo2][posicionXEnemigo2] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);//reemplaza el espacio del vehiculo por campo
+                crearIconos(casillas[posicionYEnemigo2][posicionXEnemigo2].toString(), casillas[posicionYEnemigo2][posicionXEnemigo2]);
                 posicionYEnemigo2 = 2;
                 posicionXEnemigo2 = 0;
                 posicionEnemigo2 = "";
@@ -740,6 +752,7 @@ public class Tablero {
             NoJugable personaje3 = (NoJugable) casillas[posicionYEnemigo3][posicionXEnemigo3];//casteo
             if (inventarioIA.seleccionar(2).getPuntosDeVida() <= 0) {//verifica que el vehiculo ya no tenga vida
                 casillas[posicionYEnemigo3][posicionXEnemigo3] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);//reemplaza el espacio del vehiculo por campo
+                crearIconos(casillas[posicionYEnemigo3][posicionXEnemigo3].toString(), casillas[posicionYEnemigo3][posicionXEnemigo3]);
                 posicionYEnemigo3 = 2;
                 posicionXEnemigo3 = 0;
                 posicionEnemigo3 = "";
@@ -750,6 +763,7 @@ public class Tablero {
             NoJugable personaje4 = (NoJugable) casillas[posicionYEnemigo4][posicionXEnemigo4];//casteo
             if (inventarioIA.seleccionar(3).getPuntosDeVida() <= 0) {//verifica que el vehiculo ya no tenga vida
                 casillas[posicionYEnemigo4][posicionXEnemigo4] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);//reemplaza el espacio del vehiculo por campo
+                crearIconos(casillas[posicionYEnemigo4][posicionXEnemigo4].toString(), casillas[posicionYEnemigo4][posicionXEnemigo4]);
                 posicionYEnemigo4 = 2;
                 posicionXEnemigo4 = 0;
                 posicionEnemigo4 = "";
@@ -760,6 +774,7 @@ public class Tablero {
             NoJugable personaje5 = (NoJugable) casillas[posicionYEnemigo5][posicionXEnemigo5];//casteo
             if (inventarioIA.seleccionar(3).getPuntosDeVida() <= 0) {
                 casillas[posicionYEnemigo5][posicionXEnemigo5] = new Planicie(((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / casillas.length)) * 2 / 3);
+                crearIconos(casillas[posicionYEnemigo5][posicionXEnemigo5].toString(), casillas[posicionYEnemigo5][posicionXEnemigo5]);
                 posicionYEnemigo5 = 2;
                 posicionXEnemigo5 = 0;
                 posicionEnemigo5 = "";
@@ -806,9 +821,13 @@ public class Tablero {
     }
 
     public void usarArticulo(int articuloIndice) {
-        Articulo articulo = inventarioArticulo.seleccionar(articuloIndice);
-        personajePrincipalUsuario.aplicarArticulo(articulo);
-        
+        int inventario = inventarioArticulo.getTamano();
+        if (articuloIndice >= inventario) {
+            JOptionPane.showMessageDialog(null, "indice fuera de rango");
+        } else {
+            Articulo articulo = inventarioArticulo.seleccionar(articuloIndice);
+            personajePrincipalUsuario.aplicarArticulo(articulo);
+        }
     }
 
     public void devolverPosicionesPrincipalIA(int personajeMueve) {
@@ -875,8 +894,6 @@ public class Tablero {
         }
         for (int i = 0; i < tamanoInventario; i++) {
             int opcionMovimiento = random.nextInt(1, 4);
-            System.out.println("opcionMovimiento = " + opcionMovimiento);
-            System.out.println("indice = " + i);
             switch (opcionMovimiento) {
                 case 1:
                     if (inventarioIA.seleccionar(i).getPuntosDeVida() > 0) {
@@ -914,7 +931,11 @@ public class Tablero {
                     break;
             }
             System.out.println("CAMBIO EL PERSONAJE");
-        }
+        }turnoIA.setLista("");
+        JOptionPane.showMessageDialog(null, turnoIA.mostrarLista());
+        
+        turnoIA.vaciarLista();
+
     }
 
     public void getId(String id) {
@@ -923,6 +944,14 @@ public class Tablero {
 
     public Casilla[][] getCasillas() {
         return casillas;
+    }
+
+    public ListaGenerica<String> getTurnoIA() {
+        return turnoIA;
+    }
+
+    public void setTurnoIA(ListaGenerica<String> turnoIA) {
+        this.turnoIA = turnoIA;
     }
 
 }

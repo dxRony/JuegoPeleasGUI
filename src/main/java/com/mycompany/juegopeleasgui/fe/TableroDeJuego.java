@@ -3,6 +3,7 @@ package com.mycompany.juegopeleasgui.fe;
 import com.mycompany.juegopeleasgui.Partida;
 import com.mycompany.juegopeleasgui.be.Archivo;
 import com.mycompany.juegopeleasgui.be.CrearTablero;
+import com.mycompany.juegopeleasgui.be.inventarios.ListaGenerica;
 import com.mycompany.juegopeleasgui.be.jugadores.IA;
 import com.mycompany.juegopeleasgui.be.jugadores.Usuario;
 import com.mycompany.juegopeleasgui.be.tablero.Tablero;
@@ -28,8 +29,8 @@ public class TableroDeJuego extends javax.swing.JFrame {
         archivo = new Archivo();
         btnCargarMapa.setVisible(false);
         JOptionPane.showMessageDialog(rootPane, "En esta ventana puedes pervisualizar los mapas disponibles y elegir la dificultad de la IA", "INSTRUCCIONES", HEIGHT);
-        lblJugador.setVisible(true);
-        txtPersonajePrincipal.setVisible(true);
+        lblJugadorPrincipal.setVisible(true);
+        fieldPersonajePrincipal.setVisible(true);
         boxDificultad.setVisible(false);
         lblDificultad.setVisible(false);
 
@@ -68,8 +69,8 @@ public class TableroDeJuego extends javax.swing.JFrame {
         btnMostrarTableros = new javax.swing.JButton();
         boxDificultad = new javax.swing.JComboBox<>();
         lblDificultad = new javax.swing.JLabel();
-        lblJugador = new javax.swing.JLabel();
-        txtPersonajePrincipal = new javax.swing.JTextField();
+        lblJugadorPrincipal = new javax.swing.JLabel();
+        fieldPersonajePrincipal = new javax.swing.JTextField();
         btnMostrarInventario = new javax.swing.JButton();
         btnRegresarPrincipal = new javax.swing.JButton();
         btnAtaqueArriba = new javax.swing.JButton();
@@ -154,18 +155,18 @@ public class TableroDeJuego extends javax.swing.JFrame {
         pnlTableroDeJuego.add(lblDificultad);
         lblDificultad.setBounds(260, 590, 120, 16);
 
-        lblJugador.setForeground(new java.awt.Color(0, 0, 0));
-        lblJugador.setText("Selecciona  a tu jugador principal");
-        pnlTableroDeJuego.add(lblJugador);
-        lblJugador.setBounds(880, 10, 190, 16);
+        lblJugadorPrincipal.setForeground(new java.awt.Color(0, 0, 0));
+        lblJugadorPrincipal.setText("Selecciona  a tu jugador principal");
+        pnlTableroDeJuego.add(lblJugadorPrincipal);
+        lblJugadorPrincipal.setBounds(880, 10, 190, 16);
 
-        txtPersonajePrincipal.addActionListener(new java.awt.event.ActionListener() {
+        fieldPersonajePrincipal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPersonajePrincipalActionPerformed(evt);
+                fieldPersonajePrincipalActionPerformed(evt);
             }
         });
-        pnlTableroDeJuego.add(txtPersonajePrincipal);
-        txtPersonajePrincipal.setBounds(940, 30, 64, 22);
+        pnlTableroDeJuego.add(fieldPersonajePrincipal);
+        fieldPersonajePrincipal.setBounds(930, 30, 64, 22);
 
         btnMostrarInventario.setText("Mostrar Inventario");
         btnMostrarInventario.addActionListener(new java.awt.event.ActionListener() {
@@ -174,7 +175,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
             }
         });
         pnlTableroDeJuego.add(btnMostrarInventario);
-        btnMostrarInventario.setBounds(880, 80, 140, 23);
+        btnMostrarInventario.setBounds(900, 70, 140, 23);
 
         btnRegresarPrincipal.setText("Regresar a Menu Principal");
         btnRegresarPrincipal.addActionListener(new java.awt.event.ActionListener() {
@@ -345,11 +346,12 @@ public class TableroDeJuego extends javax.swing.JFrame {
             }
         });
         pnlTableroDeJuego.add(fieldArticuloAUsar);
-        fieldArticuloAUsar.setBounds(920, 470, 70, 22);
+        fieldArticuloAUsar.setBounds(950, 430, 70, 22);
 
+        lblSeleccionarArticulo.setForeground(new java.awt.Color(0, 0, 0));
         lblSeleccionarArticulo.setText("Selecciona un articulo a utilizar");
         pnlTableroDeJuego.add(lblSeleccionarArticulo);
-        lblSeleccionarArticulo.setBounds(870, 450, 190, 16);
+        lblSeleccionarArticulo.setBounds(900, 410, 190, 16);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -361,7 +363,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlTableroDeJuego, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
+            .addComponent(pnlTableroDeJuego, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 637, Short.MAX_VALUE)
         );
 
         pack();
@@ -408,14 +410,15 @@ public class TableroDeJuego extends javax.swing.JFrame {
         inventario.setVisible(true);
     }//GEN-LAST:event_btnMostrarInventarioActionPerformed
 
-    private void txtPersonajePrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPersonajePrincipalActionPerformed
-
-        String principal = txtPersonajePrincipal.getText();
+    private void fieldPersonajePrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldPersonajePrincipalActionPerformed
+        String principal = fieldPersonajePrincipal.getText();
         int personajePrincipal = Integer.parseInt(principal) - 1;
         usuario.almacenarPrincipalUsuario(personajePrincipal);
         boxDificultad.setVisible(true);
         lblDificultad.setVisible(true);
-    }//GEN-LAST:event_txtPersonajePrincipalActionPerformed
+        fieldPersonajePrincipal.setEnabled(false);
+        lblJugadorPrincipal.setEnabled(false);
+    }//GEN-LAST:event_fieldPersonajePrincipalActionPerformed
 
     private void boxDificultadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxDificultadActionPerformed
         String dificultadString = boxDificultad.getSelectedItem().toString();
@@ -425,6 +428,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
         fieldIDTablero.setVisible(true);
         lblIDTablero.setVisible(true);
         btnMostrarTableros.setVisible(true);
+        boxDificultad.setEnabled(false);
     }//GEN-LAST:event_boxDificultadActionPerformed
 
     private void btnMostrarTablerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarTablerosActionPerformed
@@ -449,8 +453,8 @@ public class TableroDeJuego extends javax.swing.JFrame {
         btnMostrarTableros.setVisible(false);
         boxDificultad.setVisible(false);
         lblDificultad.setVisible(false);
-        lblJugador.setVisible(true);
-        txtPersonajePrincipal.setVisible(true);
+        lblJugadorPrincipal.setVisible(true);
+        fieldPersonajePrincipal.setVisible(true);
         btnIniciarPartida.setVisible(true);
         fieldIDTablero.setVisible(false);
         lblIDTablero.setVisible(false);
@@ -573,7 +577,7 @@ public class TableroDeJuego extends javax.swing.JFrame {
     private void fieldArticuloAUsarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldArticuloAUsarActionPerformed
         String articuloAUtilizar = fieldArticuloAUsar.getText();
         int articulo = Integer.parseInt(articuloAUtilizar) - 1;
-        
+
         tableroNuevo.usarArticulo(articulo);
         fieldArticuloAUsar.setVisible(false);
         lblSeleccionarArticulo.setVisible(false);
@@ -601,16 +605,16 @@ public class TableroDeJuego extends javax.swing.JFrame {
     private javax.swing.JButton btnUsarArticulo;
     private javax.swing.JTextField fieldArticuloAUsar;
     private javax.swing.JTextField fieldIDTablero;
+    private javax.swing.JTextField fieldPersonajePrincipal;
     private javax.swing.JLabel lblAcciones;
     private javax.swing.JLabel lblDificultad;
     private javax.swing.JLabel lblDireccionAtaque;
     private javax.swing.JLabel lblDireccionMovimiento;
     private javax.swing.JLabel lblIDTablero;
-    private javax.swing.JLabel lblJugador;
+    private javax.swing.JLabel lblJugadorPrincipal;
     private javax.swing.JLabel lblSeleccionarArticulo;
     private javax.swing.JLabel lblTableroDeJuego;
     private javax.swing.JPanel pnlTablero;
     private javax.swing.JPanel pnlTableroDeJuego;
-    private javax.swing.JTextField txtPersonajePrincipal;
     // End of variables declaration//GEN-END:variables
 }

@@ -17,7 +17,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private IA ia;
     private ListaGenerica<Jugable> inventarioUsuario;
     private ListaGenerica<Articulo> inventarioArticulos;
-
+    
     public MenuPrincipal(Usuario usuario, IA ia) {
         initComponents();
         this.usuario = usuario;
@@ -26,6 +26,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         inventarioArticulos = usuario.getInventarioArticulos();
         lblCantidadOro.setText(usuario.getOro() + "");
         lblNombreTexto.setText(usuario.getNombre() + "");
+        lblcantidadPuntuacion.setText(usuario.getPuntuacion() + "");
     }
 
     /**
@@ -51,18 +52,25 @@ public class MenuPrincipal extends javax.swing.JFrame {
         lblCantidadOro = new javax.swing.JLabel();
         lblNombreTexto = new javax.swing.JLabel();
         btnGuardarJugador = new javax.swing.JButton();
+        lblPuntuacion = new javax.swing.JLabel();
+        lblcantidadPuntuacion = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         pnlFrame.setBackground(new java.awt.Color(51, 102, 255));
+        pnlFrame.setLayout(null);
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(0, 0, 0));
         lblTitulo.setText("¡¡¡JUEGO PELEAS!!!");
+        pnlFrame.add(lblTitulo);
+        lblTitulo.setBounds(141, 37, 105, 16);
 
         lblBienvenida.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblBienvenida.setForeground(new java.awt.Color(0, 0, 0));
         lblBienvenida.setText("BIENVENIDO");
+        pnlFrame.add(lblBienvenida);
+        lblBienvenida.setBounds(141, 6, 111, 25);
 
         btnIniciarPartida.setBackground(new java.awt.Color(255, 255, 255));
         btnIniciarPartida.setForeground(new java.awt.Color(0, 0, 0));
@@ -72,6 +80,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 btnIniciarPartidaActionPerformed(evt);
             }
         });
+        pnlFrame.add(btnIniciarPartida);
+        btnIniciarPartida.setBounds(123, 65, 150, 23);
 
         btnTienda.setBackground(new java.awt.Color(255, 255, 255));
         btnTienda.setForeground(new java.awt.Color(0, 0, 0));
@@ -81,6 +91,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 btnTiendaActionPerformed(evt);
             }
         });
+        pnlFrame.add(btnTienda);
+        btnTienda.setBounds(123, 106, 150, 23);
 
         btnGeneracionTablero.setBackground(new java.awt.Color(255, 255, 255));
         btnGeneracionTablero.setForeground(new java.awt.Color(0, 0, 0));
@@ -90,6 +102,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 btnGeneracionTableroActionPerformed(evt);
             }
         });
+        pnlFrame.add(btnGeneracionTablero);
+        btnGeneracionTablero.setBounds(123, 147, 150, 23);
 
         btnInventario.setBackground(new java.awt.Color(255, 255, 255));
         btnInventario.setForeground(new java.awt.Color(0, 0, 0));
@@ -99,6 +113,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 btnInventarioActionPerformed(evt);
             }
         });
+        pnlFrame.add(btnInventario);
+        btnInventario.setBounds(123, 188, 150, 23);
 
         btnRanking.setBackground(new java.awt.Color(255, 255, 255));
         btnRanking.setForeground(new java.awt.Color(0, 0, 0));
@@ -108,6 +124,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 btnRankingActionPerformed(evt);
             }
         });
+        pnlFrame.add(btnRanking);
+        btnRanking.setBounds(123, 229, 150, 23);
 
         btnSalir.setBackground(new java.awt.Color(255, 255, 255));
         btnSalir.setForeground(new java.awt.Color(0, 0, 0));
@@ -117,16 +135,28 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 btnSalirActionPerformed(evt);
             }
         });
+        pnlFrame.add(btnSalir);
+        btnSalir.setBounds(123, 264, 150, 23);
 
         lblNombre.setForeground(new java.awt.Color(0, 0, 0));
         lblNombre.setText("Nombre del Jugador:");
+        pnlFrame.add(lblNombre);
+        lblNombre.setBounds(6, 311, 140, 16);
 
         lblOro.setForeground(new java.awt.Color(0, 0, 0));
         lblOro.setText("Oro del Jugador:");
+        pnlFrame.add(lblOro);
+        lblOro.setBounds(160, 310, 120, 16);
+
+        lblCantidadOro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pnlFrame.add(lblCantidadOro);
+        lblCantidadOro.setBounds(150, 340, 110, 20);
 
         lblNombreTexto.setBackground(new java.awt.Color(0, 0, 0));
         lblNombreTexto.setForeground(new java.awt.Color(0, 0, 0));
         lblNombreTexto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pnlFrame.add(lblNombreTexto);
+        lblNombreTexto.setBounds(10, 340, 111, 20);
 
         btnGuardarJugador.setText("Guardar Jugador");
         btnGuardarJugador.addActionListener(new java.awt.event.ActionListener() {
@@ -134,94 +164,28 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 btnGuardarJugadorActionPerformed(evt);
             }
         });
+        pnlFrame.add(btnGuardarJugador);
+        btnGuardarJugador.setBounds(120, 390, 150, 23);
 
-        javax.swing.GroupLayout pnlFrameLayout = new javax.swing.GroupLayout(pnlFrame);
-        pnlFrame.setLayout(pnlFrameLayout);
-        pnlFrameLayout.setHorizontalGroup(
-            pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlFrameLayout.createSequentialGroup()
-                .addGroup(pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlFrameLayout.createSequentialGroup()
-                        .addGap(141, 141, 141)
-                        .addComponent(lblBienvenida))
-                    .addGroup(pnlFrameLayout.createSequentialGroup()
-                        .addGap(141, 141, 141)
-                        .addComponent(lblTitulo))
-                    .addGroup(pnlFrameLayout.createSequentialGroup()
-                        .addGap(123, 123, 123)
-                        .addComponent(btnIniciarPartida, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlFrameLayout.createSequentialGroup()
-                        .addGap(123, 123, 123)
-                        .addComponent(btnTienda, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlFrameLayout.createSequentialGroup()
-                        .addGap(123, 123, 123)
-                        .addComponent(btnGeneracionTablero, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlFrameLayout.createSequentialGroup()
-                        .addGap(123, 123, 123)
-                        .addComponent(btnInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlFrameLayout.createSequentialGroup()
-                        .addGap(123, 123, 123)
-                        .addComponent(btnRanking, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlFrameLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(lblNombre)
-                        .addGap(108, 108, 108)
-                        .addComponent(lblOro))
-                    .addGroup(pnlFrameLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(lblNombreTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(108, 108, 108)
-                        .addComponent(lblCantidadOro, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlFrameLayout.createSequentialGroup()
-                        .addGap(123, 123, 123)
-                        .addGroup(pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnGuardarJugador)
-                            .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(100, Short.MAX_VALUE))
-        );
-        pnlFrameLayout.setVerticalGroup(
-            pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlFrameLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(lblBienvenida)
-                .addGap(6, 6, 6)
-                .addComponent(lblTitulo)
-                .addGap(12, 12, 12)
-                .addComponent(btnIniciarPartida)
-                .addGap(18, 18, 18)
-                .addComponent(btnTienda)
-                .addGap(18, 18, 18)
-                .addComponent(btnGeneracionTablero)
-                .addGap(18, 18, 18)
-                .addComponent(btnInventario)
-                .addGap(18, 18, 18)
-                .addComponent(btnRanking)
-                .addGap(12, 12, 12)
-                .addComponent(btnSalir)
-                .addGap(24, 24, 24)
-                .addGroup(pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlFrameLayout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(lblOro)))
-                .addGap(6, 6, 6)
-                .addGroup(pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNombreTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCantidadOro, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
-                .addComponent(btnGuardarJugador)
-                .addContainerGap(32, Short.MAX_VALUE))
-        );
+        lblPuntuacion.setForeground(new java.awt.Color(0, 0, 0));
+        lblPuntuacion.setText("Puntuacion del Jugador");
+        pnlFrame.add(lblPuntuacion);
+        lblPuntuacion.setBounds(290, 310, 140, 16);
+
+        lblcantidadPuntuacion.setForeground(new java.awt.Color(0, 0, 0));
+        lblcantidadPuntuacion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pnlFrame.add(lblcantidadPuntuacion);
+        lblcantidadPuntuacion.setBounds(290, 340, 120, 20);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlFrame, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlFrame, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlFrame, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE)
         );
 
         pack();
@@ -283,7 +247,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblNombreTexto;
     private javax.swing.JLabel lblOro;
+    private javax.swing.JLabel lblPuntuacion;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblcantidadPuntuacion;
     private javax.swing.JPanel pnlFrame;
     // End of variables declaration//GEN-END:variables
 }

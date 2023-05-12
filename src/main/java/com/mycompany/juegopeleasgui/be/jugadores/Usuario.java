@@ -34,6 +34,7 @@ public class Usuario extends Jugador implements Serializable {
     private Jugable personajePrincipalUsuario;
     private ListaGenerica<Jugable> inventarioUsuario;
     private ListaGenerica<Articulo> inventarioArticulos;
+    private int puntuacion;
 
     public Usuario() {
         oro = 500;
@@ -55,6 +56,7 @@ public class Usuario extends Jugador implements Serializable {
         listaArticulos[6] = new ArticuloVacio();
         inventarioUsuario = new ListaGenerica<Jugable>();
         inventarioArticulos = new ListaGenerica<Articulo>();
+        puntuacion = 0;
     }
 
     public void comprarJugables(Jugable personaje, int oro) {
@@ -117,6 +119,14 @@ public class Usuario extends Jugador implements Serializable {
 
     public ListaGenerica<Articulo> getInventarioArticulos() {
         return inventarioArticulos;
+    }
+
+    public int getPuntuacion() {
+        return puntuacion;
+    }
+
+    public void setPuntuacion(int puntuacion) {
+        this.puntuacion = puntuacion;
     }
 
     public void activarBotonesMovimiento(JLabel lblDireccion, JButton btnArriba, JButton btnAbajo, JButton btnDerecha, JButton btnIzuierda) {
