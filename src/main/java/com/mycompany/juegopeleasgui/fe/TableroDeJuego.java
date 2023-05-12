@@ -148,12 +148,12 @@ public class TableroDeJuego extends javax.swing.JFrame {
             }
         });
         pnlTableroDeJuego.add(boxDificultad);
-        boxDificultad.setBounds(280, 610, 72, 22);
+        boxDificultad.setBounds(300, 560, 72, 22);
 
         lblDificultad.setForeground(new java.awt.Color(0, 0, 0));
         lblDificultad.setText("Elige una dificultad");
         pnlTableroDeJuego.add(lblDificultad);
-        lblDificultad.setBounds(260, 590, 120, 16);
+        lblDificultad.setBounds(280, 540, 120, 16);
 
         lblJugadorPrincipal.setForeground(new java.awt.Color(0, 0, 0));
         lblJugadorPrincipal.setText("Selecciona  a tu jugador principal");

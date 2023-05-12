@@ -25,27 +25,34 @@ public class CrearTablero {
 
     }
 
-    public void leerArchivo(String id) { //Para crear mapas
+    public void leerArchivo(String idTablero) { //Para crear mapas, se le pasa el idTablero por el usuario en un frame
         File f;
         BufferedReader br = null;
         String cadena;
         f = new File(rutaTablero);
         int conteo = 0;
         dificultad = ia.getDificultad();
+        boolean idEncontrado = false;
         if (f.exists()) {
             try {
                 br = new BufferedReader(new FileReader(f));
                 while ((cadena = br.readLine()) != null) {
-                    if (cadena.startsWith("tablero " + id)) {
-                        String[] identificador = cadena.split(" ");
-                        String[] nombreId = identificador[1].split(" ");
-                        id = nombreId[0];
-                        System.out.println("id=" + id);
+                    String[] partes = cadena.split(" ");
+
+                    if (!idEncontrado) {
+                        if (partes.length > 1) {
+                            System.out.println(partes[1]);
+                            System.out.println("idTablero = " + idTablero);
+                            if (idTablero.equals(partes[1])) {
+                                System.out.println("Se encontro el tablero");
+                                idEncontrado = true;
+                            }
+                        }
                     } else if (cadena.contains("dimension")) {
                         String[] dimension1 = cadena.split(" ");
                         String[] dimensiones = dimension1[1].split("X");
 
-                        nuevoTablero = new Tablero(usuario, ia, id, Integer.parseInt(dimensiones[0]), Integer.parseInt(dimensiones[1]));
+                        nuevoTablero = new Tablero(usuario, ia, idTablero, Integer.parseInt(dimensiones[0]), Integer.parseInt(dimensiones[1]));
                         nuevoTablero.crearTableroVacio();
                         conteo = 0;
                     } else if (nuevoTablero != null) {
