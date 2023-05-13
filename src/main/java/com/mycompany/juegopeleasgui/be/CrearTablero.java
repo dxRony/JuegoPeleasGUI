@@ -41,7 +41,6 @@ public class CrearTablero {
 
                     if (!idEncontrado) {
                         if (partes.length > 1) {
-                            System.out.println(partes[1]);
                             System.out.println("idTablero = " + idTablero);
                             if (idTablero.equals(partes[1])) {
                                 System.out.println("Se encontro el tablero");
@@ -49,15 +48,21 @@ public class CrearTablero {
                             }
                         }
                     } else if (cadena.contains("dimension")) {
+                        conteo = 0;
                         String[] dimension1 = cadena.split(" ");
                         String[] dimensiones = dimension1[1].split("X");
-
+                        System.out.println("creando tablero...");
+                        System.out.println("dimensiones = " + dimensiones[0] + "X" + dimensiones[1]);
                         nuevoTablero = new Tablero(usuario, ia, idTablero, Integer.parseInt(dimensiones[0]), Integer.parseInt(dimensiones[1]));
                         nuevoTablero.crearTableroVacio();
-                        conteo = 0;
-                    } else if (nuevoTablero != null) {
-                        nuevoTablero.agregarLineas(cadena, conteo, dificultad);
-                        conteo++;
+                        while ((cadena = br.readLine()) != null) {
+                            if (nuevoTablero != null) {
+                                nuevoTablero.agregarLineas(cadena, conteo, dificultad);
+                                conteo++;
+                                System.out.println("conteo = " + conteo);
+                            }
+                        }
+                        break;
                     }
                 }
                 nuevoTablero.pintarMapa();

@@ -1,6 +1,7 @@
 package com.mycompany.juegopeleasgui.be.tablero;
 
 import com.mycompany.juegopeleasgui.be.Casilla;
+import com.mycompany.juegopeleasgui.be.CrearTablero;
 import com.mycompany.juegopeleasgui.be.articulos.Articulo;
 import com.mycompany.juegopeleasgui.be.inventarios.ListaGenerica;
 import com.mycompany.juegopeleasgui.be.jugadores.IA;
@@ -41,6 +42,7 @@ public class Tablero {
     private ListaGenerica<Articulo> inventarioArticulo;
     private NoJugable personajePrincipalIA;
     private NoJugable[] listaEnemigos;
+    private CrearTablero nuevoTablero;
 
     private String posicionJugador;
     private int posicionYJugador;
@@ -92,6 +94,7 @@ public class Tablero {
         posicionXJugador = 8;
 
         turnoIA = new ListaGenerica<String>();
+        //crearTableroVacio();
     }
 
     public void crearIconos(String nombreCasilla, JLabel casilla) {
@@ -147,7 +150,7 @@ public class Tablero {
     }
 
     public void pintarMapa() {//ta bien
-        mostrarEstadisticas();
+      //  mostrarEstadisticas();
         System.out.println("El tablero de juego es...");
         for (int x = 0; x < filas; x++) {
             for (int y = 0; y < columnas; y++) {

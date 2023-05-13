@@ -411,8 +411,14 @@ public class TableroDeJuego extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMostrarInventarioActionPerformed
 
     private void fieldPersonajePrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldPersonajePrincipalActionPerformed
-        String principal = fieldPersonajePrincipal.getText();
-        int personajePrincipal = Integer.parseInt(principal) - 1;
+        int personajePrincipal = 0;
+        try {
+            personajePrincipal = Integer.parseInt(fieldPersonajePrincipal.getText()) - 1;
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Caracter invalido \nTu personaje se ha elegido automaticamente");
+            personajePrincipal = 1;
+        }
         usuario.almacenarPrincipalUsuario(personajePrincipal);
         boxDificultad.setVisible(true);
         lblDificultad.setVisible(true);
@@ -432,10 +438,9 @@ public class TableroDeJuego extends javax.swing.JFrame {
     }//GEN-LAST:event_boxDificultadActionPerformed
 
     private void btnMostrarTablerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarTablerosActionPerformed
-        String textoLeido;
-        textoLeido = archivo.abrirArchivo();
-        System.out.println(textoLeido);
-        JOptionPane.showMessageDialog(rootPane, textoLeido, "TABLEROS", 1);
+        MostrarTableros mostrar = new MostrarTableros();
+        mostrar.setVisible(true);
+
     }//GEN-LAST:event_btnMostrarTablerosActionPerformed
 
     private void btnCargarMapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarMapaActionPerformed
