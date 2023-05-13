@@ -16,8 +16,10 @@ import com.mycompany.juegopeleasgui.be.personajes.personajeJugable.Dragon;
 import com.mycompany.juegopeleasgui.be.personajes.personajeJugable.Gigante;
 import com.mycompany.juegopeleasgui.be.personajes.personajeJugable.JugableVacio;
 import com.mycompany.juegopeleasgui.be.personajes.personajeJugable.Mago;
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -35,6 +37,7 @@ public class Usuario extends Jugador implements Serializable {
     private ListaGenerica<Jugable> inventarioUsuario;
     private ListaGenerica<Articulo> inventarioArticulos;
     private int puntuacion;
+    private String rutaRanking = "src\\main\\java\\archivo\\ranking.txt";
 
     public Usuario() {
         oro = 500;
@@ -57,6 +60,22 @@ public class Usuario extends Jugador implements Serializable {
         inventarioUsuario = new ListaGenerica<Jugable>();
         inventarioArticulos = new ListaGenerica<Articulo>();
         puntuacion = 0;
+    }
+
+    public void guardarPuntajes() {
+        try (FileWriter archivo = new FileWriter(rutaRanking, true)) {
+
+            BufferedWriter buffer = new BufferedWriter(archivo);
+
+            buffer.write("Jugador: " + this.getNombre() + "\t" + this.getPuntuacion() + "\n");
+            System.out.println("se ingreso otro jugador al ranking");
+            buffer.close();
+
+            archivo.close();
+        } catch (IOException e) {
+            System.out.println("Error al escribir en el archivo");
+            e.printStackTrace();
+        }
     }
 
     public void comprarJugables(Jugable personaje, int oro) {

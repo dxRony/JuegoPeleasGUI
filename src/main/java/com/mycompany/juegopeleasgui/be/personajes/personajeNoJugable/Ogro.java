@@ -12,5 +12,6 @@ public class Ogro extends NoJugable {
         puntosAtaque = 50;
         movimiento = 1;
         distanciaAtaque = 1;
+        puntaje = 25;
     }
 }

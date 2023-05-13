@@ -1,14 +1,18 @@
 package com.mycompany.juegopeleasgui.fe;
 
 import com.mycompany.juegopeleasgui.be.Archivo;
+import com.mycompany.juegopeleasgui.be.OrdenarTableros;
 
 public class MostrarTableros extends javax.swing.JFrame {
 
     private Archivo miArchivo;
 
+    private OrdenarTableros ordenarTxt;
+
     public MostrarTableros() {
         initComponents();
         miArchivo = new Archivo();
+        ordenarTxt = new OrdenarTableros();
     }
 
     /**
@@ -46,13 +50,23 @@ public class MostrarTableros extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("TABLEROS");
         pnlMostrarTableros.add(jLabel1);
-        jLabel1.setBounds(220, 10, 70, 30);
+        jLabel1.setBounds(230, 10, 70, 30);
 
         btnTableroMayorMenor.setText("Mayor a menor");
+        btnTableroMayorMenor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTableroMayorMenorActionPerformed(evt);
+            }
+        });
         pnlMostrarTableros.add(btnTableroMayorMenor);
         btnTableroMayorMenor.setBounds(180, 400, 150, 23);
 
         btnTableroMenorMayor.setText("Menor a mayor");
+        btnTableroMenorMayor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTableroMenorMayorActionPerformed(evt);
+            }
+        });
         pnlMostrarTableros.add(btnTableroMenorMayor);
         btnTableroMenorMayor.setBounds(340, 400, 150, 23);
 
@@ -99,6 +113,29 @@ public class MostrarTableros extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnTableroMayorMenorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTableroMayorMenorActionPerformed
+        String textoLeido;
+        textoLeido = miArchivo.abrirArchivo();
+        String[] tablerosDesc = ordenarTxt.ordenarTableros(textoLeido, false);
+        String txtAsc = "";
+        for (String tablero : tablerosDesc) {
+            txtAsc += tablero.concat("\n");
+        }
+        txtAreaTableros.setText(txtAsc);
+    }//GEN-LAST:event_btnTableroMayorMenorActionPerformed
+
+    private void btnTableroMenorMayorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTableroMenorMayorActionPerformed
+
+        String textoLeido;
+        textoLeido = miArchivo.abrirArchivo();
+        String[] tablerosAsc = ordenarTxt.ordenarTableros(textoLeido, true);
+        String txtAsc = "";
+        for (String tablero : tablerosAsc) {
+            txtAsc += tablero.concat("\n");
+        }
+        txtAreaTableros.setText(txtAsc);
+    }//GEN-LAST:event_btnTableroMenorMayorActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -17,7 +17,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private IA ia;
     private ListaGenerica<Jugable> inventarioUsuario;
     private ListaGenerica<Articulo> inventarioArticulos;
-    
+
     public MenuPrincipal(Usuario usuario, IA ia) {
         initComponents();
         this.usuario = usuario;
@@ -54,6 +54,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnGuardarJugador = new javax.swing.JButton();
         lblPuntuacion = new javax.swing.JLabel();
         lblcantidadPuntuacion = new javax.swing.JLabel();
+        jToggleButton1 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -177,6 +178,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         pnlFrame.add(lblcantidadPuntuacion);
         lblcantidadPuntuacion.setBounds(290, 340, 120, 20);
 
+        jToggleButton1.setText("agregar punteo (prueba)");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+        pnlFrame.add(jToggleButton1);
+        jToggleButton1.setBounds(10, 420, 220, 23);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -192,6 +202,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        usuario.guardarPuntajes();
         System.exit(0);
     }//GEN-LAST:event_btnSalirActionPerformed
 
@@ -209,7 +220,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInventarioActionPerformed
 
     private void btnRankingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRankingActionPerformed
-        // TODO add your handling code here:
+        Ranking ranking = new Ranking(usuario);
+        ranking.setVisible(true);
+        usuario.guardarPuntajes();
+        
         lblCantidadOro.setText(usuario.getOro() + "");
     }//GEN-LAST:event_btnRankingActionPerformed
 
@@ -230,6 +244,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         guardarJugador.guardarArchivoBinario(usuario);
     }//GEN-LAST:event_btnGuardarJugadorActionPerformed
 
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        usuario.setPuntuacion(100);
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -242,6 +260,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnRanking;
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnTienda;
+    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel lblBienvenida;
     private javax.swing.JLabel lblCantidadOro;
     private javax.swing.JLabel lblNombre;

@@ -12,5 +12,6 @@ public class FlorCarnivora extends NoJugable {
         puntosAtaque = 30;
         movimiento = 0;
         distanciaAtaque = 3;
+        puntaje = 75;
     }
 }

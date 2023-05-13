@@ -38,7 +38,7 @@ public class CrearTablero {
                 br = new BufferedReader(new FileReader(f));
                 while ((cadena = br.readLine()) != null) {
                     String[] partes = cadena.split(" ");
-
+                    System.out.println("partes = " + partes[0]);
                     if (!idEncontrado) {
                         if (partes.length > 1) {
                             System.out.println("idTablero = " + idTablero);
@@ -59,7 +59,6 @@ public class CrearTablero {
                             if (nuevoTablero != null) {
                                 nuevoTablero.agregarLineas(cadena, conteo, dificultad);
                                 conteo++;
-                                System.out.println("conteo = " + conteo);
                             }
                         }
                         break;

@@ -12,6 +12,6 @@ public class Gargola extends NoJugable {
         puntosAtaque = 100;
         movimiento = 3;
         distanciaAtaque = 2;
-
+        puntaje = 45;
     }
 }

@@ -12,5 +12,6 @@ public class Cancerbero extends NoJugable {
         puntosAtaque = 45;
         movimiento = 1;
         distanciaAtaque = 1;
+        puntaje = 30;
     }
 }

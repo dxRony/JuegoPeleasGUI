@@ -150,7 +150,6 @@ public class Tablero {
     }
 
     public void pintarMapa() {//ta bien
-      //  mostrarEstadisticas();
         System.out.println("El tablero de juego es...");
         for (int x = 0; x < filas; x++) {
             for (int y = 0; y < columnas; y++) {
@@ -264,34 +263,6 @@ public class Tablero {
             default:
                 break;
         }
-    }
-
-    public void mostrarEstadisticas() {//muestra las posiciones y puntos de vida en la consola
-
-        System.out.println("----------------------------------------------------------------");
-        System.out.print("|   ****Posiciones****");
-        System.out.println("     |        ****Puntos de Vida****      |");
-        System.out.println("|         (y x)            |                                    |");
-        System.out.println("----------------------------------------------------------------");
-        System.out.print("|Posicion jugador= " + posicionJugador + "(" + personajePrincipalUsuario.getNombre() + ")   |");
-        System.out.println("    Puntos de vida jugador=  " + personajePrincipalUsuario.getPuntosDeVida() + "(" + personajePrincipalUsuario.getNombre() + ") |");
-        System.out.println("----------------------------------------------------------------");
-
-        System.out.print("|Posicion enemigo 1= " + posicionEnemigo1 + "(" + inventarioIA.seleccionar(0).getNombre() + ") |");
-        System.out.println("    Puntos de vida enemigo 1= " + inventarioIA.seleccionar(0).getPuntosDeVida() + "(" + inventarioIA.seleccionar(0).getNombre() + ")|");
-
-        System.out.print("|Posicion enemigo 2= " + posicionEnemigo2 + "(" + inventarioIA.seleccionar(1).getNombre() + ") |");
-        System.out.println("    Puntos de vida enemigo 2= " + inventarioIA.seleccionar(1).getPuntosDeVida() + "(" + inventarioIA.seleccionar(1).getNombre() + ")|");
-
-        System.out.print("|Posicion enemigo 3= " + posicionEnemigo3 + "(" + inventarioIA.seleccionar(2).getNombre() + ") |");
-        System.out.println("    Puntos de vida enemigo 3= " + inventarioIA.seleccionar(2).getPuntosDeVida() + "(" + inventarioIA.seleccionar(2).getNombre() + ")|");
-
-        System.out.print("|Posicion enemigo 4= " + posicionEnemigo4 + "(" + inventarioIA.seleccionar(3).getNombre() + ") |");
-        System.out.println("    Puntos de vida enemigo 4= " + inventarioIA.seleccionar(3).getPuntosDeVida() + "(" + inventarioIA.seleccionar(3).getNombre() + ")|");
-
-        System.out.print("|Posicion enemigo 5= " + posicionEnemigo5 + "(" + inventarioIA.seleccionar(4).getNombre() + ") |");
-        System.out.println("    Puntos de vida enemigo 5= " + inventarioIA.seleccionar(4).getPuntosDeVida() + "(" + inventarioIA.seleccionar(4).getNombre() + ")|");
-        System.out.println("----------------------------------------------------------------");
     }
 
     public void crearPosiciones(int dificultad) {
@@ -739,6 +710,7 @@ public class Tablero {
                 posicionEnemigo1 = "";
                 System.out.println("El personaje 1 ha sido eliminado, puntos de vida= " + inventarioIA.seleccionar(0).getPuntosDeVida());
             }
+            usuario.setPuntuacion(15);
         }
         if (casillas[posicionYEnemigo2][posicionXEnemigo2] instanceof NoJugable && inventarioIA.seleccionar(1).getPuntosDeVida() <= 0) {
             NoJugable personaje2 = (NoJugable) casillas[posicionYEnemigo2][posicionXEnemigo2];//casteo
@@ -750,6 +722,7 @@ public class Tablero {
                 posicionEnemigo2 = "";
                 System.out.println("El personaje 2 ha sido eliminado, puntos de vida= " + inventarioIA.seleccionar(1).getPuntosDeVida());
             }
+            usuario.setPuntuacion(15);
         }
         if (casillas[posicionYEnemigo3][posicionXEnemigo3] instanceof NoJugable && inventarioIA.seleccionar(2).getPuntosDeVida() <= 0) {
             NoJugable personaje3 = (NoJugable) casillas[posicionYEnemigo3][posicionXEnemigo3];//casteo
@@ -761,6 +734,7 @@ public class Tablero {
                 posicionEnemigo3 = "";
                 System.out.println("El personaje 3 ha sido eliminado, puntos de vida= " + inventarioIA.seleccionar(2).getPuntosDeVida());
             }
+            usuario.setPuntuacion(15);
         }
         if (casillas[posicionYEnemigo4][posicionXEnemigo4] instanceof NoJugable && inventarioIA.seleccionar(3).getPuntosDeVida() <= 0) {
             NoJugable personaje4 = (NoJugable) casillas[posicionYEnemigo4][posicionXEnemigo4];//casteo
@@ -772,6 +746,7 @@ public class Tablero {
                 posicionEnemigo4 = "";
                 System.out.println("El personaje 4 ha sido eliminado, puntos de vida= " + inventarioIA.seleccionar(3).getPuntosDeVida());
             }
+            usuario.setPuntuacion(15);
         }
         if (casillas[posicionYEnemigo5][posicionXEnemigo5] instanceof NoJugable && inventarioIA.seleccionar(4).getPuntosDeVida() <= 0) {
             NoJugable personaje5 = (NoJugable) casillas[posicionYEnemigo5][posicionXEnemigo5];//casteo
@@ -783,6 +758,7 @@ public class Tablero {
                 posicionEnemigo5 = "";
                 System.out.println("El personaje 5 ha sido eliminado, puntos de vida= " + inventarioIA.seleccionar(4).getPuntosDeVida());
             }
+            usuario.setPuntuacion(15);
         }
     }
 

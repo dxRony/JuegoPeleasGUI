@@ -12,5 +12,6 @@ public class Bruja extends NoJugable {
         puntosAtaque = 45;
         movimiento = 50;
         distanciaAtaque = 50;
+        puntaje = 100;
     }
 }
