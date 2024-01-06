@@ -802,10 +802,14 @@ public class Tablero {
     public void usarArticulo(int articuloIndice) {
         int inventario = inventarioArticulo.getTamano();
         if (articuloIndice >= inventario) {
-            JOptionPane.showMessageDialog(null, "indice fuera de rango");
-        } else {
+            JOptionPane.showMessageDialog(null, "no tienes un articulo en esta posicion");
+        } else if (inventario<0) {
+            JOptionPane.showMessageDialog(null, "no tienes articulos en tu inventario :(");
+        }  
+        else {
             Articulo articulo = inventarioArticulo.seleccionar(articuloIndice);
             personajePrincipalUsuario.aplicarArticulo(articulo);
+            inventarioArticulo.eliminar(articuloIndice);
         }
     }
 

@@ -1,6 +1,5 @@
 package com.mycompany.juegopeleasgui.fe;
 
-import com.mycompany.juegopeleasgui.Partida;
 import com.mycompany.juegopeleasgui.be.articulos.Articulo;
 import com.mycompany.juegopeleasgui.be.inventarios.ListaGenerica;
 import com.mycompany.juegopeleasgui.be.jugadores.GuardarJugador;
@@ -223,7 +222,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Ranking ranking = new Ranking(usuario);
         ranking.setVisible(true);
         usuario.guardarPuntajes();
-        
+
         lblCantidadOro.setText(usuario.getOro() + "");
     }//GEN-LAST:event_btnRankingActionPerformed
 
@@ -245,7 +244,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGuardarJugadorActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        usuario.setPuntuacion(100);
+        usuario.setPuntuacion(usuario.getPuntuacion() + 35);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**

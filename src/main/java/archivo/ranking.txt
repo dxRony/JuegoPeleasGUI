@@ -1,0 +1,9 @@
+Jugador: asd	15
+Jugador: asd	100
+Jugador: asd	100
+Jugador: 	0
+Jugador: 	100
+Jugador: 	100
+Jugador: 	245
+Jugador: 	245
+Jugador: rony	0

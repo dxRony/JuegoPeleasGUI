@@ -1,11 +1,14 @@
 package com.mycompany.juegopeleasgui.be;
 
+import java.awt.Image;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 public class Archivo {
 
@@ -48,4 +51,16 @@ public class Archivo {
             System.out.println(error);
         }
     }
+
+    public void mostrarImagen(JLabel lblImagen) {
+        ImageIcon imagenIcono = new ImageIcon("src\\main\\java\\archivos\\imagen.png");
+
+        Image imagen = imagenIcono.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+
+        ImageIcon imagenFinal = new ImageIcon(imagen);
+
+        lblImagen.setIcon(imagenFinal);
+
+    }
+
 }

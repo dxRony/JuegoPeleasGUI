@@ -109,9 +109,9 @@ public class Usuario extends Jugador implements Serializable {
         int inventario = inventarioUsuario.getTamano();
         if (personaje >= inventario) {
             JOptionPane.showMessageDialog(null, "Indice fuera de rango, tu personaje se ha elegido automaticamente");
-
+            personaje = 0;
+            System.out.println("seleccionando al 1er personaje de la lista");
         }
-        personaje = 0;
         this.personajePrincipalUsuario = inventarioUsuario.seleccionar(personaje);
         System.out.println("Tu personaje principal es: " + personajePrincipalUsuario.getNombre());
     }

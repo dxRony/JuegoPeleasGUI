@@ -6,6 +6,7 @@ public class Nodo<T> implements Serializable {
 
     protected T contenido;
     protected Nodo<T> siguiente;
+    protected int indice;
 
     public Nodo(T contenido) {
         this.contenido = contenido;

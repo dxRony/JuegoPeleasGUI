@@ -6,11 +6,13 @@ public class ListaGenerica<T> implements Serializable {
 
     private Nodo<T> primero;
     private Nodo<T> ultimo;
+    private Nodo<T> actual;
+    private Nodo<T> previo;
     private String lista;
     private int tamano = 0;
 
     public ListaGenerica() {
-        this.primero = null;
+        this.primero = null;        
         lista = "";
     }
 
@@ -83,6 +85,31 @@ public class ListaGenerica<T> implements Serializable {
 
     public boolean listaVacia() {
         return primero == null;
+    }
+    
+    public void eliminar(int dato) {
+        Nodo actual = primero;
+        Nodo previo = null;
+
+        // Caso especial si el nodo a eliminar es la cabeza
+        if (actual != null && actual.indice == dato) {
+            primero = actual.siguiente;
+            return;
+        }
+
+        // Buscar el nodo a eliminar y mantener un enlace al nodo anterior
+        while (actual != null && actual.indice != dato) {
+            previo = actual;
+            actual = actual.siguiente;
+        }
+
+        // Si el nodo no está presente en la lista
+        if (actual == null) {
+            return;
+        }
+
+        // Desenlazar el nodo a eliminar
+        previo.siguiente = actual.siguiente;
     }
 
     public void setLista(String lista) {
